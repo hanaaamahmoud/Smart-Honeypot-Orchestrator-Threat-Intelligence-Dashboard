@@ -1,0 +1,92 @@
+Business Requirements Document
+Smart Honeypot Orchestrator & Threat Intelligence Dashboard
+
+
+
+1. Project Overview
+Brief Description
+The project aims to build a centralized platform for deploying and managing multiple honeypots. These honeypots act as fake vulnerable services that attract attackers and record their activities.
+The collected attack data is then analyzed and displayed through a dashboard to help security teams understand attacker behavior, identify attack trends, and monitor threats in real time.
+Business Context
+Organizations face cyber-attacks on a daily basis. Security teams need stronger visibility into attacker activity in order to improve monitoring, detection, and response.
+Background
+Honeypots are decoy systems designed to attract and trap attackers. They allow organizations to safely study attack methods, attacker tools, and behavior patterns, improving overall security awareness without risking production systems.
+
+2. Business Problem / Opportunity
+Problem
+Security teams often have limited visibility into attacker behavior and may only detect an intrusion after it has already reached real systems.
+Opportunity
+The project enables organizations to collect attack data in a safe, isolated environment, improving early threat visibility and supporting better-informed security decisions.
+
+3. Business Objectives
+•	Collect real-world attack data from deployed honeypots.
+•	Monitor attacker activity and behavior in near real time.
+•	Display attack data clearly on a centralized dashboard.
+•	Identify common attack patterns and trends across sessions.
+
+4. Scope
+In Scope     
+•	SSH Honeypot 
+•	HTTP Honeypot 
+•	FTP Honeypot 
+•	Log Collection 
+•	Log Storage 
+•	Real-Time Dashboard 
+•	GeoIP Analysis 
+•	Basic Unsupervised ML Clustering 
+•	Threat Intelligence Reports
+Out of Scope
+•	Email Honeypots 
+•	Malware Analysis 
+•	MITRE ATT&CK Mapping 
+•	Automated Incident Response 
+•	Threat Hunting 
+•	Full SIEM Functionality 
+•	SOAR Capabilities 
+•	Endpoint Detection and Response (EDR)
+5. Stakeholders
+Stakeholder	Role
+Project Team	Designs, builds, and maintains the system
+Academic Supervisor	Reviews and approves project direction and deliverables
+Security Analysts	End users who monitor and investigate attack data
+Fixed Solutions	Supporting/sponsoring entity
+
+6. Business Requirements
+High-Level Functional Requirements
+•	deploy and run SSH, FTP and HTTP honeypots.
+•	capture and log attacker activity (commands, requests, source IP).
+•	enrich logs with geographic (GeoIP) information.
+•	display attack data on a dashboard.
+•	help identify common attack patterns.
+High-Level Non-Functional Requirements
+•	The system shall isolate honeypots from production systems for safety.
+•	The dashboard shall be usable by security analysts without specialized training.
+•	The system shall be reliable enough to run continuously during the data collection period.
+
+7. User Roles
+Security Analyst
+•	Monitor attacks.
+•	Review logs.
+•	Analyze attacker activity.
+Security Manager
+•	Review reports.
+•	Monitor overall security status.
+
+8. Business Process (Current & Future)
+As-Is Process
+Attacker → Real System → Security Team Reviews Alerts.
+To-Be Process
+Attacker → Honeypot → Logs → Dashboard → Security Team.
+
+9. Assumptions & Constraints
+Assumptions
+•	A stable internet connection is available.
+•	Honeypots can be deployed successfully in the project environment.
+•	Sufficient attack data will be generated for analysis.
+Constraints
+•	Limited project timeline.
+•	Limited team resources.
+•	Real attacker traffic may not always be available or predictable.
+
+10. Timeline & Milestones
+
