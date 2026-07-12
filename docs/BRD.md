@@ -48,7 +48,7 @@ This project provides a proactive platform that automatically deploys honeypots,
 - Improved visibility into attacker behavior and techniques.
 - Early detection of attack patterns before production systems are affected.
 - Actionable threat intelligence reports for security teams.
-- A reusable framework for deploying and managing honeypots.
+- A centralized dashboard for monitoring and analyzing honeypot events.
 
 ---
 
