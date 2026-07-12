@@ -231,6 +231,7 @@ The proposed system captures attacker activities through isolated honeypots, enr
 
 #### Deliverables
 - Containerization Environment
+- Project Proposal 
 - Deployed SSH, HTTP, and FTP Honeypots
 - Python Orchestrator
 - Configuration Files
