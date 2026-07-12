@@ -210,12 +210,14 @@ The proposed system captures attacker activities through isolated honeypots, enr
 #### Activities
 - Study honeypot technologies and related work.
 - Analyze project requirements.
+- Explore and evaluate public honeypot datasets.
 - Define system scope and architecture.
 - Prepare the Business Requirements Document (BRD).
 
 #### Deliverables
 - BRD Document
 - Project Proposal
+- Dataset Exploration Report
 - System Architecture Diagram
 - Project Plan
   
