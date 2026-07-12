@@ -216,7 +216,6 @@ The proposed system captures attacker activities through isolated honeypots, enr
 
 #### Deliverables
 - BRD Document
-- Project Proposal
 - Dataset Exploration Report
 - System Architecture Diagram
 - Project Plan
