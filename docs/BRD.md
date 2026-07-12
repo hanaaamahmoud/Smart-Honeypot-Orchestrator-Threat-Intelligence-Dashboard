@@ -41,8 +41,8 @@ This project provides a proactive platform that automatically deploys honeypots,
 - Capture and store attack logs from all deployed honeypots in Elasticsearch.
 - Enrich all captured logs with GeoIP information.
 - Display attack data on a real-time dashboard accessible to security analysts.
-- Apply unsupervised machine learning to group similar attack sessions based on attack features.
-- Generate attack statistics including top attacking IP addresses, top source countries, most targeted services, most common commands executed, and attack frequency trends.
+- Identify similar attack patterns using unsupervised machine learning.
+- Generate attack statistics including top attacking IP addresses, top source countries, most targeted services, most common commands executed when available, and attack frequency trends.
 
 ### 3.2 Expected Business Outcomes
 - Improved visibility into attacker behavior and techniques.
@@ -59,7 +59,7 @@ This project provides a proactive platform that automatically deploys honeypots,
 #### Honeypots
 - SSH Honeypot (Cowrie)
 - HTTP Honeypot (OpenCanary)
-- FTP Honeypot (OpenCanary)
+- FTP Honeypot (OpenCanary or equivalent)
 
 #### Orchestration & Deployment
 - Automated deployment and management of honeypots using Docker and a Python Orchestrator.
@@ -86,7 +86,7 @@ This project provides a proactive platform that automatically deploys honeypots,
 - Full MITRE ATT&CK Mapping.
 
 ### 4.3 Future Work
-- Basic MITRE ATT&CK Mapping.
+- MITRE ATT&CK Mapping.
 - Multi-Region Cloud Deployment.
 - AI-Generated Honeypot Responses.
 - Support for Additional Protocols (SMTP, DNS, etc.).
@@ -101,7 +101,7 @@ This project provides a proactive platform that automatically deploys honeypots,
 |-------------|------|
 | Project Team | Design, develop, test, and maintain the system. |
 | Academic Supervisor | Guide the project and review deliverables. |
-| Fixed Solutions | Industry partner providing project requirements and feedback. |
+| Industry Partner (Fixed Solutions) | Industry partner providing project requirements and feedback. |
 | Security Analysts | Monitor attacks and investigate security events using the dashboard. |
 | Security Managers | Review threat intelligence insights and support security decisions. |
 
@@ -109,7 +109,7 @@ This project provides a proactive platform that automatically deploys honeypots,
 
 | Category | Stakeholder |
 |----------|-------------|
-| Project Sponsor | Fixed Solutions |
+| Project Sponsor | Industry Partner (Fixed Solutions) |
 | Project Supervisor | Academic Supervisor |
 | End Users | Security Analysts, Security Managers |
 | Decision Makers | Security Managers, Fixed Solutions |
@@ -120,16 +120,15 @@ This project provides a proactive platform that automatically deploys honeypots,
 
 ### 6.1 High-Level Functional Requirements
 - The system shall deploy and manage SSH, HTTP, and FTP honeypots automatically using Docker and a Python Orchestrator.
-- The system shall capture and store attack logs from all deployed honeypots in Elasticsearch.
+- The system shall capture and centrally store attack logs in Elasticsearch.
 - The system shall enrich all captured logs with GeoIP information.
 - The system shall stream attack events to the dashboard in real time using WebSockets.
 - The system shall apply unsupervised machine learning to group similar attack sessions based on attack features.
 - The system shall generate attack statistics, including top attacking IP addresses, top source countries, most targeted services, most common commands executed, and attack frequency trends.
-- The system shall generate threat intelligence insights from captured attack data.
+- The system shall generate threat intelligence insights based on collected attack data.
 - The dashboard shall present attack statistics and trend visualizations for security analysts.
-- The system shall support simultaneous monitoring of multiple honeypot services through a unified dashboard.
-- The Python Orchestrator shall automatically restart any honeypot service that stops unexpectedly.
-
+- The dashboard shall display events from multiple honeypot services in a unified interface.
+  
 ### 6.2 High-Level Non-Functional Requirements
 - The system shall isolate honeypots from production systems for safety.
 - The dashboard shall be usable by security analysts without specialized training.
@@ -174,8 +173,10 @@ Honeypot (SSH / HTTP / FTP)
     |
 Attack Logs Collection
     |
-GeoIP Enrichment & ML Analysis
-    |
+GeoIP Enrichment
+      |
+ML Analysis
+      |
 Real-Time Dashboard
     |
 Security Analyst
