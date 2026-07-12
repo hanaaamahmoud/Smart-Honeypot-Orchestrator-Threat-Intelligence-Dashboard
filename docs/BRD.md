@@ -201,26 +201,114 @@ The proposed system captures attacker activities through isolated honeypots, enr
 
 ---
 
-## Section 10: Timeline & Milestones
+## Section 10: Project Plan & Milestones
 
-### 10.1 High-Level Implementation Phases
+---
 
-| Phase | Description | Duration |
-|-------|-------------|----------|
-| Phase 1 | Research & Planning | Week 1-2 |
-| Phase 2 | System Design & Infrastructure Setup | Week 3-4 |
-| Phase 3 | Honeypot Deployment & Log Collection | Week 5-6 |
-| Phase 4 | Analytics, Dashboard & Threat Intelligence | Week 7-8 |
-| Phase 5 | System Integration, Testing & Refinement | Week 9-10 |
-| Phase 6 | Documentation & Final Refinements | Week 11-12 |
+### Phase 1 – Research & Planning (Week 1–2)
 
-### 10.2 Key Milestones
+#### Activities
+- Study honeypot technologies and related work.
+- Analyze project requirements.
+- Define system scope and architecture.
+- Prepare the Business Requirements Document (BRD).
+
+#### Deliverables
+- BRD Document
+- Project Proposal
+- System Architecture Diagram
+- Project Plan
+  
+---
+
+### Phase 2 – Infrastructure Setup & Honeypot Deployment (Week 3–4)
+
+#### Activities
+- Prepare docker environment.
+- Configure SSH, HTTP, and FTP honeypots.
+- Develop the Python Orchestrator.
+- Create deployment configuration files.
+
+#### Deliverables
+- Containerization Environment
+- Deployed SSH, HTTP, and FTP Honeypots
+- Python Orchestrator
+- Configuration Files
+
+---
+
+### Phase 3 – Log Collection & Data Processing (Week 5–6)
+
+#### Activities
+- Collect attack logs from honeypots.
+- Centralize logs in Elasticsearch.
+- Enrich logs with GeoIP information.
+- Validate and preprocess collected logs.
+
+#### Deliverables
+- Centralized Log Repository
+- GeoIP-Enriched Logs
+- Data Processing Pipeline
+
+---
+
+### Phase 4 – Analytics & Dashboard Development (Week 7–8)
+
+#### Activities
+- Develop the real-time dashboard.
+- Implement WebSocket-based real-time streaming.
+- Apply unsupervised ML clustering.
+- Generate attack statistics and visualizations.
+
+#### Deliverables
+- Real-Time Dashboard
+- ML Clustering Module
+- Threat Intelligence Dashboard
+- Attack Statistics Reports
+
+---
+
+### Phase 5 – System Integration & Testing (Week 9–10)
+
+#### Activities
+- Integrate all system components.
+- Test end-to-end workflow.
+- Perform attack simulations.
+- Evaluate system performance.
+- Fix detected issues.
+
+#### Deliverables
+- Integrated System
+- Test Report
+- Stable Beta Version
+
+---
+
+### Phase 6 – Documentation & Final Delivery (Week 11–12)
+
+#### Activities
+- Prepare technical documentation.
+- Finalize user documentation.
+- Prepare presentation and demonstration.
+- Finalize and package the project for delivery.
+
+#### Deliverables
+- Final Source Code
+- Technical Documentation
+- User Manual
+- Final Presentation
+- Graduation Project Package
+
+---
+
+## Key Milestones
 
 | Milestone | Deliverable | Target Date |
 |-----------|-------------|-------------|
 | Project Kick-off | Team Setup & Repository Creation | Early July 2026 |
 | GP Proposal | BRD + Architecture + Timeline | Mid July 2026 |
-| MVP | Working Honeypots + Log Collection + Basic Dashboard | Mid September 2026 |
-| Beta Version | Threat Intelligence Dashboard + GeoIP + ML Clustering | Mid October 2026 |
-| Final Code | Fully Integrated System | End October 2026 |
-| Thesis | Final Documentation & Thesis | Early November 2026 |
+| MVP | Honeypots + Log Collection + Basic Dashboard | Mid September 2026 |
+| Beta Version | Dashboard + GeoIP + ML Clustering | Mid October 2026 |
+| Final System | Fully Integrated Platform | End October 2026 |
+| Final Documentation | Thesis + Presentation | Early November 2026 |
+
