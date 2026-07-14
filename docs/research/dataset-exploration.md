@@ -681,7 +681,7 @@ The following table summarizes the evaluation results and the final implementati
 | CTU-13 | No | Yes | Yes | No | No | Yes | **Evaluated – Not Selected** |
 
 Overall, no individual dataset satisfies all project requirements. Therefore, a combination of complementary datasets was selected to provide comprehensive protocol coverage, attacker behavior analysis, geographic threat intelligence, and machine learning support while avoiding redundant data sources during implementation.
-```
+
 # Final Recommendation
 
 After evaluating all candidate datasets, it was concluded that no single dataset satisfies all requirements of the Smart Honeypot Orchestrator & Threat Intelligence Dashboard. Therefore, multiple datasets were evaluated to identify the most suitable combination for implementation.
