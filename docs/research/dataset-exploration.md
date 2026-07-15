@@ -68,7 +68,7 @@ The dataset contains useful network-level features such as timestamps, protocols
 
 ## Suitable for Our Project?
 
-**Yes (Supplementary Dataset).**
+**Yes.**
 
 The dataset is valuable for enriching the project's threat intelligence capabilities by providing GeoIP information, attack origin statistics, and geographic visualization. It complements datasets that contain attacker behavior by supplying location-based intelligence derived from public source IP addresses.
 
@@ -136,7 +136,7 @@ Examples include:
 
 ## Suitable for Machine Learning?
 
-**Yes.**
+**Partially.**
 
 The dataset contains rich labeled features that are widely used for machine learning tasks such as classification, clustering, anomaly detection, and network intrusion detection.
 
@@ -237,14 +237,14 @@ The dataset contains rich session-level and protocol-specific features that are 
 
 ## Suitable for Our Project?
 
-**Yes**
+**Partially.**
 
-The analyzed SSH, FTP, and HTTP logs closely match the project's objectives by providing attacker interaction data across multiple services. The dataset captures authentication events, FTP operations, HTTP requests, and network connection information, making it highly suitable for attacker behavior analysis and protocol-specific monitoring.
+The analyzed SSH, FTP, and HTTP logs provide valuable attacker interaction data across multiple services, including authentication events, FTP operations, HTTP requests, and network connection information. These features make the dataset suitable for attacker behavior analysis and protocol-specific monitoring.
 
-Although SSH logs are available, the project primarily relies on Cowrie Real Logs for SSH analysis because they contain real honeypot interactions and richer attacker behavior.
+However, the dataset uses private IP addresses, making GeoIP enrichment and attack origin analysis impossible. As a result, it does not fully satisfy the project's requirements for threat intelligence and geographic visualization.
 
-**Project Role:** Primary dataset for HTTP and FTP attacker behavior analysis.
 
+**Project Role:** Primary dataset for HTTP and FTP attacker behavior analysis. Supplementary datasets are required to provide public IP addresses and GeoIP information.
 ---
 
 ## Advantages
@@ -655,91 +655,68 @@ Although CTU-13 provides high-quality labeled network flows and public IP addres
 
 # Dataset Comparison
 
-After evaluating the selected datasets, it became clear that each dataset provides different capabilities and addresses different aspects of the project requirements. No single dataset is capable of covering all required services, attacker behaviors, and threat intelligence features.
+After evaluating all candidate datasets, each dataset was compared based on its ability to support the project's requirements, including honeypot data collection, attacker behavior analysis, GeoIP enrichment, protocol coverage, and machine learning suitability.
 
-**AWS Honeypot Attack Data** provides real honeypot network traffic with public source IP addresses and built-in GeoIP information. It is useful for geographic visualization, attack statistics, and dashboard development, but it lacks detailed attacker interaction such as authentication attempts or command execution.
+| Dataset | Honeypot | Public IP | GeoIP | SSH | HTTP | FTP | ML Ready | Project Role |
+|----------|:--------:|:---------:|:-----:|:---:|:----:|:---:|:--------:|--------------|
+| AWS Honeypot Attack Data | Yes | Yes | Yes| No |  No |  No | Partial | Evaluated – Not Selected |
+| UNSW-NB15 |  No | Partial |  No |  No |  No |  No | Yes | Evaluated – Not Selected |
+| MACCDC2012 |  No | No |  No | Yes | Yes | Yes | Yes | **Primary (HTTP & FTP)** |
+| Cowrie Real Logs | Yes | Yes | Yes |Yes |  No |  No |Yes | **Primary (SSH)** |
+| MURHCAD | Yes | Yes | Yes | Partial | Partial | Partial | Yes | **Supplementary (Threat Intelligence)** |
+| CTU-13 |  No | Yes | Yes  |  No |  No |  No | Yes | Evaluated – Not Selected |
 
-**UNSW-NB15** is a labeled network intrusion detection dataset designed primarily for machine learning research. It provides rich network flow features and attack labels but does not contain honeypot interactions or protocol-specific attacker behavior.
+The comparison shows that no single dataset satisfies all project requirements. Cowrie Real Logs provide the richest SSH attacker interaction data, while MACCDC2012 complements them with detailed HTTP and FTP behavioral logs. MURHCAD enhances the implementation by providing public IP addresses, GeoIP information, ASN mappings, organization attribution, temporal attack features, and multi-protocol statistics, making it an ideal supplementary dataset for threat intelligence.
 
-**MACCDC2012** provides detailed protocol-specific logs covering SSH, HTTP, and FTP activities. It contains rich authentication events, application-level interactions, and protocol metadata that make it highly valuable for attacker behavior analysis. However, since the dataset uses private IP addresses, it cannot support GeoIP enrichment.
-
-**Cowrie Real Logs** provide the most detailed SSH attacker behavior among all evaluated datasets. The logs include connection events, authentication attempts, SSH client information, HASSH fingerprints, executed commands, and session tracking. Since the dataset contains public source IP addresses, it also supports GeoIP enrichment, making it the best choice for SSH behavior analysis.
-
-**MURHCAD** offers a large-scale, cloud-based honeynet dataset collected from multiple geographically distributed honeypots. It includes enriched GeoIP information, ASN mapping, multiple protocols, and attack telemetry collected from different cloud regions. Although it provides excellent geographic threat intelligence and multi-protocol statistics, its primary contribution overlaps with the project's planned GeoIP enrichment pipeline.
-
-**CTU-13** is a labeled network flow dataset designed for botnet detection research. It contains public IP addresses, allowing GeoIP enrichment, and is well suited for machine learning tasks such as anomaly detection and traffic classification. However, it is not a honeypot dataset and does not capture attacker sessions or application-level interactions.
-
-The following table summarizes the evaluation results and the final implementation decision.
-
-| Dataset | Honeypot Dataset | Public IPs | GeoIP Support | SSH Behavior | HTTP/FTP Behavior | Machine Learning | Final Decision |
-|----------|:----------------:|:----------:|:-------------:|:------------:|:-----------------:|:----------------:|----------------|
-| AWS Honeypot Attack Data | Yes | Yes | Yes | No | No | Partial | **Selected (Supplementary)** |
-| UNSW-NB15 | No | Partial | No | No | No | Yes | **Evaluated – Not Selected** |
-| MACCDC2012 | No | No | No | Yes | Yes | Yes | **Selected (Primary)** |
-| Cowrie Real Logs | Yes | Yes | Yes | Yes | No | Yes | **Selected (Primary)** |
-| MURHCAD | Yes | Yes | Yes | Partial | Partial | Yes | **Evaluated – Not Selected** |
-| CTU-13 | No | Yes | Yes | No | No | Yes | **Evaluated – Not Selected** |
-
-Overall, no individual dataset satisfies all project requirements. Therefore, a combination of complementary datasets was selected to provide comprehensive protocol coverage, attacker behavior analysis, geographic threat intelligence, and machine learning support while avoiding redundant data sources during implementation.
 
 # Final Recommendation
 
-After evaluating all candidate datasets, it was concluded that no single dataset satisfies all requirements of the Smart Honeypot Orchestrator & Threat Intelligence Dashboard. Therefore, multiple datasets were evaluated to identify the most suitable combination for implementation.
-
----
-
 ## Selected Datasets for Implementation
 
-Based on the evaluation, the following datasets were selected for implementation.
+After evaluating all candidate datasets, no single dataset was found to satisfy all project requirements. Therefore, a combination of complementary datasets was selected to provide comprehensive coverage of attacker behavior, protocol analysis, and threat intelligence.
 
 ### Primary Datasets
 
 **Cowrie Real Logs**
 
-Cowrie Real Logs were selected as the primary dataset for SSH attacker behavior analysis. They provide detailed session-level information, including connection events, authentication attempts, SSH client information, HASSH fingerprints, executed commands, and complete session tracking. These features closely match the project's objective of profiling attacker behavior.
+Cowrie Real Logs were selected as the primary dataset for SSH attacker behavior analysis. They provide detailed session-level information, including connection events, authentication attempts, executed commands, SSH client fingerprints, and session activities. These logs closely represent real attacker interactions with SSH services and are essential for behavioral clustering.
 
 **MACCDC2012**
 
-MACCDC2012 was selected as the primary dataset for HTTP and FTP attacker behavior analysis. Its protocol-specific logs contain authentication events, FTP operations, HTTP requests, and application-level interactions that complement the SSH data collected from Cowrie.
+MACCDC2012 was selected as the primary dataset for HTTP and FTP attacker behavior analysis. It contains protocol-specific logs with authentication events, HTTP requests, FTP commands, and network metadata. These logs complement Cowrie by covering services that are not represented in the SSH honeypot data.
 
 ### Supplementary Dataset
 
-**AWS Honeypot Attack Data**
+**MURHCAD**
 
-The AWS Honeypot Attack Data dataset was selected as a supplementary dataset to support GeoIP enrichment, geographic visualization, and attack origin analysis. Its public source IP addresses and built-in geographic information complement the behavioral datasets used by the project.
+MURHCAD was selected as the supplementary dataset because it significantly enhances the project's threat intelligence capabilities. Unlike AWS Honeypot Attack Data, MURHCAD provides not only GeoIP information but also Autonomous System Number (ASN) mappings, organization attribution, temporal attack features, and multi-protocol attack statistics collected from multiple honeypot platforms.
+
+The dataset includes attack events collected from Cowrie, Dionaea, and SentryPeer honeypots across multiple geographic locations. It also contains public source IP addresses, geographic coordinates, protocol distribution, and organizational information, making it highly valuable for geographic visualization, attack origin analysis, and threat intelligence reporting.
 
 ---
 
-## Additional Evaluated Datasets
+## Evaluated Datasets Not Selected for Implementation
 
-The following datasets were evaluated during the research phase but were not selected for implementation.
+### AWS Honeypot Attack Data
 
-### MURHCAD
-
-MURHCAD was evaluated because it provides large-scale cloud honeynet telemetry, ASN mappings, GeoIP enrichment, and multi-protocol attack statistics collected from geographically distributed honeypots.
-
-However, the implementation will perform live GeoIP enrichment using the MaxMind GeoLite2 database. Since geographic intelligence will be generated dynamically during data collection, MURHCAD is not required as an implementation dataset.
+The AWS Honeypot dataset was evaluated because it provides public IP addresses and basic GeoIP information useful for geographic visualization. However, compared with MURHCAD, it offers a more limited feature set. It does not include ASN mappings, organization attribution, detailed temporal features, or comprehensive multi-protocol coverage. Therefore, MURHCAD was selected as the preferred supplementary dataset.
 
 ### CTU-13
 
-CTU-13 was evaluated as a high-quality dataset for flow-based machine learning and botnet detection research.
-
-However, the project focuses on session-level attacker behavior collected from honeypots rather than network flow classification. Consequently, CTU-13 is not suitable as a primary implementation dataset.
+CTU-13 was evaluated for its labeled botnet traffic and suitability for flow-based machine learning. However, the project focuses on session-level attacker behavior collected from honeypots rather than network flow classification. Consequently, CTU-13 was not selected for implementation.
 
 ### UNSW-NB15
 
-UNSW-NB15 was evaluated because it is one of the most widely used benchmark datasets for supervised intrusion detection research.
-
-However, the project's machine learning component is based on unsupervised clustering of attacker sessions rather than supervised traffic classification. Therefore, UNSW-NB15 will not be used during implementation.
+UNSW-NB15 was evaluated because it is widely used for supervised intrusion detection research and machine learning benchmarking. However, it is based on labeled network flows instead of honeypot interaction logs. Since this project applies unsupervised clustering to attacker sessions rather than supervised classification, UNSW-NB15 was not selected for implementation.
 
 ---
 
-## Final Selected Dataset Combination
+## Justification
 
-The final implementation will use the following datasets:
+The selected dataset combination provides comprehensive coverage of the project's requirements.
 
-- **Cowrie Real Logs** for SSH attacker behavior analysis.
-- **MACCDC2012** for HTTP and FTP attacker behavior analysis.
-- **AWS Honeypot Attack Data** for GeoIP enrichment, attack origin analysis, and dashboard visualization.
+- Cowrie Real Logs provide detailed SSH session behavior and command execution.
+- MACCDC2012 provides protocol-specific attacker interactions for HTTP and FTP services.
+- MURHCAD enriches the project with GeoIP information, ASN mappings, organization attribution, temporal attack features, and multi-protocol threat intelligence.
 
-This dataset combination provides the best balance between detailed attacker behavior analysis, protocol coverage, and geographic threat intelligence while avoiding redundant datasets that duplicate functionality already provided by the project pipeline.
+Together, these datasets provide the behavioral, geographic, and contextual information required to support attacker clustering, interactive dashboard visualization, and threat intelligence analysis while avoiding the limitations of relying on a single dataset.
