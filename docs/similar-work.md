@@ -100,7 +100,5 @@ The reviewed approaches represent four distinct philosophies in honeypot technol
 Our Smart Honeypot Orchestrator and Threat Intelligence Dashboard synthesizes these lessons: we adopt a focused, Docker-based deployment; implement modern Python orchestration; maintain full control over the data pipeline; and integrate unsupervised machine learning to automate attack pattern discovery, transforming raw logs into actionable intelligence.
 
 ## 2.5 Datasets in the Honeypot Research Community
-*   **CICIDS2017/CSE-CIC-IDS2018:** Synthetic network traffic captures in controlled testbeds. Useful for IDS training, not for real attacker behavior.
-*   **CTU-13:** Botnet traffic captures; useful for C2 communication patterns, not session data.
 *   **Cowrie:** Generates structured JSON logs used in research. No standardized public dataset exists; researchers must generate their own via live deployment or collaboration.
 *   **HoneyDB:** Aggregated community data, query-limited.
