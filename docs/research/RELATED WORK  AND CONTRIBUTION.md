@@ -101,7 +101,7 @@ HiveSight is a modern open-source platform that unifies traditional honeypot arc
 * **Orchestration & AI Triage:** A dedicated orchestration layer tails honeypot logs in real time, forwarding captured attacker commands to a local LLM via **Ollama** for automated behavior categorization and triage.
 * **Malware & Log Pipeline:** Captured binaries are automatically scanned using **ClamAV**, while logs are shipped via **Promtail** to **Loki** and visualized in **Grafana** with automated GeoIP enrichment.
 
-```
+
 
 ### Our Proposed System
 
@@ -115,7 +115,6 @@ The platform integrates three medium-interaction honeypots covering SSH, HTTP, a
 * **Unified Multi-Service Visibility:** Consolidates logs from multiple entry points (SSH, HTTP, FTP) into a single investigation interface to eliminate blind spots.
 * **Extensible Architecture:** Supports seamless future integration with malware analysis engines, threat intelligence feeds, behavioral clustering, and AI-assisted reporting while maintaining full compatibility with core honeypot technologies.
 
-```
 
 
 ## Project Summary Table
@@ -128,7 +127,6 @@ The platform integrates three medium-interaction honeypots covering SSH, HTTP, a
 | **HiveSight** | Medium (Cowrie + Dionaea) | ✓ | ✓ | Grafana + Loki | GeoIP Enrichment | ✓ (Ollama) | ✓ (ClamAV) | ✗ | ✗ |
 | **Our Proposed System** | Medium (SSH + HTTP + FTP) | ✓ | ✓ | Threat Intelligence Dashboard | ✓ | Optional | Optional | ✓ | ✓ |
 
-```
 
 ## Research Sources & References
 
