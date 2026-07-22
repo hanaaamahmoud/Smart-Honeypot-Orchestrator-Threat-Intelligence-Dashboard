@@ -36,21 +36,21 @@ The following preprocessing pipeline was applied before analysis.
 
 | Step | Status |
 |------|--------|
-| Load & Merge JSON Files | ✅ |
-| JSON Parsing | ✅ |
-| Flatten Nested JSON | ✅ |
-| Extract Cowrie Events | ✅ |
-| Filter SSH Events Only | ✅ |
-| Remove Telnet Events | ✅ |
-| Remove Empty Columns | ✅ |
-| Remove Constant Columns | ✅ |
-| Timestamp Conversion | ✅ |
-| Missing Values Review | ✅ |
-| Duplicate Review | ✅ |
-| Session Validation | ✅ |
-| Event Sequence Validation | ✅ |
-| Data Type Validation | ✅ |
-| Export Clean Dataset | ✅ |
+| Load & Merge JSON Files | Completed |
+| JSON Parsing | Completed |
+| Flatten Nested JSON | Completed |
+| Extract Cowrie Events | Completed |
+| Filter SSH Events Only | Completed |
+| Remove Telnet Events | Completed |
+| Remove Empty Columns | Completed |
+| Remove Constant Columns | Completed |
+| Timestamp Conversion | Completed |
+| Missing Values Review | Completed |
+| Duplicate Review | Completed |
+| Session Validation | Completed |
+| Event Sequence Validation | Completed |
+| Data Type Validation | Completed |
+| Export Clean Dataset | Completed |
 
 ---
 
@@ -75,18 +75,18 @@ The following preprocessing decisions were intentionally applied:
 
 | Validation | Result |
 |------------|--------|
-| JSON Parsing | ✅ |
-| Flattening | ✅ |
-| SSH Filtering | ✅ |
-| Missing Values Reviewed | ✅ |
-| Empty Columns Removed | ✅ |
-| Constant Columns Removed | ✅ |
-| Data Types Checked | ✅ |
-| Session Integrity Verified | ✅ |
-| Timestamp Ordering Verified | ✅ |
-| Event Sequence Verified | ✅ |
-| Duplicate Review | ✅ |
-| SSH Workflow Verified | ✅ |
+| JSON Parsing | Verified |
+| Flattening | Verified |
+| SSH Filtering | Verified |
+| Missing Values Reviewed | Verified |
+| Empty Columns Removed | Verified |
+| Constant Columns Removed | Verified |
+| Data Types Checked | Verified |
+| Session Integrity Verified | Verified |
+| Timestamp Ordering Verified | Verified |
+| Event Sequence Verified | Verified |
+| Duplicate Review | Verified |
+| SSH Workflow Verified | Verified |
 
 The dataset is considered clean and ready for feature engineering.
 
@@ -120,7 +120,7 @@ The dataset profiling includes:
 
 The complete dataset schema is documented separately in:
 
-- **cowrie-schema.md**
+- cowrie-schema.md
 
 ---
 
@@ -159,7 +159,7 @@ The dataset contains seven primary SSH event types.
 
 Detailed documentation is available in:
 
-- **cowrie-event-reference.md**
+- cowrie-event-reference.md
 
 ---
 
@@ -193,7 +193,7 @@ The dataset contains sufficient behavioral information for:
 
 Suitable for Behavioral Clustering:
 
-**YES**
+YES
 
 ---
 
@@ -201,16 +201,16 @@ Suitable for Behavioral Clustering:
 
 | Objective | Status |
 |-----------|--------|
-| SSH Honeypot | ✅ |
-| GeoIP Enrichment | ✅ |
-| Dashboard | ✅ |
-| Behavior Analysis | ✅ |
-| Attack Timeline | ✅ |
-| Top Countries | ✅ |
-| Top IPs | ✅ |
-| Top Commands | ✅ |
-| Threat Intelligence | ✅ |
-| Machine Learning | ✅ |
+| SSH Honeypot | Covered |
+| GeoIP Enrichment | Covered |
+| Dashboard | Covered |
+| Behavior Analysis | Covered |
+| Attack Timeline | Covered |
+| Top Countries | Covered |
+| Top IPs | Covered |
+| Top Commands | Covered |
+| Threat Intelligence | Covered |
+| Machine Learning | Covered |
 
 ---
 
@@ -243,7 +243,7 @@ Behavioral features will be extracted in a separate stage.
 
 The complete extraction plan is documented in:
 
-- **feature-engineering-plan.md**
+- feature-engineering-plan.md
 
 ---
 
