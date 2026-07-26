@@ -201,9 +201,9 @@ The proposed system captures attacker activities through isolated honeypots, enr
 
 ---
 
-## Section 10: Project Plan & Milestones
+# Section 10: Project Plan & Milestones
 
----
+## Project Phase 1 (MVP)
 
 ### Phase 1 – Research & Planning (Week 1–2)
 
@@ -218,80 +218,85 @@ The proposed system captures attacker activities through isolated honeypots, enr
 - BRD Document
 - Dataset Exploration Report
 - Project Plan
-  
+
 ---
 
 ### Phase 2 – Infrastructure Setup & Honeypot Deployment (Week 3–4)
 
 #### Activities
-- Prepare docker environment.
+- Prepare Docker environment.
 - Configure SSH, HTTP, and FTP honeypots.
 - Develop the Python Orchestrator.
 - Create deployment configuration files.
+- Prepare and submit the Project Proposal.
+- Validate and preprocess collected data.
 
 #### Deliverables
+- Project Proposal
 - Containerization Environment
-- Project Proposal 
 - Deployed SSH, HTTP, and FTP Honeypots
 - Python Orchestrator
 - Configuration Files
+- Data Preprocessing Pipeline
 
 ---
 
-### Phase 3 – Log Collection & Data Processing (Week 5–6)
+### Phase 3 – Log Collection & Processing (Week 5–6)
 
 #### Activities
 - Collect attack logs from honeypots.
 - Centralize logs in Elasticsearch.
 - Enrich logs with GeoIP information.
-- Validate and preprocess collected logs.
+- Build the centralized log repository.
 
 #### Deliverables
 - Centralized Log Repository
 - GeoIP-Enriched Logs
-- Data Processing Pipeline
+- Processed Attack Dataset
 
 ---
 
-### Phase 4 – Analytics & Dashboard Development (Week 7–8)
+### Phase 4 – Dashboard & Core Analytics (Week 7–8)
 
 #### Activities
-- Develop the real-time dashboard.
-- Implement WebSocket-based real-time streaming.
-- Apply unsupervised ML clustering.
-- Generate attack statistics and visualizations.
+- Develop the dashboard.
+- Implement WebSocket-based real-time updates.
+- Integrate honeypot log visualization.
+- Display attack statistics and initial analytics.
 
 #### Deliverables
-- Real-Time Dashboard
-- ML Clustering Module
-- Threat Intelligence Dashboard
-- Attack Statistics Reports
+- Functional Dashboard
+- Initial Attack Visualizations
+- Integrated Honeypot Environment
+- **Project Phase 1 (MVP)**
 
 ---
 
-### Phase 5 – System Integration & Testing (Week 9–10)
+## Project Phase 2
+
+### Phase 5 – System Integration & Evaluation (Week 9–13)
 
 #### Activities
-- Integrate all system components.
-- Test end-to-end workflow.
+- Integrate all project components.
+- Implement behavioral clustering.
 - Perform attack simulations.
 - Evaluate system performance.
-- Fix detected issues.
+- Fix detected issues and optimize the system.
 
 #### Deliverables
-- Integrated System
-- Test Report
+- ML Clustering Module
+- Evaluation Report
 - Stable Beta Version
 
 ---
 
-### Phase 6 – Documentation & Final Delivery (Week 11–12)
+### Phase 6 – Documentation & Final Delivery (Week 14–15)
 
 #### Activities
 - Prepare technical documentation.
 - Finalize user documentation.
-- Prepare presentation and demonstration.
-- Finalize and package the project for delivery.
+- Prepare the final presentation.
+- Package the complete project.
 
 #### Deliverables
 - Final Source Code
@@ -299,7 +304,7 @@ The proposed system captures attacker activities through isolated honeypots, enr
 - User Manual
 - Final Presentation
 - Graduation Project Package
-
+- **Project Phase 2 (Final Submission)**
 ---
 
 ## Key Milestones
