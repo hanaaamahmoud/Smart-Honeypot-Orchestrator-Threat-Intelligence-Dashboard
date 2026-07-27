@@ -229,7 +229,6 @@ The proposed system captures attacker activities through isolated honeypots, enr
 - Develop the Python Orchestrator.
 - Create deployment configuration files.
 - Prepare and submit the Project Proposal.
-- Validate and preprocess collected data.
 
 #### Deliverables
 - Project Proposal
@@ -237,7 +236,7 @@ The proposed system captures attacker activities through isolated honeypots, enr
 - Deployed SSH, HTTP, and FTP Honeypots
 - Python Orchestrator
 - Configuration Files
-- Data Preprocessing Pipeline
+  
 
 ---
 
@@ -248,11 +247,14 @@ The proposed system captures attacker activities through isolated honeypots, enr
 - Centralize logs in Elasticsearch.
 - Enrich logs with GeoIP information.
 - Build the centralized log repository.
+- Validate and preprocess collected data.
+
 
 #### Deliverables
 - Centralized Log Repository
 - GeoIP-Enriched Logs
 - Processed Attack Dataset
+- Data Preprocessing Pipeline
 
 ---
 
