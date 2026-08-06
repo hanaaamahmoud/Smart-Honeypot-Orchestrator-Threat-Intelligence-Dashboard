@@ -58,8 +58,8 @@ This project provides a proactive platform that automatically deploys honeypots,
 
 #### Honeypots
 - SSH Honeypot (Cowrie)
-- HTTP Honeypot (OpenCanary)
-- FTP Honeypot (OpenCanary or equivalent)
+- HTTP Honeypot (Snare-Tanner)
+- FTP Honeypot (ionaea)
 
 #### Orchestration & Deployment
 - Automated deployment and management of honeypots using Docker and a Python Orchestrator.
@@ -83,10 +83,8 @@ This project provides a proactive platform that automatically deploys honeypots,
 - Full SIEM Functionality.
 - SOAR Capabilities.
 - Endpoint Detection and Response (EDR).
-- Full MITRE ATT&CK Mapping.
 
 ### 4.3 Future Work
-- MITRE ATT&CK Mapping.
 - Multi-Region Cloud Deployment.
 - AI-Generated Honeypot Responses.
 - Support for Additional Protocols (SMTP, DNS, etc.).
