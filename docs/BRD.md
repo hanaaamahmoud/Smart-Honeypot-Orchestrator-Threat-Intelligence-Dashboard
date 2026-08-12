@@ -276,20 +276,21 @@ The proposed system captures attacker activities through isolated honeypots, enr
 
 ## Project Phase 2
 
-### Phase 5 – System Integration & Evaluation (Week 9–13)
+### Phase 5 — System Integration & Evaluation (Week 9–13)
 
 #### Activities
-- Integrate all project components.
-- Implement behavioral clustering.
-- Perform attack simulations.
-- Evaluate system performance.
-- Fix detected issues and optimize the system.
+* Integrate all project components.
+* Implement behavioral clustering.
+* Map attacker behavior to the MITRE ATT&CK framework.
+* Perform attack simulations.
+* Evaluate system performance.
+* Fix detected issues and optimize the system.
 
 #### Deliverables
-- ML Clustering Module
-- Evaluation Report
-- Stable Beta Version
-
+* ML Clustering Module.
+* MITRE ATT&CK Mapping & Integration Module.
+* Evaluation Report.
+* Stable Beta Version.
 ---
 
 ### Phase 6 – Documentation & Final Delivery (Week 14–15)
