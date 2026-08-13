@@ -74,3 +74,24 @@ class Orchestrator:
         self.logger.info(f"Stopping {name}")
 
         self.docker_manager.stop_container(name)
+
+
+    def get_honeypot_status(self):
+
+        statuses = []
+
+        for name, details in self.honeypots.items():
+
+            if not details["enabled"]:
+                continue
+
+            status = self.docker_manager.get_container_status(
+                details["container_name"]
+            )
+
+            statuses.append({
+                "name": name.capitalize(),
+                "status": status or "unknown"
+            })
+
+        return statuses
