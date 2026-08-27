@@ -22,6 +22,7 @@ Cowrie SSH honeypots deployed in a T-Pot environment.
 The raw logs contained SSH connections, authentication attempts,
 SSH fingerprints, executed commands, file activity, session
 metadata, source IP addresses, and GeoIP information.
+https://ieeexplore.ieee.org/document/11495004
 
 
 ## Processing & Cleaning
