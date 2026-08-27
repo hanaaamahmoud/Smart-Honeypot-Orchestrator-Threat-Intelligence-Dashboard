@@ -14,8 +14,8 @@
 ## 2. Source Datasets
 
 The FTP data pipeline ingests from two distinct honeypot logging mechanisms:
-1. **Raw JSON Honeynet Events (`RawHoneynetEventsBatch-*.json`):** Captures high-level event sequences, FTP command execution details (`USER`, `PASS`, `AUTH`, `EPSV`, `QUIT`), and GeoIP enrichment.
-2. **Dionaea SQLite Databases (`dionaea.sqlite.*`):** Captures relational login attempts, connecting attack IP addresses, and exact byte-encoded credential pairs.
+1. **Raw JSON Honeynet Events (`RawHoneynetEventsBatch-*.json`):** Captures high-level event sequences, FTP command execution details (`USER`, `PASS`, `AUTH`, `EPSV`, `QUIT`), and GeoIP enrichment.https://ieeexplore.ieee.org/document/11495004
+2. **Dionaea SQLite Databases (`dionaea.sqlite.*`):** Captures relational login attempts, connecting attack IP addresses, and exact byte-encoded credential pairs.https://github.com/0xsha/sweetie-data/tree/master/dionaea/log
 
 ## 3. Processing Performed
 
