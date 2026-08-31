@@ -1,0 +1,36 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Secrets
+secrets/
+*.key
+*.pem
+*.crt
+
+# Elasticsearch runtime data
+elk/elasticsearch/data/
+
+# Logstash runtime data
+elk/logstash/data/
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Archives
+*.tar
+*.tar.gz
+*.zip
