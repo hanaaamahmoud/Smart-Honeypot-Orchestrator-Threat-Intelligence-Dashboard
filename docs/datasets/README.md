@@ -1,12 +1,4 @@
-Looking at the screenshot you provided, your code editor or browser auto-converted the relative path links into `[https://www.google.com/search?q=](https://www.google.com/search?q=)...` links, and added backticks inside the brackets.
 
-To fix the entire file once and for all:
-
-1. Delete the current contents of `docs/datasets/README.md`.
-2. Copy the entire raw code block below.
-3. Paste it directly into `docs/datasets/README.md` and save/commit the file.
-
-```markdown
 # Data Document
 
 This folder contains the documentation for the complete honeypot security analytics pipeline.
