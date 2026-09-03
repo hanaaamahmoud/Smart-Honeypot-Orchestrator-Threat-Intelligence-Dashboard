@@ -74,19 +74,19 @@ docs/datasets/
 
 ## Documentation Index
 
-| Stage | Documentation Link | Description |
+| Stage | Document | Description |
 | --- | --- | --- |
-| **1. FTP Preprocessing** | [FTP Preprocessing](https://www.google.com/search?q=./preprocessing/ftp-dataset.md) | Preprocessing and normalization of FTP honeypot data |
-| **2. HTTP Preprocessing** | [HTTP Preprocessing](https://www.google.com/search?q=./preprocessing/http-dataset.md) | Preprocessing and normalization of HTTP honeypot data |
-| **3. SSH Preprocessing** | [SSH Preprocessing](https://www.google.com/search?q=./preprocessing/ssh-dataset.md) | Preprocessing and normalization of SSH honeypot data |
-| **4. Unified Dataset** | [Unified Dataset](https://www.google.com/search?q=./preprocessing/unified-dataset.md) | Schema alignment and merging of the processed datasets |
-| **5. Session Reconstruction** | [Session Reconstruction](https://www.google.com/search?q=./2_session_reconstruction/session-reconstruction.md) | Reconstruction of individual events into logical sessions |
-| **6. Behavioral Features** | [Behavioral Features](https://www.google.com/search?q=./Behavioral%2520Feature%2520Engineering/Behavioral_Feature.md) | Creation of session-level behavioral features |
-| **7. Unsupervised ML** | [Unsupervised ML](https://www.google.com/search?q=./Unsupervised%2520Machine%2520Learning/Unsupervised_ML.md) | Clustering and behavioral pattern discovery using unsupervised learning |
-| **7.1 ML Approach** | [Supervised vs Unsupervised](https://www.google.com/search?q=./Unsupervised%2520Machine%2520Learning/Why_not_Supervised_Learning.md) | Explanation of why supervised learning was not selected |
-| **8. Behavioral Analysis** | [Behavioral Analysis](https://www.google.com/search?q=./behavioral_analysis/behavioral_analysis.md) | Analysis of attacker behavior, patterns, and threat intelligence |
-| **9. Dashboard & Analytics** | [Dashboard & Analytics](https://www.google.com/search?q=./dashboard/dashboard.md) | Dashboard integration, session replay, GeoIP, MITRE, clustering, and trends |
-| **10. Runtime Pipeline** | [Runtime Pipeline](https://www.google.com/search?q=./Runtime%2520Pipeline/Runtime%2520Pipeline.md) | Production new-log inference and frozen-model runtime pipeline |
+| **1. FTP Preprocessing** | [ftp-dataset.md](https://www.google.com/search?q=./preprocessing/ftp-dataset.md) | Preprocessing and normalization of FTP honeypot data |
+| **2. HTTP Preprocessing** | [http-dataset.md](https://www.google.com/search?q=./preprocessing/http-dataset.md) | Preprocessing and normalization of HTTP honeypot data |
+| **3. SSH Preprocessing** | [ssh-dataset.md](https://www.google.com/search?q=./preprocessing/ssh-dataset.md) | Preprocessing and normalization of SSH honeypot data |
+| **4. Unified Dataset** | [unified-dataset.md](https://www.google.com/search?q=./preprocessing/unified-dataset.md) | Schema alignment and merging of the processed datasets |
+| **5. Session Reconstruction** | [session-reconstruction.md](https://www.google.com/search?q=./2_session_reconstruction/session-reconstruction.md) | Reconstruction of individual events into logical sessions |
+| **6. Behavioral Features** | [Behavioral_Feature.md](https://www.google.com/search?q=./Behavioral%2520Feature%2520Engineering/Behavioral_Feature.md) | Creation of session-level behavioral features |
+| **7. Unsupervised ML** | [Unsupervised_ML.md](https://www.google.com/search?q=./Unsupervised%2520Machine%2520Learning/Unsupervised_ML.md) | Clustering and behavioral pattern discovery using unsupervised learning |
+| **7.1 ML Approach** | [Why_not_Supervised_Learning.md](https://www.google.com/search?q=./Unsupervised%2520Machine%2520Learning/Why_not_Supervised_Learning.md) | Explanation of why supervised learning was not selected |
+| **8. Behavioral Analysis** | [behavioral_analysis.md](https://www.google.com/search?q=./behavioral_analysis/behavioral_analysis.md) | Analysis of attacker behavior, patterns, and threat intelligence |
+| **9. Dashboard & Analytics** | [dashboard.md](https://www.google.com/search?q=./dashboard/dashboard.md) | Dashboard integration, session replay, GeoIP, MITRE, clustering, and trends |
+| **10. Runtime Pipeline** | [Runtime Pipeline.md](https://www.google.com/search?q=./Runtime%2520Pipeline/Runtime%2520Pipeline.md) | Production new-log inference and frozen-model runtime pipeline |
 
 ---
 
