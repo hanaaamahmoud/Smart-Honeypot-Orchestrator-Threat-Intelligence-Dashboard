@@ -12,10 +12,10 @@ The project was developed as a sequence of connected stages, where the output of
 The first stage focused on processing the raw honeypot datasets and preparing them for analysis. Different honeypot sources were processed and cleaned, including SSH, HTTP, FTP, and Dionaea-related logs.
 
 **Main Notebooks:**
-* [`ssh-honeypot-data-pipeline.ipynb`](./notebooks/data_preprocessing/ssh-honeypot-data-pipeline.ipynb)
-* [`http_honeypot_log_pipeline.ipynb`](./notebooks/data_preprocessing/http_honeypot_log_pipeline.ipynb)
-* [`ftp_json_commands_pipeline.ipynb`](./notebooks/data_preprocessing/ftp_json_commands_pipeline.ipynb)
-* [`dionaea_ftp_sqlite_logins.ipynb`](./notebooks/data_preprocessing/dionaea_ftp_sqlite_logins.ipynb)
+* [`ssh-honeypot-data-pipeline.ipynb`](./data_preprocessing/ssh-honeypot-data-pipeline.ipynb)
+* [`http_honeypot_log_pipeline.ipynb`](./data_preprocessing/http_honeypot_log_pipeline.ipynb)
+* [`ftp_json_commands_pipeline.ipynb`](./data_preprocessing/ftp_json_commands_pipeline.ipynb)
+* [`dionaea_ftp_sqlite_logins.ipynb`](./data_preprocessing/dionaea_ftp_sqlite_logins.ipynb)
 
 These notebooks handled the initial parsing, cleaning, normalization, and preparation of the different raw log formats.
 
@@ -26,7 +26,7 @@ These notebooks handled the initial parsing, cleaning, normalization, and prepar
 After cleaning the individual datasets, the next stage was to combine them into a unified security-events dataset.
 
 **Notebook:**
-* [`merge_honeypot_datasets.ipynb`](./notebooks/data_preprocessing/merge_honeypot_datasets.ipynb)
+* [`merge_honeypot_datasets.ipynb`](./data_preprocessing/merge_honeypot_datasets.ipynb)
 
 The purpose of this stage was to align the different sources and produce a common dataset that could be used consistently in the following stages.
 
@@ -37,7 +37,7 @@ The purpose of this stage was to align the different sources and produce a commo
 After the datasets were merged, the next step was to reconstruct logical sessions from individual security events.
 
 **Notebook:**
-* [`session_reconstruction.ipynb`](./notebooks/session_reconstruction/session_reconstruction.ipynb)
+* [`session_reconstruction.ipynb`](./session_reconstruction/session_reconstruction.ipynb)
 
 This stage connected related events and organized them into reconstructed sessions. The reconstructed sessions became the main unit of analysis for the behavioral features and machine learning stages.
 
@@ -48,7 +48,7 @@ This stage connected related events and organized them into reconstructed sessio
 After session reconstruction, behavioral features were generated from the session activity.
 
 **Notebook:**
-* [`Behavioral Feature Engineering.ipynb`](./notebooks/Behavioral%20Feature%20Engineering/Behavioral%20Feature%20Engineering.ipynb)
+* [`Behavioral Feature Engineering.ipynb`](./Behavioral%20Feature%20Engineering/Behavioral%20Feature%20Engineering.ipynb)
 
 **Extracted Behavioral Information:**
 * Event and activity statistics
@@ -67,8 +67,8 @@ The goal was to transform raw session activity into structured numerical feature
 The engineered behavioral features were then used for machine learning and behavioral analysis.
 
 **Notebooks:**
-* [`Machine_learning.ipynb`](./notebooks/Machine_learning/Machine_learning.ipynb)
-* [`behavioral_analysis.ipynb`](./notebooks/behavioral_analysis/behavioral_analysis.ipynb)
+* [`Machine_learning.ipynb`](./Machine_learning/Machine_learning.ipynb)
+* [`behavioral_analysis.ipynb`](./behavioral_analysis/behavioral_analysis.ipynb)
 
 This stage focused on analyzing session behavior and identifying groups or patterns of similar activity. The machine learning stage was based on behavioral features generated from the reconstructed sessions rather than directly using raw log rows.
 
@@ -79,7 +79,7 @@ This stage focused on analyzing session behavior and identifying groups or patte
 The results from the previous stages were then prepared for dashboard visualization and security analysis.
 
 **Notebook:**
-* [`Geoip-enrichment-dashboard.ipynb`](./notebooks/dashboard/Geoip-enrichment-dashboard.ipynb)
+* [`Geoip-enrichment-dashboard.ipynb`](./dashboard/Geoip-enrichment-dashboard.ipynb)
 
 This stage combined the available behavioral and security information with enrichment and dashboard-oriented analysis, including geographic context and attacker-related information.
 
@@ -179,16 +179,16 @@ Real-Time / Production Inference
 
 | Stage | Notebook |
 | :--- | :--- |
-| **SSH Data Pipeline** | [`ssh-honeypot-data-pipeline.ipynb`](./notebooks/data_preprocessing/ssh-honeypot-data-pipeline.ipynb) |
-| **HTTP Data Pipeline** | [`http_honeypot_log_pipeline.ipynb`](./notebooks/data_preprocessing/http_honeypot_log_pipeline.ipynb) |
-| **FTP Data Pipeline** | [`ftp_json_commands_pipeline.ipynb`](./notebooks/data_preprocessing/ftp_json_commands_pipeline.ipynb) |
-| **Dionaea Data Pipeline** | [`dionaea_ftp_sqlite_logins.ipynb`](./notebooks/data_preprocessing/dionaea_ftp_sqlite_logins.ipynb) |
-| **Dataset Merge** | [`merge_honeypot_datasets.ipynb`](./notebooks/data_preprocessing/merge_honeypot_datasets.ipynb) |
-| **Session Reconstruction** | [`session_reconstruction.ipynb`](./notebooks/session_reconstruction/session_reconstruction.ipynb) |
-| **Behavioral Feature Engineering** | [`Behavioral Feature Engineering.ipynb`](./notebooks/Behavioral%20Feature%20Engineering/Behavioral%20Feature%20Engineering.ipynb) |
-| **Machine Learning** | [`Machine_learning.ipynb`](./notebooks/Machine_learning/Machine_learning.ipynb) |
-| **Behavioral Analysis** | [`behavioral_analysis.ipynb`](./notebooks/behavioral_analysis/behavioral_analysis.ipynb) |
-| **GeoIP & Dashboard** | [`Geoip-enrichment-dashboard.ipynb`](./notebooks/dashboard/Geoip-enrichment-dashboard.ipynb) |
+| **SSH Data Pipeline** | [`ssh-honeypot-data-pipeline.ipynb`](./data_preprocessing/ssh-honeypot-data-pipeline.ipynb) |
+| **HTTP Data Pipeline** | [`http_honeypot_log_pipeline.ipynb`](./data_preprocessing/http_honeypot_log_pipeline.ipynb) |
+| **FTP Data Pipeline** | [`ftp_json_commands_pipeline.ipynb`](./data_preprocessing/ftp_json_commands_pipeline.ipynb) |
+| **Dionaea Data Pipeline** | [`dionaea_ftp_sqlite_logins.ipynb`](./data_preprocessing/dionaea_ftp_sqlite_logins.ipynb) |
+| **Dataset Merge** | [`merge_honeypot_datasets.ipynb`](./data_preprocessing/merge_honeypot_datasets.ipynb) |
+| **Session Reconstruction** | [`session_reconstruction.ipynb`](./session_reconstruction/session_reconstruction.ipynb) |
+| **Behavioral Feature Engineering** | [`Behavioral Feature Engineering.ipynb`](./Behavioral%20Feature%20Engineering/Behavioral%20Feature%20Engineering.ipynb) |
+| **Machine Learning** | [`Machine_learning.ipynb`](./Machine_learning/Machine_learning.ipynb) |
+| **Behavioral Analysis** | [`behavioral_analysis.ipynb`](./behavioral_analysis/behavioral_analysis.ipynb) |
+| **GeoIP & Dashboard** | [`Geoip-enrichment-dashboard.ipynb`](./dashboard/Geoip-enrichment-dashboard.ipynb) |
 
 ---
 
@@ -208,5 +208,3 @@ The project progresses from heterogeneous raw honeypot logs to a unified, sessio
 Data Cleaning $\rightarrow$ Merge $\rightarrow$ Session Reconstruction $\rightarrow$ Behavioral Features $\rightarrow$ Machine Learning $\rightarrow$ Behavioral Analysis $\rightarrow$ Threat Intelligence $\rightarrow$ Dashboard $\rightarrow$ Real-Time Production
 
 Each stage is separated into its own notebook or project component so that the full workflow can be traced from the original raw data to the final security analysis and visualization.
-
-```
