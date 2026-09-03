@@ -5,7 +5,6 @@ This folder contains the notebooks used to build the project pipeline from raw h
 
 The project was developed as a sequence of connected stages, where the output of each stage becomes the input for the next one.
 
----
 
 ## 1. Data Collection & Cleaning
 
@@ -19,7 +18,7 @@ The first stage focused on processing the raw honeypot datasets and preparing th
 
 These notebooks handled the initial parsing, cleaning, normalization, and preparation of the different raw log formats.
 
----
+
 
 ## 2. Dataset Merge
 
@@ -30,7 +29,7 @@ After cleaning the individual datasets, the next stage was to combine them into 
 
 The purpose of this stage was to align the different sources and produce a common dataset that could be used consistently in the following stages.
 
----
+
 
 ## 3. Session Reconstruction
 
@@ -41,7 +40,7 @@ After the datasets were merged, the next step was to reconstruct logical session
 
 This stage connected related events and organized them into reconstructed sessions. The reconstructed sessions became the main unit of analysis for the behavioral features and machine learning stages.
 
----
+
 
 ## 4. Behavioral Feature Engineering
 
@@ -60,7 +59,7 @@ After session reconstruction, behavioral features were generated from the sessio
 
 The goal was to transform raw session activity into structured numerical features suitable for machine learning.
 
----
+
 
 ## 5. Machine Learning
 
@@ -72,7 +71,7 @@ The engineered behavioral features were then used for machine learning and behav
 
 This stage focused on analyzing session behavior and identifying groups or patterns of similar activity. The machine learning stage was based on behavioral features generated from the reconstructed sessions rather than directly using raw log rows.
 
----
+
 
 ## 6. Dashboard & Threat Intelligence
 
@@ -93,7 +92,6 @@ This stage combined the available behavioral and security information with enric
 * Session replay
 * Temporal trends
 
----
 
 ## 7. Real-Time / Production Stage
 
