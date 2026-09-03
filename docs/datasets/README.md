@@ -1,4 +1,12 @@
+Looking at the screenshot you provided, your code editor or browser auto-converted the relative path links into `[https://www.google.com/search?q=](https://www.google.com/search?q=)...` links, and added backticks inside the brackets.
 
+To fix the entire file once and for all:
+
+1. Delete the current contents of `docs/datasets/README.md`.
+2. Copy the entire raw code block below.
+3. Paste it directly into `docs/datasets/README.md` and save/commit the file.
+
+```markdown
 # Data Document
 
 This folder contains the documentation for the complete honeypot security analytics pipeline.
@@ -72,21 +80,24 @@ docs/datasets/
 
 ---
 
+
+
 ## Documentation Index
 
-| Stage | Document | Description |
-| --- | --- | --- |
-| **1. FTP Preprocessing** | [ftp-dataset.md](https://www.google.com/search?q=./preprocessing/ftp-dataset.md) | Preprocessing and normalization of FTP honeypot data |
-| **2. HTTP Preprocessing** | [http-dataset.md](https://www.google.com/search?q=./preprocessing/http-dataset.md) | Preprocessing and normalization of HTTP honeypot data |
-| **3. SSH Preprocessing** | [ssh-dataset.md](https://www.google.com/search?q=./preprocessing/ssh-dataset.md) | Preprocessing and normalization of SSH honeypot data |
-| **4. Unified Dataset** | [unified-dataset.md](https://www.google.com/search?q=./preprocessing/unified-dataset.md) | Schema alignment and merging of the processed datasets |
-| **5. Session Reconstruction** | [session-reconstruction.md](https://www.google.com/search?q=./2_session_reconstruction/session-reconstruction.md) | Reconstruction of individual events into logical sessions |
-| **6. Behavioral Features** | [Behavioral_Feature.md](https://www.google.com/search?q=./Behavioral%2520Feature%2520Engineering/Behavioral_Feature.md) | Creation of session-level behavioral features |
-| **7. Unsupervised ML** | [Unsupervised_ML.md](https://www.google.com/search?q=./Unsupervised%2520Machine%2520Learning/Unsupervised_ML.md) | Clustering and behavioral pattern discovery using unsupervised learning |
-| **7.1 ML Approach** | [Why_not_Supervised_Learning.md](https://www.google.com/search?q=./Unsupervised%2520Machine%2520Learning/Why_not_Supervised_Learning.md) | Explanation of why supervised learning was not selected |
-| **8. Behavioral Analysis** | [behavioral_analysis.md](https://www.google.com/search?q=./behavioral_analysis/behavioral_analysis.md) | Analysis of attacker behavior, patterns, and threat intelligence |
-| **9. Dashboard & Analytics** | [dashboard.md](https://www.google.com/search?q=./dashboard/dashboard.md) | Dashboard integration, session replay, GeoIP, MITRE, clustering, and trends |
-| **10. Runtime Pipeline** | [Runtime Pipeline.md](https://www.google.com/search?q=./Runtime%2520Pipeline/Runtime%2520Pipeline.md) | Production new-log inference and frozen-model runtime pipeline |
+| Stage | Document Link | Description |
+| :--- | :--- | :--- |
+| **1. FTP Preprocessing** | [ftp-dataset.md](preprocessing/ftp-dataset.md) | Preprocessing and normalization of FTP honeypot data |
+| **2. HTTP Preprocessing** | [http-dataset.md](preprocessing/http-dataset.md) | Preprocessing and normalization of HTTP honeypot data |
+| **3. SSH Preprocessing** | [ssh-dataset.md](preprocessing/ssh-dataset.md) | Preprocessing and normalization of SSH honeypot data |
+| **4. Unified Dataset** | [unified-dataset.md](preprocessing/unified-dataset.md) | Schema alignment and merging of the processed datasets |
+| **5. Session Reconstruction** | [session-reconstruction.md](2_session_reconstruction/session-reconstruction.md) | Reconstruction of individual events into logical sessions |
+| **6. Behavioral Features** | [Behavioral_Feature.md](Behavioral%20Feature%20Engineering/Behavioral_Feature.md) | Creation of session-level behavioral features |
+| **7. Unsupervised ML** | [Unsupervised_ML.md](Unsupervised%20Machine%20Learning/Unsupervised_ML.md) | Clustering and behavioral pattern discovery using unsupervised learning |
+| **7.1 ML Approach** | [Why_not_Supervised_Learning.md](Unsupervised%20Machine%20Learning/Why_not_Supervised_Learning.md) | Explanation of why supervised learning was not selected |
+| **8. Behavioral Analysis** | [behavioral_analysis.md](behavioral_analysis/behavioral_analysis.md) | Analysis of attacker behavior, patterns, and threat intelligence |
+| **9. Dashboard & Analytics** | [dashboard.md](dashboard/dashboard.md) | Dashboard integration, session replay, GeoIP, MITRE, clustering, and trends |
+| **10. Runtime Pipeline** | [Runtime Pipeline.md](Runtime%20Pipeline/Runtime%20Pipeline.md) | Production new-log inference and frozen-model runtime pipeline |
+
 
 ---
 
