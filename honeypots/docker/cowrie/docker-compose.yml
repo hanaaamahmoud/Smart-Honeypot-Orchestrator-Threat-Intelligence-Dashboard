@@ -14,7 +14,6 @@ services:
         mkdir -p /data/log/tty
         chown -R 2000:2000 /data
 
-
   cowrie:
     image: ghcr.io/telekom-security/cowrie:24.04.1
     container_name: cowrie

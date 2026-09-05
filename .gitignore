@@ -34,3 +34,12 @@ Thumbs.db
 *.tar
 *.tar.gz
 *.zip
+
+# Generated logs
+elk/logs/cowrie/
+elk/logs/dionaea/
+elk/logs/tanner/
+
+# Optional generic patterns
+*.sqlite
+node.lock

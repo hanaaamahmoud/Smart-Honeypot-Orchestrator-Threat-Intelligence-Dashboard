@@ -3,21 +3,10 @@ services:
   dionaea-init:
     image: alpine:latest
     container_name: dionaea-init
-
     command: >
-      sh -c "
-      mkdir -p /data/binaries &&
-      mkdir -p /data/roots/ftp &&
-      mkdir -p /data/roots/tftp &&
-      mkdir -p /data/roots/www &&
-      mkdir -p /data/bistreams &&
-      mkdir -p /data/log &&
-      chmod -R 777 /data
-      "
-
+      sh -c " mkdir -p /data && chmod -R 777 /data "
     volumes:
       - ./data:/data
-
 
   dionaea:
     image: ghcr.io/telekom-security/dionaea:24.04.1
@@ -32,5 +21,4 @@ services:
       - "21:21"
 
     volumes:
-      - ./data:/opt/dionaea/var/dionaea
       - ./data/log:/opt/dionaea/var/log
