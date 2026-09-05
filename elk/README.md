@@ -3,7 +3,6 @@
 This directory contains the ELK stack configuration used to ingest, normalize, enrich, and visualize honeypot logs for the Smart Honeypot Orchestrator & Threat Intelligence Dashboard project.
 
 ---
-
 ## Overview
 
 The ELK stack in this project is responsible for:
@@ -15,7 +14,6 @@ The ELK stack in this project is responsible for:
 - Visualizing indexed events in Kibana
 
 ---
-
 ## Components
 
 ### Elasticsearch
