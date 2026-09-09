@@ -23,7 +23,7 @@ services:
       - elasticsearch
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
-      - ./logstash/data:/usr/share/logstash/data
+      - logstashdata:/usr/share/logstash/data
       - ../honeypots/docker/cowrie/data/log:/mnt/logs/cowrie:ro
       - ../honeypots/docker/dionaea/data/log:/mnt/logs/dionaea:ro
       - ../honeypots/docker/tanner/data/log:/mnt/logs/tanner:ro
@@ -50,3 +50,4 @@ networks:
 
 volumes:
   esdata:
+  logstashdata:
