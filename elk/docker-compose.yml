@@ -11,7 +11,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     volumes:
-      - ./elasticsearch/data:/usr/share/elasticsearch/data
+      - esdata:/usr/share/elasticsearch/data
     restart: unless-stopped
     networks:
       - elk-net
@@ -47,3 +47,6 @@ services:
 networks:
   elk-net:
     driver: bridge
+
+volumes:
+  esdata:
