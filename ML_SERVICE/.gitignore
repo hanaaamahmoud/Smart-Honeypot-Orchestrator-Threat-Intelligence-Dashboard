@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / Secrets
+.env
+*.pem
+*.key
+
+# Keep the example environment file
+!.env.example
+
+# Testing / Coverage / Cache
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Runtime output
+runtime_output/
+logs/
+tmp/
+
+# Project backups
+.pre_rebuild_backup_*/
+.step1_backup/
+*before_step*
+*.before_*
+
+# Debug / temporary state files
+STEP_*_STATE.json
+STEP_*_DEBUG_*.json
+
+# Colab / runtime backups
+colab_runtime_backups-*.zip
+colab_runtime_backups-*/
+
+# Temporary / generated files
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Keep production frozen artifacts
+!models/
+!models/frozen_production_reference/
+!models/frozen_production_reference/**
+!models/frozen_reference_sha256.json
