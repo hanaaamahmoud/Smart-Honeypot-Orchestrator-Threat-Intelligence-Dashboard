@@ -11,7 +11,8 @@ services:
   dionaea:
     image: ghcr.io/telekom-security/dionaea:24.04.1
     container_name: dionaea
-    restart: always
+    mem_limit: 512m
+    restart: unless-stopped
 
     depends_on:
       dionaea-init:

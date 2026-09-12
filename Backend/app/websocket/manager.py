@@ -25,3 +25,5 @@ class ConnectionManager:
 
         for connection in disconnected:
             self.disconnect(connection)
+
+manager = ConnectionManager()

@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 from datetime import datetime
 
 
@@ -8,25 +8,30 @@ class HoneypotStatus(BaseModel):
     status: str
 
 
+class CountryCount(BaseModel):
+    country: str
+    count: int
+
+
 class StatisticsResponse(BaseModel):
     totalAttacks: int
-    activeHoneypots: int
-    uniqueSources: int
-    countries: int
+    uniqueAttackers: int
+    topCountries: List[CountryCount]
 
 
 class RecentEvent(BaseModel):
-    id: int
-    honeypot: str
-    sourceIp: str
-    country: str
-    attackType: str
     timestamp: str
+    honeypot: str
+    protocol: str
+    source_ip: str
+    country: Optional[str] = None
+    attack_type: Optional[str] = None
+    severity: Optional[str] = None
 
 
 class TopAttacker(BaseModel):
     ip: str
-    attacks: int
+    count: int
 
 
 class CountryAttacks(BaseModel):
@@ -67,3 +72,49 @@ class AttackEvent(BaseModel):
     severity: Optional[str] = None
 
     source_dataset: str
+
+
+class LoginRequest(BaseModel):
+    email: str
+    password: str
+
+
+class LoginResponse(BaseModel):
+    success: bool
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+    user: dict
+
+
+class CreateUserRequest(BaseModel):
+    name: str
+    email: str
+    role: str
+
+
+class UserResponse(BaseModel):
+    id: int
+    name: str
+    email: str
+    role: str
+    organization_id: int
+    status: str
+
+
+class ActivateRequest(BaseModel):
+    token: str
+    password: str
+
+
+class ResendActivationRequest(BaseModel):
+    userId: int
+
+
+class ForgotPasswordRequest(BaseModel):
+    email: str
+
+
+class ResetPasswordRequest(BaseModel):
+    token: str
+    password: str

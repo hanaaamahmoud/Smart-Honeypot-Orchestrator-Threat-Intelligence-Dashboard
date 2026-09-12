@@ -24,9 +24,9 @@ services:
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
       - logstashdata:/usr/share/logstash/data
-      - ../honeypots/docker/cowrie/data/log:/mnt/logs/cowrie:ro
-      - ../honeypots/docker/dionaea/data/log:/mnt/logs/dionaea:ro
-      - ../honeypots/docker/tanner/data/log:/mnt/logs/tanner:ro
+      - ./logs/cowrie:/mnt/logs/cowrie:ro
+      - ./logs/dionaea:/mnt/logs/dionaea:ro
+      - ./logs/tanner:/mnt/logs/tanner:ro
     restart: unless-stopped
     networks:
       - elk-net
