@@ -1,0 +1,50 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Git
+.git/
+.gitignore
+
+# Environment / secrets
+.env
+*.pem
+*.key
+
+# Test/cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / OS
+.vscode/
+.idea/
+.ipynb_checkpoints/
+.DS_Store
+
+# Project backups
+.pre_rebuild_backup_*/
+.step1_backup/
+*before_step*
+*.before_*
+
+# Colab / runtime backups
+colab_runtime_backups-*/
+*.zip
+
+# Runtime / temporary files
+runtime_output/
+logs/
+tmp/
+*.tmp
+*.temp
+*.bak
+*.backup
