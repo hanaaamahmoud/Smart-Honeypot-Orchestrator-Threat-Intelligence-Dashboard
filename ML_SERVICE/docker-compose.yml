@@ -21,3 +21,10 @@ services:
       timeout: 10s
       retries: 3
       start_period: 20s
+    networks:
+      - elk-net
+
+networks:
+  elk-net:
+    external: true
+    name: elk_elk-net

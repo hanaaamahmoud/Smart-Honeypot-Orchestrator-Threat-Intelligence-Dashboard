@@ -25,7 +25,7 @@ class Settings:
     PORT = int(
         os.getenv(
             "ML_SERVICE_PORT",
-            "8002"
+            "8000"
         )
     )
 
