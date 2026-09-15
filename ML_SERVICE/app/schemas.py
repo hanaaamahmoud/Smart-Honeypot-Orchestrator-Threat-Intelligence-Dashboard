@@ -22,6 +22,31 @@ class ReadinessResponse(BaseModel):
     feature_contract_loaded: bool
     reference_clusters_loaded: bool
 
+class CanonicalEvent(BaseModel):
+    timestamp: str
+    honeypot: str
+    protocol: str
+    source_ip: str
+    source_port: Optional[int] = None
+    destination_ip: Optional[str] = None
+    destination_port: Optional[int] = None
+    session_id: Optional[str] = None
+    username: Optional[str] = None
+    password: Optional[str] = None
+    user_attempt: Optional[int] = None
+    pass_attempt: Optional[int] = None
+    auth_attempt: Optional[int] = None
+    anonymous: Optional[int] = None
+    command_count: Optional[int] = None
+    country: Optional[str] = None
+    country_code: Optional[str] = None
+    asn: Optional[int] = None
+    ip_reputation: Optional[str] = None
+    attack_type: Optional[str] = None
+    mitre_technique: Optional[str] = None
+    attack_stage: Optional[str] = None
+    severity: Optional[str] = None
+    source_dataset: Optional[str] = None
 
 class SessionResult(BaseModel):
     session_id: str

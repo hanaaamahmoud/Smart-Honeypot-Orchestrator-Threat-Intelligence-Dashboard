@@ -22,7 +22,7 @@ This module does NOT:
 
 from copy import deepcopy
 from math import isfinite, log1p
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 
 def _safe_float(value: Any, field_name: str) -> float:
@@ -106,22 +106,46 @@ def _density(
 
 
 def generate_density_features(
-    session: Dict[str, Any],
+    session_or_base: Dict[str, Any],
+    temporal_features: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, float]:
     """
-    Generate D3.5 log and density features for one session.
+    Generate D3.5 log and density features.
+
+    Supported call forms:
+
+        generate_density_features(session)
+
+    or, for staged feature generation:
+
+        generate_density_features(base, temporal)
+
+    In the two-argument form, the feature dictionaries are merged
+    without modifying either input.
     """
 
-    if not isinstance(session, dict):
-        raise TypeError("session must be a dictionary")
+    if not isinstance(session_or_base, dict):
+        raise TypeError("session_or_base must be a dictionary")
 
-    copied_session = deepcopy(session)
+    if temporal_features is not None:
+        if not isinstance(temporal_features, dict):
+            raise TypeError("temporal_features must be a dictionary")
+
+        copied_session = deepcopy(session_or_base)
+        copied_session.update(
+            deepcopy(temporal_features)
+        )
+    else:
+        copied_session = deepcopy(session_or_base)
 
     duration = copied_session.get(
         "duration_seconds",
         copied_session.get(
             "session_duration_seconds",
-            0.0,
+            copied_session.get(
+                "session_duration_recomputed_seconds",
+                0.0,
+            ),
         ),
     )
 
