@@ -3,12 +3,24 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+
     container_name: honeypot-ml-service
+
     restart: unless-stopped
+
     ports:
       - "8000:8000"
+
     environment:
       PYTHONUNBUFFERED: "1"
+
+    volumes:
+      - ./app:/app/app
+      - ./analytics:/app/analytics
+      - ./tests:/app/tests
+      - ./models:/app/models
+      - ./pytest.ini:/app/pytest.ini:ro
+
     healthcheck:
       test:
         [
@@ -21,6 +33,7 @@ services:
       timeout: 10s
       retries: 3
       start_period: 20s
+
     networks:
       - elk-net
 

@@ -1,0 +1,120 @@
+{
+  "contract_name": "SESSION_REPLAY",
+  "version": "1.0",
+  "status": "DEFERRED",
+  "grain": "SESSION",
+
+  "input": {
+    "source": "ML_EVENT_OUTPUT",
+    "grain": "EVENT",
+
+    "required_fields": [
+      "timestamp",
+      "honeypot",
+      "protocol",
+      "source_dataset",
+      "source_ip"
+    ],
+
+    "session_grouping_field": "session_id",
+
+    "optional_fields": [
+      "session_id",
+      "source_port",
+      "destination_ip",
+      "destination_port",
+      "username",
+      "password",
+      "user_attempt",
+      "pass_attempt",
+      "auth_attempt",
+      "anonymous",
+      "command_count",
+      "country",
+      "country_code",
+      "asn",
+      "city",
+      "latitude",
+      "longitude",
+      "ip_reputation",
+      "attack_type",
+      "mitre_technique",
+      "attack_stage",
+      "severity"
+    ]
+  },
+
+  "output": {
+    "grain": "SESSION",
+
+    "required_fields": [
+      "reconstructed_session_id",
+      "event_count",
+      "first_event_utc",
+      "last_event_utc",
+      "session_duration_seconds",
+      "events"
+    ]
+  },
+
+  "null_rules": {
+    "session_id": {
+      "allowed": true,
+      "behavior": "Events with null or missing session_id must not receive a fabricated session identifier."
+    },
+
+    "timestamp": {
+      "allowed": false,
+      "behavior": "Replayable events must contain a valid ISO-8601 timestamp."
+    },
+
+    "core_event_fields": {
+      "allowed_null": false,
+      "fields": [
+        "timestamp",
+        "honeypot",
+        "protocol",
+        "source_dataset",
+        "source_ip"
+      ]
+    },
+
+    "optional_fields": {
+      "allowed_null": true,
+      "behavior": "Optional fields may be null or empty and must not be fabricated."
+    }
+  },
+
+  "replay_rules": {
+    "session_identity": "Valid events are grouped by source session_id.",
+    "ordering": "Events inside a reconstructed session are ordered chronologically by timestamp.",
+    "event_count": "Must equal the number of events in the reconstructed session.",
+    "first_event_utc": "Must equal the earliest event timestamp.",
+    "last_event_utc": "Must equal the latest event timestamp.",
+    "session_duration_seconds": "Must equal last_event_utc minus first_event_utc.",
+    "event_conservation": "Events assigned to reconstructed sessions must not be duplicated or silently dropped.",
+    "fabricated_data": false
+  },
+
+  "deferred_rules": [
+    "Implementation remains deferred until actual ML event output is available.",
+    "Current Real ELK data must not be treated as sufficient evidence for closing this contract.",
+    "Events without a valid session_id must not receive a fabricated session identifier.",
+    "GeoIP, MITRE, attacker-IP, and behavioral-cluster analytics are outside the Core SESSION_REPLAY contract."
+  ],
+
+  "independence_rules": [
+    "SESSION_REPLAY must not mutate source events.",
+    "SESSION_REPLAY must not generate ML features.",
+    "SESSION_REPLAY must not perform feature scaling.",
+    "SESSION_REPLAY must not perform clustering.",
+    "SESSION_REPLAY must not require GeoIP enrichment.",
+    "SESSION_REPLAY must not require MITRE enrichment."
+  ],
+
+  "availability": {
+    "status": "DEFERRED",
+    "reason": "Actual ML event output required by the input contract is not currently available.",
+    "activation_condition": "Actual ML output must be received and validated against this contract."
+  }
+}

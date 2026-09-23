@@ -22,6 +22,7 @@ class ReadinessResponse(BaseModel):
     feature_contract_loaded: bool
     reference_clusters_loaded: bool
 
+
 class CanonicalEvent(BaseModel):
     timestamp: str
     honeypot: str
@@ -48,16 +49,23 @@ class CanonicalEvent(BaseModel):
     severity: Optional[str] = None
     source_dataset: Optional[str] = None
 
-class SessionResult(BaseModel):
-    session_id: str
 
-    cluster_id: Optional[int] = None
+class SessionResult(BaseModel):
+    reconstructed_session_id: str
+
+    production_cluster_assignment: Optional[int] = None
 
     assignment_status: str
 
-    validation_status: str
+    feature_validation_status: str
 
     event_count: int = 0
+
+    session_start: Optional[str] = None
+
+    session_end: Optional[str] = None
+
+    source: Optional[str] = None
 
     protocol: Optional[str] = None
 

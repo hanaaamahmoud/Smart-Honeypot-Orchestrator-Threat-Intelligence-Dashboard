@@ -1,0 +1,57 @@
+{
+  "contract_name": "TEMPORAL_ANALYTICS",
+  "version": "1.0.0",
+  "purpose": "Daily temporal aggregation of dashboard/session activity.",
+  "grain": "One row per daily temporal trend date.",
+  "trend_type": "DAILY",
+  "required_fields": {
+    "trend_date": {
+      "type": "date",
+      "required": true,
+      "description": "Daily temporal trend date."
+    },
+    "session_count": {
+      "type": "integer",
+      "required": true,
+      "description": "Session count associated with the daily trend."
+    },
+    "total_events": {
+      "type": "integer",
+      "required": true,
+      "description": "Event-related aggregate stored for the daily trend."
+    },
+    "avg_session_duration_seconds": {
+      "type": "number",
+      "required": true,
+      "description": "Average session-duration metric stored for the daily trend."
+    },
+    "event_count": {
+      "type": "integer",
+      "required": true,
+      "description": "Event-count metric stored for the daily trend."
+    },
+    "unique_sessions": {
+      "type": "integer",
+      "required": true,
+      "description": "Number of unique sessions associated with the daily trend."
+    },
+    "trend_type": {
+      "type": "string",
+      "required": true,
+      "allowed_values": [
+        "DAILY"
+      ],
+      "description": "Temporal aggregation type."
+    }
+  },
+  "null_policy": {
+    "allowed": false
+  },
+  "formula_policy": {
+    "documented": false,
+    "note": "Exact calculation formulas for session_count, total_events, avg_session_duration_seconds, and event_count were not established from the inspected evidence."
+  },
+  "mitre_dimension": {
+    "present": false
+  }
+}

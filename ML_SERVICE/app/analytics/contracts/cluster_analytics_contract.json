@@ -1,0 +1,156 @@
+{
+  "name": "CLUSTER_ANALYTICS_CONTRACT",
+  "version": "1.0.0",
+  "status": "ACTIVE",
+  "purpose": "Expose production DBSCAN behavioral cluster analytics from frozen production assignments without refitting, retraining, creating clusters, or external enrichment.",
+  "source": {
+    "stage": "PRODUCTION_ML_OUTPUT",
+    "input_grain": "SESSION",
+    "identity": "reconstructed_session_id"
+  },
+  "required_input_fields": [
+    "reconstructed_session_id",
+    "production_cluster_assignment",
+    "assignment_status"
+  ],
+  "optional_input_fields": [
+    "nearest_behavioral_cluster",
+    "nearest_behavioral_distance",
+    "event_count",
+    "session_start",
+    "session_end",
+    "protocol",
+    "honeypot",
+    "source",
+    "source_ip"
+  ],
+  "reference_artifacts": {
+    "read_only": true,
+    "production_assignments": "step7g_reference_behavioral_assignments.csv",
+    "reference_centroids": "step7g_dbscan_behavioral_reference_centroids.csv",
+    "cluster_sizes": "step7d_dbscan_cluster_sizes.csv",
+    "cluster_interpretation": "step7d_dbscan_cluster_interpretation_summary.csv",
+    "behavioral_signatures": "step7d_dbscan_behavioral_signatures.csv",
+    "top_behavioral_features": "step7d_dbscan_top_behavioral_features.csv",
+    "detailed_cluster_profiles": "step7d_dbscan_detailed_cluster_profiles.csv"
+  },
+  "production_cluster_semantics": {
+    "algorithm": "DBSCAN",
+    "noise_cluster_id": -1,
+    "noise_is_valid_production_assignment": true
+  },
+  "nearest_behavioral_reference": {
+    "available": true,
+    "nearest_behavioral_cluster_is_not_equivalent_to_production_assignment": true,
+    "nearest_behavioral_cluster_is_reference_context_only": true,
+    "nearest_behavioral_distance_is_reference_context_only": true,
+    "distance_must_not_reassign_production_cluster": true,
+    "distance_must_not_create_new_cluster": true
+  },
+  "output": {
+    "grain": "CLUSTER",
+    "required_fields": [
+      "analytics_layer",
+      "cluster_count",
+      "session_count",
+      "noise_session_count",
+      "clusters"
+    ],
+    "analytics_layer_value": "CLUSTER_ANALYTICS",
+    "cluster_required_fields": [
+      "cluster_id",
+      "session_count",
+      "percentage"
+    ],
+    "cluster_optional_fields": [
+      "cluster_type",
+      "behavior_label",
+      "top_elevated_features",
+      "top_reduced_features",
+      "interpretation_status",
+      "nearest_behavioral_cluster",
+      "nearest_behavioral_distance"
+    ]
+  },
+  "cluster_type_semantics": {
+    "noise_cluster_id": -1,
+    "noise_cluster_type": "NOISE / OUTLIER",
+    "non_noise_cluster_type": "BEHAVIORAL CLUSTER",
+    "interpretation_source": "step7d_dbscan_cluster_interpretation_summary.csv"
+  },
+  "transformation": {
+    "type": "VALIDATED_PRODUCTION_CLUSTER_ANALYTICS",
+    "rules": [
+      "Consume existing production cluster assignments only.",
+      "Preserve production_cluster_assignment exactly as provided.",
+      "Do not refit DBSCAN.",
+      "Do not retrain the model.",
+      "Do not create new clusters.",
+      "Do not modify production cluster assignments.",
+      "Do not assign a production cluster from nearest_behavioral_cluster.",
+      "Do not use nearest_behavioral_distance to change production assignment.",
+      "Reference artifacts are read-only.",
+      "Reference artifacts may enrich cluster metadata only.",
+      "Do not perform GeoIP lookup.",
+      "Do not call external enrichment providers.",
+      "Do not infer geographic information.",
+      "Do not fabricate missing enrichment values.",
+      "Missing optional enrichment must not invalidate core cluster analytics.",
+      "Input records must not be mutated."
+    ]
+  },
+  "geoip_behavior": {
+    "required": false,
+    "dependency": false,
+    "lookup_performed": false,
+    "external_provider_called": false,
+    "missing_geoip_blocks_cluster_analytics": false,
+    "geoip_fields_are_optional_reference_enrichment": true
+  },
+  "null_rules": {
+    "required_fields": "must_not_be_null_or_empty",
+    "optional_fields": "may_be_null_or_absent",
+    "optional_fields_are_not_fabricated": true,
+    "nearest_behavioral_distance": "may_be_null_or_absent",
+    "geoip_related_reference_fields": "may_be_null_or_absent"
+  },
+  "empty_data_behavior": {
+    "allowed": true,
+    "analytics_layer": "CLUSTER_ANALYTICS",
+    "cluster_count": 0,
+    "session_count": 0,
+    "noise_session_count": 0,
+    "clusters": []
+  },
+  "percentage_rule": {
+    "denominator": "total_input_sessions",
+    "formula": "cluster_session_count / total_input_sessions * 100",
+    "empty_input_percentage": 0.0
+  },
+  "independence": {
+    "depends_on_session_analytics": false,
+    "depends_on_attacker_ip_analytics": false,
+    "depends_on_geoip_analytics": false,
+    "consumes_production_ml_output_directly": true,
+    "reference_artifacts_are_read_only": true
+  },
+  "validation_tests": [
+    "required fields are present",
+    "required fields are non-empty",
+    "production cluster assignment is preserved",
+    "noise cluster is represented by -1",
+    "noise assignment is valid",
+    "nearest behavioral cluster may differ from production assignment",
+    "nearest behavioral distance is optional enrichment",
+    "reference artifacts are read-only",
+    "GeoIP enrichment is not required",
+    "missing optional enrichment does not fail validation",
+    "empty input returns valid zero-state analytics",
+    "cluster percentages use total input sessions as denominator",
+    "input records are not mutated",
+    "no DBSCAN fitting is performed",
+    "no retraining is performed",
+    "no new cluster is created",
+    "no external enrichment is performed"
+  ]
+}

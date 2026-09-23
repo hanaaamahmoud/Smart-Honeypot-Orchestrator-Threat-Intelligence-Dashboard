@@ -1,0 +1,436 @@
+{
+  "mapping_version": "1.0",
+  "source": "step7d_dbscan_cluster_interpretation_summary.csv",
+  "scope": "Actionable behavioral clusters only",
+  "mapping": [
+    {
+      "cluster_id": 0,
+      "session_count": 981,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Geo-temporal authentication activity",
+      "attacker_behavior": "Authentication activity combined with temporal and geographic concentration",
+      "possible_attack_name": "Authentication activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "session_start_dayofweek",
+        "session_start_dayofmonth",
+        "longitude_mean",
+        "auth_attempt_rate",
+        "username_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 1,
+      "session_count": 246,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Authentication-focused activity",
+      "attacker_behavior": "Elevated authentication rate with geographic and username signals",
+      "possible_attack_name": "Credential/authentication attack candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude_mean",
+        "geo_longitude_abs",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 3,
+      "session_count": 372,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Multi-target / multi-protocol activity",
+      "attacker_behavior": "High destination, protocol, honeypot, port and country diversity",
+      "possible_attack_name": "Reconnaissance-like activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity",
+        "auth_attempt_rate"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 6,
+      "session_count": 243,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Authentication-focused activity",
+      "attacker_behavior": "Elevated authentication rate with temporal and geographic concentration",
+      "possible_attack_name": "Credential/authentication attack candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "session_start_hour",
+        "latitude_mean",
+        "geo_latitude_abs",
+        "username_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 7,
+      "session_count": 464,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Geo-temporal authentication activity",
+      "attacker_behavior": "Geographic longitude, username and authentication-rate signals dominate",
+      "possible_attack_name": "Authentication activity candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_longitude_abs",
+        "longitude_mean",
+        "username_diversity",
+        "auth_attempt_rate",
+        "unique_usernames"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 10,
+      "session_count": 243,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Geo-temporal authentication activity",
+      "attacker_behavior": "Latitude/geographic signals combined with elevated authentication activity",
+      "possible_attack_name": "Authentication activity candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "session_start_dayofweek",
+        "latitude_mean",
+        "auth_attempt_rate",
+        "session_start_dayofmonth"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 12,
+      "session_count": 496,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Multi-target / multi-protocol activity",
+      "attacker_behavior": "High destination, protocol, honeypot, port and country diversity",
+      "possible_attack_name": "Reconnaissance-like activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity",
+        "auth_attempt_rate"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 13,
+      "session_count": 341,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Multi-target / multi-protocol activity",
+      "attacker_behavior": "High destination, protocol, honeypot, port and country diversity",
+      "possible_attack_name": "Reconnaissance-like activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity",
+        "auth_attempt_rate"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 14,
+      "session_count": 245,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Geo-temporal authentication activity",
+      "attacker_behavior": "Latitude and authentication-rate signals dominate",
+      "possible_attack_name": "Authentication activity candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "latitude_mean",
+        "auth_attempt_rate",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 15,
+      "session_count": 43,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Username-focused activity",
+      "attacker_behavior": "Username and unique-username signals dominate",
+      "possible_attack_name": "Credential activity candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames",
+        "geo_latitude_abs",
+        "session_start_hour",
+        "geo_city_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 18,
+      "session_count": 124,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Multi-target / multi-protocol activity",
+      "attacker_behavior": "High destination, protocol, honeypot, port and country diversity",
+      "possible_attack_name": "Reconnaissance-like activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity",
+        "auth_attempt_rate"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 22,
+      "session_count": 244,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Low-diversity authentication activity",
+      "attacker_behavior": "Username and authentication-rate signals dominate while protocol diversity is low",
+      "possible_attack_name": "Authentication activity candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames",
+        "auth_attempt_rate",
+        "geo_latitude_abs",
+        "geo_longitude_abs",
+        "protocol_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 23,
+      "session_count": 55,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Time-concentrated username activity",
+      "attacker_behavior": "Session hour and username signals dominate",
+      "possible_attack_name": "Credential activity candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "session_start_hour",
+        "username_diversity",
+        "unique_usernames",
+        "geo_latitude_abs",
+        "geo_city_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 24,
+      "session_count": 242,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Authentication-focused activity",
+      "attacker_behavior": "Elevated authentication rate with latitude and temporal signals",
+      "possible_attack_name": "Credential/authentication attack candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude_mean",
+        "session_start_hour",
+        "geo_latitude_abs",
+        "username_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 26,
+      "session_count": 230,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Username-focused activity",
+      "attacker_behavior": "Username and unique-username signals dominate",
+      "possible_attack_name": "Credential activity candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames",
+        "geo_latitude_abs",
+        "geo_city_diversity",
+        "geo_longitude_abs"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 27,
+      "session_count": 39,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Authentication-focused activity",
+      "attacker_behavior": "Elevated authentication rate with latitude and time signals",
+      "possible_attack_name": "Credential/authentication attack candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude_mean",
+        "geo_latitude_abs",
+        "session_start_hour",
+        "username_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 29,
+      "session_count": 33,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Authentication-focused activity",
+      "attacker_behavior": "Elevated authentication rate with temporal and latitude signals",
+      "possible_attack_name": "Credential/authentication attack candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "session_start_hour",
+        "latitude_mean",
+        "username_diversity",
+        "geo_longitude_abs"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 30,
+      "session_count": 243,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Geo-temporal authentication activity",
+      "attacker_behavior": "Latitude and authentication-rate signals dominate",
+      "possible_attack_name": "Authentication activity candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "latitude_mean",
+        "username_diversity",
+        "auth_attempt_rate",
+        "unique_usernames"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 33,
+      "session_count": 36,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Authentication-focused activity",
+      "attacker_behavior": "Latitude and authentication-rate signals dominate",
+      "possible_attack_name": "Authentication activity candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "latitude_mean",
+        "geo_latitude_abs",
+        "auth_attempt_rate",
+        "username_diversity",
+        "geo_city_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 35,
+      "session_count": 31,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Authentication-focused activity",
+      "attacker_behavior": "Elevated authentication rate with latitude and username signals",
+      "possible_attack_name": "Credential/authentication attack candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude_mean",
+        "username_diversity",
+        "unique_usernames",
+        "longitude_mean"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 36,
+      "session_count": 44,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Multi-target / multi-protocol activity",
+      "attacker_behavior": "High destination, protocol, honeypot, port and country diversity",
+      "possible_attack_name": "Reconnaissance-like activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity",
+        "auth_attempt_rate"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    },
+    {
+      "cluster_id": 37,
+      "session_count": 21,
+      "cluster_type": "BEHAVIORAL CLUSTER",
+      "activity_profile": "Sparse long-duration multi-target activity",
+      "attacker_behavior": "Long inter-event gaps and duration combined with high target/protocol diversity",
+      "possible_attack_name": "Reconnaissance-like / slow exploration candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "inter_event_gap_mean_log1p",
+        "inter_event_gap_max_log1p",
+        "session_duration_log1p",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "unique_destinations",
+        "geo_country_diversity",
+        "event_count_log1p",
+        "username_diversity"
+      ],
+      "evidence_source": "STEP_7D_DBSCAN_CLUSTER_INTERPRETATION_SUMMARY",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "note": "Attack name is a behavioral candidate, not ground-truth attribution. Frozen ML assignment is unchanged."
+    }
+  ]
+}

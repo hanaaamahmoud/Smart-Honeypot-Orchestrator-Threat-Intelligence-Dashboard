@@ -1,0 +1,80 @@
+{
+  "name": "SESSION_ANALYTICS_CONTRACT",
+  "version": "1.0.0",
+  "status": "ACTIVE",
+  "purpose": "Expose validated production session-assignment results to the analytics/dashboard boundary without changing ML assignments.",
+
+  "source": {
+    "stage": "STEP_9F_SESSION_ASSIGNMENT_OUTPUT",
+    "input_grain": "SESSION",
+    "session_identity": "reconstructed_session_id"
+  },
+
+  "required_input_fields": [
+    "reconstructed_session_id",
+    "production_cluster_assignment",
+    "assignment_status",
+    "feature_validation_status"
+  ],
+
+  "optional_input_fields": [
+    "event_count",
+    "session_start",
+    "session_end",
+    "source"
+  ],
+
+  "allowed_cluster_values": [
+    "EXISTING_PRODUCTION_CLUSTER",
+    "NOISE"
+  ],
+
+  "transformation": {
+    "type": "VALIDATED_SESSION_HANDOFF",
+    "rules": [
+      "Accept one validated assignment record per session.",
+      "Preserve all required assignment fields unchanged.",
+      "Preserve optional session metadata when present.",
+      "Do not create clusters, reassign clusters, retrain, infer from IP only, or fabricate values."
+    ]
+  },
+
+  "output": {
+    "grain": "SESSION",
+    "fields": [
+      "reconstructed_session_id",
+      "production_cluster_assignment",
+      "assignment_status",
+      "feature_validation_status",
+      "event_count",
+      "session_start",
+      "session_end",
+      "source"
+    ],
+    "one_output_row_per_input_session": true
+  },
+
+  "null_rules": {
+    "required_fields": "must_not_be_null",
+    "optional_fields": "may_be_null_or_absent",
+    "optional_fields_are_not_fabricated": true
+  },
+
+  "assignment_boundary": {
+    "adapter_may_assign_clusters": false,
+    "adapter_may_modify_assignments": false,
+    "adapter_may_create_clusters": false,
+    "adapter_may_retrain_model": false,
+    "adapter_may_infer_from_ip_only": false
+  },
+
+  "validation_tests": [
+    "required fields are present",
+    "required fields are non-null",
+    "cluster assignment uses an allowed value",
+    "input grain is session-level",
+    "one output row is produced per input session",
+    "optional fields are preserved without fabrication",
+    "input records are not mutated"
+  ]
+}

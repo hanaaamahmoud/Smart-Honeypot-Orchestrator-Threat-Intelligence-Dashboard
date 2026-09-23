@@ -1,0 +1,113 @@
+{
+  "contract_name": "ANALYTICS_AVAILABILITY",
+  "version": "1.0",
+  "status": "ACTIVE",
+  "purpose": "Central availability registry for analytics capabilities. Availability reflects validated implementation, contract, data, and pipeline evidence. DEFERRED does not mean implementation failure.",
+  "rules": {
+    "PASS": "Capability has sufficient validated evidence for current project scope.",
+    "PARTIAL": "Capability has implementation or tests, but required end-to-end data or pipeline evidence is incomplete.",
+    "DEFERRED": "Capability is intentionally not activated because required data, schema, or pipeline evidence is not currently available.",
+    "FAIL": "Capability has a verified implementation, contract, or runtime failure that requires correction."
+  },
+  "analytics": {
+    "SESSION_ANALYTICS": {
+      "status": "PASS",
+      "contract": "ACTIVE",
+      "implementation": "EXISTS",
+      "unit_tests": "EXISTS",
+      "contract_tests": "EXISTS",
+      "real_data": "VALIDATED",
+      "full_pipeline": "VALIDATED",
+      "notes": "Existing completed analytics capability."
+    },
+    "CLUSTER_ANALYTICS": {
+      "status": "PASS",
+      "contract": "ACTIVE",
+      "implementation": "EXISTS",
+      "unit_tests": "EXISTS",
+      "contract_tests": "EXISTS",
+      "real_data": "VALIDATED",
+      "full_pipeline": "VALIDATED",
+      "notes": "Existing completed analytics capability."
+    },
+    "TEMPORAL_TRENDS": {
+      "status": "DEFERRED",
+      "contract": "PRESENT_BUT_STATUS_UNDECLARED",
+      "implementation": "NOT_FOUND_BY_STANDARD_PATH",
+      "unit_tests": "MISSING",
+      "contract_tests": "MISSING",
+      "real_data": "NOT_VALIDATED",
+      "full_pipeline": "NOT_VALIDATED",
+      "notes": "Temporal contract exists as temporal_analytics_contract.json, but its contract status is not declared and the expected implementation/test files were not found by the inventory convention. Do not modify it yet."
+    },
+    "ATTACKER_IP_ANALYTICS": {
+      "status": "DEFERRED",
+      "contract": "CONFLICTING_DEFINITIONS",
+      "implementation": "EXISTS",
+      "unit_tests": "EXISTS",
+      "contract_tests": "EXISTS",
+      "real_data": "NOT_VALIDATED",
+      "full_pipeline": "NOT_CONNECTED",
+      "notes": "A DEFERRED contract exists under analytics/contracts and an ACTIVE contract exists under app/analytics/contracts. Historical 8C data and full pipeline availability are not currently validated. Reconciliation is required later; do not treat test PASS as Real E2E availability."
+    },
+    "GEOIP_ANALYTICS": {
+      "status": "DEFERRED",
+      "contract": "DEFERRED",
+      "implementation": "MISSING",
+      "unit_tests": "MISSING",
+      "contract_tests": "MISSING",
+      "real_data": "NOT_VALIDATED",
+      "full_pipeline": "NOT_CONNECTED",
+      "notes": "Required GeoIP enrichment data is not currently validated against the production ML output."
+    },
+    "MITRE_ANALYTICS": {
+      "status": "DEFERRED",
+      "contract": "DEFERRED",
+      "implementation": "MISSING",
+      "unit_tests": "MISSING",
+      "contract_tests": "MISSING",
+      "real_data": "INSUFFICIENT",
+      "full_pipeline": "NOT_CONNECTED",
+      "notes": "Required validated MITRE data is not currently available."
+    },
+    "MITRE_TRENDS": {
+      "status": "DEFERRED",
+      "contract": "DEFERRED",
+      "implementation": "MISSING",
+      "unit_tests": "MISSING",
+      "contract_tests": "MISSING",
+      "real_data": "INSUFFICIENT",
+      "full_pipeline": "NOT_CONNECTED",
+      "notes": "Required validated MITRE data is not currently available."
+    },
+    "MITRE_STATISTICS": {
+      "status": "DEFERRED",
+      "contract": "DEFERRED",
+      "implementation": "MISSING",
+      "unit_tests": "MISSING",
+      "contract_tests": "MISSING",
+      "real_data": "INSUFFICIENT",
+      "full_pipeline": "NOT_CONNECTED",
+      "notes": "Required validated MITRE data is not currently available."
+    },
+    "SESSION_REPLAY": {
+      "status": "DEFERRED",
+      "contract": "DEFERRED",
+      "implementation": "EXISTS_AS_DEFERRED_GUARD",
+      "unit_tests": "EXISTS",
+      "contract_tests": "EXISTS",
+      "real_data": "ML_EVENT_OUTPUT_NOT_AVAILABLE",
+      "full_pipeline": "NOT_CONNECTED",
+      "notes": "Replay contract and guard implementation exist, but activation waits for the actual contracted ML event output."
+    }
+  },
+  "global_rules": [
+    "This registry does not fabricate data availability.",
+    "Implementation existence does not imply Real E2E availability.",
+    "Passing unit or contract tests does not imply full pipeline availability.",
+    "DEFERRED capabilities must remain non-blocking for capabilities already validated.",
+    "When deferred source data becomes available, only the affected capability should be revalidated.",
+    "Existing PASS capabilities must not be modified merely to activate a deferred capability.",
+    "No GeoIP, MITRE, session identifier, or other enrichment may be fabricated to convert DEFERRED into PASS."
+  ]
+}
