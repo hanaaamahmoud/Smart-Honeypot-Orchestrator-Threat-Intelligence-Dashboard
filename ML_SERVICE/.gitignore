@@ -65,3 +65,4 @@ colab_runtime_backups-*/
 !models/frozen_production_reference/
 !models/frozen_production_reference/**
 !models/frozen_reference_sha256.json
+_archive/

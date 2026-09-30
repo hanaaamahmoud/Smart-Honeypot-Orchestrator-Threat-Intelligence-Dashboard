@@ -8,7 +8,7 @@ from app.output_adapter import (
 )
 
 
-def test_adapt_session_result_returns_backend_contract():
+def test_adapt_session_result_returns_canonical_contract():
     result = {
         "session_id": "session-001",
         "cluster_id": 12,
@@ -22,11 +22,14 @@ def test_adapt_session_result_returns_backend_contract():
     adapted = adapt_session_result(result)
 
     assert adapted == {
-        "session_id": "session-001",
-        "cluster_id": 12,
+        "reconstructed_session_id": "session-001",
+        "production_cluster_assignment": 12,
         "assignment_status": "EXISTING_PRODUCTION_CLUSTER",
-        "validation_status": "VALIDATED_48_FEATURES",
+        "feature_validation_status": "VALIDATED_48_FEATURES",
         "event_count": 15,
+        "session_start": None,
+        "session_end": None,
+        "source": None,
         "protocol": "SSH",
         "honeypot": "cowrie",
     }
@@ -82,14 +85,7 @@ def test_adapt_analytics_result_does_not_modify_input():
         "mitre_techniques": ["T1110"],
     }
 
-    original = {
-        "cluster_id": 5,
-        "session_count": 2,
-        "event_count": 10,
-        "top_commands": ["ls"],
-        "attack_types": ["brute_force"],
-        "mitre_techniques": ["T1110"],
-    }
+    original = result.copy()
 
     adapt_analytics_result(result)
 
@@ -109,7 +105,7 @@ def test_adapt_session_result_sanitizes_special_float_values():
 
     adapted = adapt_session_result(result)
 
-    assert adapted["cluster_id"] is None
+    assert adapted["production_cluster_assignment"] is None
     assert adapted["protocol"] is None
     assert adapted["honeypot"] is None
 
@@ -144,10 +140,11 @@ def test_adapted_session_result_is_strict_json():
     adapted = adapt_session_result(result)
 
     payload = json.dumps(adapted, allow_nan=False)
+    parsed = json.loads(payload)
 
-    assert json.loads(payload)["cluster_id"] is None
-    assert json.loads(payload)["protocol"] is None
-    assert json.loads(payload)["honeypot"] is None
+    assert parsed["production_cluster_assignment"] is None
+    assert parsed["protocol"] is None
+    assert parsed["honeypot"] is None
 
 
 def test_adapted_analytics_result_is_strict_json():
@@ -170,7 +167,7 @@ def test_adapted_analytics_result_is_strict_json():
     assert parsed["event_count"] is None
 
 
-def test_adapt_session_result_has_exact_backend_fields():
+def test_adapt_session_result_has_exact_canonical_fields():
     result = {
         "session_id": "session-005",
         "cluster_id": 12,
@@ -184,11 +181,14 @@ def test_adapt_session_result_has_exact_backend_fields():
     adapted = adapt_session_result(result)
 
     assert set(adapted.keys()) == {
-        "session_id",
-        "cluster_id",
+        "reconstructed_session_id",
+        "production_cluster_assignment",
         "assignment_status",
-        "validation_status",
+        "feature_validation_status",
         "event_count",
+        "session_start",
+        "session_end",
+        "source",
         "protocol",
         "honeypot",
     }
@@ -237,8 +237,18 @@ def test_adapt_session_result_requires_mandatory_fields(missing_field):
 
     del result[missing_field]
 
-    with pytest.raises(KeyError):
-        adapt_session_result(result)
+    # Legacy aliases are input-only, so these fields are mandatory.
+    if missing_field == "session_id":
+        with pytest.raises(KeyError):
+            adapt_session_result(result)
+    elif missing_field == "assignment_status":
+        with pytest.raises(KeyError):
+            adapt_session_result(result)
+    elif missing_field == "validation_status":
+        with pytest.raises(KeyError):
+            adapt_session_result(result)
+
+
 def test_adapt_analytics_result_requires_cluster_id():
     result = {
         "session_count": 20,
@@ -250,6 +260,8 @@ def test_adapt_analytics_result_requires_cluster_id():
 
     with pytest.raises(KeyError):
         adapt_analytics_result(result)
+
+
 def test_adapt_session_result_preserves_session_and_cluster_identity():
     result = {
         "session_id": "session-identity-123",
@@ -263,8 +275,8 @@ def test_adapt_session_result_preserves_session_and_cluster_identity():
 
     adapted = adapt_session_result(result)
 
-    assert adapted["session_id"] == "session-identity-123"
-    assert adapted["cluster_id"] == 42
+    assert adapted["reconstructed_session_id"] == "session-identity-123"
+    assert adapted["production_cluster_assignment"] == 42
 
 
 def test_adapt_session_result_preserves_status_values():
@@ -280,8 +292,14 @@ def test_adapt_session_result_preserves_status_values():
 
     adapted = adapt_session_result(result)
 
-    assert adapted["assignment_status"] == "EXISTING_PRODUCTION_CLUSTER"
-    assert adapted["validation_status"] == "VALIDATED_48_FEATURES"
+    assert adapted["assignment_status"] == (
+        "EXISTING_PRODUCTION_CLUSTER"
+    )
+    assert adapted["feature_validation_status"] == (
+        "VALIDATED_48_FEATURES"
+    )
+
+
 def test_adapt_session_result_contains_no_non_finite_floats():
     result = {
         "session_id": "session-json-001",
@@ -296,7 +314,10 @@ def test_adapt_session_result_contains_no_non_finite_floats():
     adapted = adapt_session_result(result)
 
     assert all(
-        not (isinstance(value, float) and not __import__("math").isfinite(value))
+        not (
+            isinstance(value, float)
+            and not __import__("math").isfinite(value)
+        )
         for value in adapted.values()
     )
 
@@ -314,6 +335,10 @@ def test_adapt_analytics_result_contains_no_non_finite_floats():
     adapted = adapt_analytics_result(result)
 
     assert all(
-        not (isinstance(value, float) and not __import__("math").isfinite(value))
+        not (
+            isinstance(value, float)
+            and not __import__("math").isfinite(value)
+        )
         for value in adapted.values()
     )
+
