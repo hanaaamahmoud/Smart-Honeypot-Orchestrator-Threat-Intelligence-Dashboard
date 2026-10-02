@@ -1,31 +1,31 @@
-"""Boundary adapter from production session results to analytics input."""
+"""Boundary adapter from production session results to analytics input.
+
+The production result already contains:
+  - production_cluster_assignment: int (numeric cluster ID)
+  - assignment_status: str ("EXISTING_PRODUCTION_CLUSTER" or "NOISE")
+
+This boundary preserves both fields unchanged. It does not
+re-derive or overwrite them.
+"""
 
 from __future__ import annotations
 
 from typing import Any, Iterable
 
 
-def _cluster_representation(cluster_id: int | None) -> str:
-    """
-    Convert the production numeric cluster assignment into the
-    analytics contract representation.
-
-    This does not modify the production result.
-    """
-
-    if cluster_id is None:
-        return "NOISE"
-
-    return "EXISTING_PRODUCTION_CLUSTER"
-
-
 def build_session_analytics_input(
     results: Iterable[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     """
-    Adapt existing production session results for SESSION_ANALYTICS.
+    Adapt production session results for SESSION_ANALYTICS.
 
     The original production records are not mutated.
+
+    Required fields already present in each result:
+      - reconstructed_session_id
+      - production_cluster_assignment (int)
+      - assignment_status (str)
+      - feature_validation_status (str)
     """
 
     output: list[dict[str, Any]] = []
@@ -36,15 +36,27 @@ def build_session_analytics_input(
                 "Each production session result must be a dictionary"
             )
 
+        # Copy only. Never mutate.
         row = dict(record)
 
-        cluster_id = row.get(
-            "production_cluster_assignment"
-        )
+        # Ensure required fields exist as expected.
+        if "reconstructed_session_id" not in row:
+            raise ValueError(
+                "Missing reconstructed_session_id in "
+                "production session result"
+            )
 
-        row["production_cluster_assignment"] = (
-            _cluster_representation(cluster_id)
-        )
+        if "production_cluster_assignment" not in row:
+            raise ValueError(
+                "Missing production_cluster_assignment in "
+                "production session result"
+            )
+
+        if "assignment_status" not in row:
+            raise ValueError(
+                "Missing assignment_status in "
+                "production session result"
+            )
 
         output.append(row)
 

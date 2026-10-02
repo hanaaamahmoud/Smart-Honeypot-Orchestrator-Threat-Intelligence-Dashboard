@@ -199,3 +199,12 @@ backend_handoff/06_mitre_trends/
 backend_handoff/07_session_replay/
 backend_handoff/frontend_guide/
 backend_handoff/ml_analytics_files/
+
+# ============================================================
+# Final cleanup — data and archives
+# ============================================================
+*.zip
+*.tar.gz
+_archive/
+*.backup_*
+*.before_*

@@ -5,6 +5,12 @@ from app.analytics.session_boundary import (
 
 
 def test_production_output_flows_into_session_analytics():
+    """
+    End-to-end: production result → boundary → session analytics.
+
+    Boundary preserves production_cluster_assignment as int
+    and assignment_status as string.
+    """
     production_results = [
         {
             "reconstructed_session_id": "session-001",
@@ -31,12 +37,15 @@ def test_production_output_flows_into_session_analytics():
     row = analytics_results[0]
 
     assert row["reconstructed_session_id"] == "session-001"
-    assert row["production_cluster_assignment"] == (
-        "EXISTING_PRODUCTION_CLUSTER"
-    )
+
+    # Numeric cluster ID is preserved.
+    assert row["production_cluster_assignment"] == 12
+
+    # Semantic status is preserved.
     assert row["assignment_status"] == (
         "EXISTING_PRODUCTION_CLUSTER"
     )
+
     assert row["feature_validation_status"] == (
         "VALIDATED_48_FEATURES"
     )
