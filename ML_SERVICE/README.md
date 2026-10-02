@@ -16,7 +16,7 @@ same input.
 into behavioral analytics for the dashboard.
 
 Input: Elasticsearch events (honeypot-events index)
-Output: 8 analytics layers (JSON) + Backend handoff package
+Output: 7 analytics layers (JSON) + Backend handoff package
 
 If you are a:
 
@@ -59,7 +59,7 @@ repository should be able to identify a file's purpose within seconds.
     |-- app/                    Source code — the entire service
     |   |-- ingestion/          Elasticsearch reader (read-only)
     |   |-- pipeline/           ML pipeline stages (features, sessions)
-    |   |-- analytics/          8 analytics layers
+    |   |-- analytics/          7 analytics layers
     |   |-- analytics/contracts/ JSON contract schemas
     |   |-- model_loader.py     Frozen model and scaler loader
     |   |-- output_adapter.py   Canonical ML result formatter
@@ -190,7 +190,7 @@ Use this table to locate any topic in a few seconds.
     Canonical ML Output                            [app/output_adapter.py]
             |
             v
-    8 Analytics Layers                             [app/analytics/]
+    7 Analytics Layers                             [app/analytics/]
             |
             v
     Backend Handoff Package                        [scripts/package_handoff.sh]
@@ -226,7 +226,6 @@ Interactive docs: http://localhost:8000/docs
 | 5 | MITRE Statistics | mitre_statistics.py | Flat stats table (49 rows) |
 | 6 | MITRE Trends | mitre_trends.py | Time-series per technique |
 | 7 | Session Replay | session_replay.py | Narratives and event timeline |
-| 8 | Attacker IP Analytics | attacker_ip_analytics.py | Deferred — needs public IPs |
 
 Each layer is independent and consumes the ML output directly.
 Field-level details: backend_handoff/0X_*/README.md
