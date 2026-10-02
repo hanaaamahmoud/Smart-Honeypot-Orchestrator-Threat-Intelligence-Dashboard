@@ -17,19 +17,6 @@ All documentation for the ML Service.
 
 ---
 
-## Which Document to Read First
-
-| If you are... | Start with |
-|---|---|
-| Backend developer | INTEGRATION_GUIDE.md |
-| Frontend developer | ../backend_handoff/frontend_guide/FRONTEND_HANDOFF.md |
-| ML engineer | PIPELINE_FLOW.md |
-| DevOps / deployer | RUNTIME_GUIDE.md |
-| Reviewer | ARCHITECTURE.md |
-| Looking for a specific field | canonical_output_contract.md |
-
----
-
 ## Quick Descriptions
 
 ### PIPELINE_FLOW.md
@@ -60,7 +47,7 @@ Design principles, integration models, golden rules, extension points.
 
 ### ML_SERVICE_REFERENCE.md
 
-Full internal reference for the ML service (older but still useful).
+Full internal reference for the ML service.
 
 ### canonical_output_contract.md
 
