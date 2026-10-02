@@ -94,7 +94,6 @@ _archive/
 # ============================================================
 
 # ---------- Analytics Output (large data files) ----------
-analytics_output/
 !analytics_output/.gitkeep
 
 # ---------- Backend Handoff — data files only ----------
@@ -175,3 +174,15 @@ backend_handoff/ml_analytics_files/
 !backend_handoff/*/schema*.json
 !backend_handoff/frontend_guide/
 !backend_handoff/frontend_guide/**
+
+# ============================================================
+# Keep READMEs even in gitignored folders
+# ============================================================
+
+# ============================================================
+# Analytics output — ignore data, keep README
+# ============================================================
+analytics_output/**/*.json
+analytics_output/**/*.csv
+analytics_output/session_replay_details/
+!analytics_output/README.md

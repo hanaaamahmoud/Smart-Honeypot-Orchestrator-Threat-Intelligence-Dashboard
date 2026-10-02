@@ -55,7 +55,6 @@ ML_SERVICE_*_BACKUP_*/
 # ============================================================
 # Large data folders
 # ============================================================
-ML_SERVICE/analytics_output/
 ML_SERVICE/**/session_replay_details/
 
 # ============================================================
@@ -87,3 +86,12 @@ ML_SERVICE/backend_handoff/ml_analytics_files/
 # ============================================================
 docker-compose.yml.backup_*
 **/docker-compose.yml.backup_*
+
+# ============================================================
+# ML_SERVICE analytics_output — ignore data, keep README
+# ============================================================
+ML_SERVICE/analytics_output/**/*.json
+ML_SERVICE/analytics_output/**/*.csv
+ML_SERVICE/analytics_output/session_replay_details/
+!ML_SERVICE/analytics_output/README.md
+!ML_SERVICE/analytics_output/.gitkeep
