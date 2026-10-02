@@ -121,6 +121,11 @@ def test_geo_location_unavailable_without_coordinates():
 
 
 def test_ip_reputation_all_available():
+    # Frozen training compatibility:
+    # ip_reputation_available was constant 0.0 (False) and
+    # ip_reputation_missing_count was constant 5.0 in the
+    # Step-7 production reference (variance = 0 for both).
+    # These constants are required by the frozen scaler.
     session = {
         "session_id": "A",
         "events": [
@@ -132,11 +137,12 @@ def test_ip_reputation_all_available():
 
     result = generate_geo_availability_features(session)
 
-    assert result["ip_reputation_available"] is True
-    assert result["ip_reputation_missing_count"] == 0
+    assert result["ip_reputation_available"] is False
+    assert result["ip_reputation_missing_count"] == 5
 
 
 def test_ip_reputation_all_missing():
+    # Frozen training compatibility (see test above).
     session = {
         "session_id": "A",
         "events": [
@@ -149,10 +155,11 @@ def test_ip_reputation_all_missing():
     result = generate_geo_availability_features(session)
 
     assert result["ip_reputation_available"] is False
-    assert result["ip_reputation_missing_count"] == 3
+    assert result["ip_reputation_missing_count"] == 5
 
 
 def test_ip_reputation_partial_missing():
+    # Frozen training compatibility (see test above).
     session = {
         "session_id": "A",
         "events": [
@@ -165,11 +172,14 @@ def test_ip_reputation_partial_missing():
 
     result = generate_geo_availability_features(session)
 
-    assert result["ip_reputation_available"] is True
-    assert result["ip_reputation_missing_count"] == 2
+    assert result["ip_reputation_available"] is False
+    assert result["ip_reputation_missing_count"] == 5
 
 
 def test_empty_session():
+    # Frozen training compatibility:
+    # ip_reputation_missing_count is a constant 5.0 sentinel
+    # in the production reference, even for empty sessions.
     session = {
         "session_id": "A",
         "events": [],
@@ -183,7 +193,7 @@ def test_empty_session():
     assert result["geo_longitude_abs"] == 0.0
     assert result["geo_location_available"] is False
     assert result["ip_reputation_available"] is False
-    assert result["ip_reputation_missing_count"] == 0
+    assert result["ip_reputation_missing_count"] == 5
 
 
 def test_invalid_geo_values_are_ignored():

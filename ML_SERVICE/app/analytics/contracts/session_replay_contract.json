@@ -1,0 +1,84 @@
+{
+  "contract_name": "SESSION_REPLAY",
+  "version": "2.0.0",
+  "status": "ACTIVE",
+  "grain": "SESSION",
+  "purpose": "Reconstruct event sequences per session for dashboard replay.",
+
+  "input": {
+    "source": "ML_SERVICE_OUTPUT",
+    "grain": "EVENT",
+    "required_fields": [
+      "timestamp",
+      "honeypot",
+      "protocol",
+      "source_dataset",
+      "source_ip"
+    ],
+    "session_grouping_field": "session_id",
+    "optional_fields": [
+      "session_id",
+      "source_port",
+      "destination_ip",
+      "destination_port",
+      "username",
+      "password",
+      "user_attempt",
+      "pass_attempt",
+      "auth_attempt",
+      "anonymous",
+      "command_count",
+      "country",
+      "country_code",
+      "asn",
+      "city",
+      "latitude",
+      "longitude",
+      "ip_reputation",
+      "attack_type",
+      "mitre_technique",
+      "attack_stage",
+      "severity"
+    ]
+  },
+
+  "output": {
+    "grain": "SESSION",
+    "required_fields": [
+      "reconstructed_session_id",
+      "event_count",
+      "first_event_utc",
+      "last_event_utc",
+      "session_duration_seconds",
+      "events"
+    ]
+  },
+
+  "replay_rules": {
+    "session_identity": "Valid events are grouped by session_id.",
+    "ordering": "Events inside a session are sorted chronologically by timestamp.",
+    "event_count": "Must equal the number of events in the session.",
+    "first_event_utc": "Earliest event timestamp.",
+    "last_event_utc": "Latest event timestamp.",
+    "session_duration_seconds": "last - first.",
+    "event_conservation": "No duplication, no silent dropping.",
+    "fabricated_data": false
+  },
+
+  "null_rules": {
+    "session_id": {
+      "allowed": true,
+      "behavior": "Events with null/missing session_id must not receive a fabricated identifier."
+    },
+    "timestamp": {
+      "allowed": false,
+      "behavior": "Replayable events must contain a valid ISO-8601 timestamp."
+    }
+  },
+
+  "independence": {
+    "depends_on_other_analytics": false,
+    "consumes_ml_output_directly": true,
+    "mutates_source_events": false
+  }
+}

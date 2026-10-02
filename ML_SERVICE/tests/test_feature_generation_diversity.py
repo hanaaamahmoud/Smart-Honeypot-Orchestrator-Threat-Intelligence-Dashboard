@@ -1,5 +1,7 @@
 from copy import deepcopy
 
+import pytest
+
 from app.pipeline.feature_generation_diversity import (
     generate_diversity_features,
 )
@@ -80,6 +82,7 @@ def test_unique_destinations():
 
 
 def test_unique_destination_ports():
+    # Colab parity: nunique() with no cap.
     result = generate_diversity_features(
         _sample_session()
     )
@@ -130,17 +133,22 @@ def test_unique_geo_fields():
 
 
 def test_diversity_features():
+    # Colab parity:
+    #   diversity = unique_X / event_count
+    # Sample has 3 events, and 2 unique values for every field.
     result = generate_diversity_features(
         _sample_session()
     )
 
-    assert result["destination_diversity"] == 2 / 3
-    assert result["destination_port_diversity"] == 2 / 3
-    assert result["protocol_diversity"] == 2 / 3
-    assert result["honeypot_diversity"] == 2 / 3
-    assert result["username_diversity"] == 2 / 3
-    assert result["geo_country_diversity"] == 2 / 3
-    assert result["geo_city_diversity"] == 2 / 3
+    denom = 3.0
+
+    assert result["destination_diversity"] == pytest.approx(2 / denom)
+    assert result["destination_port_diversity"] == pytest.approx(2 / denom)
+    assert result["protocol_diversity"] == pytest.approx(2 / denom)
+    assert result["honeypot_diversity"] == pytest.approx(2 / denom)
+    assert result["username_diversity"] == pytest.approx(2 / denom)
+    assert result["geo_country_diversity"] == pytest.approx(2 / denom)
+    assert result["geo_city_diversity"] == pytest.approx(2 / denom)
 
 
 def test_duplicate_values_do_not_increase_cardinality():
@@ -159,6 +167,7 @@ def test_duplicate_values_do_not_increase_cardinality():
 
 
 def test_duplicate_values_do_not_increase_diversity():
+    # Colab parity: diversity = 1 / 3 (three events, one unique).
     session = {
         "session_id": "A",
         "events": [
@@ -170,10 +179,12 @@ def test_duplicate_values_do_not_increase_diversity():
 
     result = generate_diversity_features(session)
 
-    assert result["destination_diversity"] == 1 / 3
+    assert result["destination_diversity"] == pytest.approx(1 / 3)
 
 
 def test_missing_values_are_not_counted():
+    # Colab parity: only present, non-empty values are counted.
+    # Three events, one unique destination -> 1 / 3.
     session = {
         "session_id": "A",
         "events": [
@@ -186,7 +197,7 @@ def test_missing_values_are_not_counted():
     result = generate_diversity_features(session)
 
     assert result["unique_destinations"] == 1
-    assert result["destination_diversity"] == 1 / 3
+    assert result["destination_diversity"] == pytest.approx(1 / 3)
 
 
 def test_empty_session_returns_zero():

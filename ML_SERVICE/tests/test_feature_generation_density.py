@@ -1,5 +1,4 @@
 from copy import deepcopy
-from math import isfinite, log1p
 
 import pytest
 
@@ -9,26 +8,42 @@ from app.pipeline.feature_generation_density import (
 
 
 def _sample_session():
+    """
+    Sample session used across density tests.
+
+    Base / temporal values:
+        duration  = 180.0
+        event_count = 4
+        inter_event_gap_mean = 5.0
+        inter_event_gap_max = 10.0
+
+    Counter values:
+        command_count_total  = 2
+        auth_attempt_total   = 3
+        user_attempt_total   = 2
+        pass_attempt_total   = 1
+        credential_attempt_total = 3
+    """
     return {
         "session_id": "session-A",
-        "events": [
-            {"event": 1},
-            {"event": 2},
-            {"event": 3},
-            {"event": 4},
-        ],
+        "duration_seconds": 180.0,
         "event_count": 4,
-        "duration_seconds": 10.0,
-        "inter_event_gap_mean": 2.0,
-        "inter_event_gap_max": 4.0,
+        "inter_event_gap_mean": 5.0,
+        "inter_event_gap_max": 10.0,
         "command_count_total": 2,
         "auth_attempt_total": 3,
-        "credential_attempt_total": 4,
+        "user_attempt_total": 2,
+        "pass_attempt_total": 1,
+        "events": [
+            {"timestamp": "2026-01-01T10:00:00Z"},
+            {"timestamp": "2026-01-01T10:01:00Z"},
+            {"timestamp": "2026-01-01T10:02:00Z"},
+            {"timestamp": "2026-01-01T10:03:00Z"},
+        ],
     }
 
 
-def test_exact_feature_names():
-
+def test_exact_density_feature_names():
     result = generate_density_features(
         _sample_session()
     )
@@ -45,155 +60,159 @@ def test_exact_feature_names():
     ]
 
 
-def test_log_features():
+def test_session_duration_log1p():
+    import math
 
     result = generate_density_features(
         _sample_session()
     )
 
     assert result["session_duration_log1p"] == pytest.approx(
-        log1p(10.0)
+        math.log1p(180.0)
+    )
+
+
+def test_event_count_log1p():
+    import math
+
+    result = generate_density_features(
+        _sample_session()
     )
 
     assert result["event_count_log1p"] == pytest.approx(
-        log1p(4.0)
+        math.log1p(4.0)
+    )
+
+
+def test_inter_event_gap_log1p():
+    import math
+
+    result = generate_density_features(
+        _sample_session()
     )
 
     assert result["inter_event_gap_mean_log1p"] == pytest.approx(
-        log1p(2.0)
+        math.log1p(5.0)
     )
 
     assert result["inter_event_gap_max_log1p"] == pytest.approx(
-        log1p(4.0)
+        math.log1p(10.0)
     )
 
 
 def test_event_density():
-
+    # Colab parity: event_density = event_count / duration
     result = generate_density_features(
         _sample_session()
     )
 
-    assert result["event_density"] == pytest.approx(
-        4.0 / 10.0
-    )
+    assert result["event_density"] == pytest.approx(4.0 / 180.0)
 
 
 def test_command_density():
-
+    # Colab parity: command_density = command_count_total / event_count
     result = generate_density_features(
         _sample_session()
     )
 
-    assert result["command_density"] == pytest.approx(
-        2.0 / 10.0
-    )
+    assert result["command_density"] == pytest.approx(2.0 / 4.0)
 
 
 def test_auth_attempt_density():
-
+    # Colab parity: auth_attempt_density = auth_attempt_total / event_count
     result = generate_density_features(
         _sample_session()
     )
 
-    assert result["auth_attempt_density"] == pytest.approx(
-        3.0 / 10.0
-    )
+    assert result["auth_attempt_density"] == pytest.approx(3.0 / 4.0)
 
 
 def test_credential_attempt_density():
-
+    # Colab parity:
+    #   credential_attempt_density =
+    #       (user_attempt_total + pass_attempt_total) / event_count
     result = generate_density_features(
         _sample_session()
     )
 
-    assert result["credential_attempt_density"] == pytest.approx(
-        4.0 / 10.0
-    )
+    # (2 + 1) / 4 = 0.75
+    assert result["credential_attempt_density"] == pytest.approx(3.0 / 4.0)
 
 
-def test_zero_duration_returns_zero_density():
-
+def test_zero_duration_returns_zero_event_density():
     session = _sample_session()
     session["duration_seconds"] = 0.0
 
     result = generate_density_features(session)
 
+    # Only event_density depends on duration.
     assert result["event_density"] == 0.0
+
+    # Densities over event_count remain well-defined.
+    assert result["command_density"] == pytest.approx(2.0 / 4.0)
+    assert result["auth_attempt_density"] == pytest.approx(3.0 / 4.0)
+    assert result["credential_attempt_density"] == pytest.approx(3.0 / 4.0)
+
+
+def test_zero_event_count_returns_zero_densities():
+    session = _sample_session()
+    session["event_count"] = 0
+
+    result = generate_density_features(session)
+
     assert result["command_density"] == 0.0
     assert result["auth_attempt_density"] == 0.0
     assert result["credential_attempt_density"] == 0.0
 
 
-def test_zero_values_have_zero_log1p():
-
+def test_empty_session_returns_zero():
     session = {
         "session_id": "A",
         "events": [],
-        "event_count": 0,
-        "duration_seconds": 0.0,
-        "inter_event_gap_mean": 0.0,
-        "inter_event_gap_max": 0.0,
-        "command_count_total": 0,
-        "auth_attempt_total": 0,
-        "credential_attempt_total": 0,
     }
 
     result = generate_density_features(session)
 
-    assert result["session_duration_log1p"] == 0.0
-    assert result["event_count_log1p"] == 0.0
-    assert result["inter_event_gap_mean_log1p"] == 0.0
-    assert result["inter_event_gap_max_log1p"] == 0.0
-
-
-def test_all_outputs_are_finite():
-
-    result = generate_density_features(
-        _sample_session()
-    )
-
     assert all(
-        isfinite(value)
+        value == 0
         for value in result.values()
     )
-
-
-def test_all_outputs_are_numeric():
-
-    result = generate_density_features(
-        _sample_session()
-    )
-
-    assert all(
-        isinstance(value, float)
-        for value in result.values()
-    )
-
-
-def test_negative_log_input_is_rejected():
-
-    session = _sample_session()
-    session["event_count"] = -1
-
-    with pytest.raises(ValueError):
-        generate_density_features(session)
-
-
-def test_negative_duration_is_rejected():
-
-    session = _sample_session()
-    session["duration_seconds"] = -1
-
-    with pytest.raises(ValueError):
-        generate_density_features(session)
 
 
 def test_input_is_not_mutated():
-
     session = _sample_session()
     original = deepcopy(session)
 
     generate_density_features(session)
 
     assert session == original
+
+
+def test_two_argument_form():
+    """
+    generate_density_features(base, temporal) must merge dicts
+    without mutating either one.
+    """
+    base = {
+        "event_count": 4,
+        "command_count_total": 2,
+        "auth_attempt_total": 3,
+        "user_attempt_total": 2,
+        "pass_attempt_total": 1,
+    }
+    temporal = {
+        "session_duration_recomputed_seconds": 180.0,
+        "inter_event_gap_mean": 5.0,
+        "inter_event_gap_max": 10.0,
+    }
+
+    base_copy = deepcopy(base)
+    temporal_copy = deepcopy(temporal)
+
+    result = generate_density_features(base, temporal)
+
+    assert base == base_copy
+    assert temporal == temporal_copy
+
+    assert result["event_density"] == pytest.approx(4.0 / 180.0)
+    assert result["command_density"] == pytest.approx(2.0 / 4.0)

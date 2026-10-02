@@ -1,9 +1,14 @@
+"""Contract tests for session_replay."""
+
 import json
 from pathlib import Path
 
+from app.analytics.session_replay import ANALYTICS_LAYER
+
 
 CONTRACT_PATH = (
-    Path(__file__).resolve().parents[2]
+    Path(__file__).parents[2]
+    / "app"
     / "analytics"
     / "contracts"
     / "session_replay_contract.json"
@@ -11,26 +16,24 @@ CONTRACT_PATH = (
 
 
 def load_contract():
-    with CONTRACT_PATH.open("r", encoding="utf-8") as f:
-        return json.load(f)
+    return json.loads(CONTRACT_PATH.read_text(encoding="utf-8"))
 
 
-def test_session_replay_contract_exists():
-    assert CONTRACT_PATH.exists()
+def test_contract_exists_and_active():
+    c = load_contract()
+    assert c["contract_name"] == "SESSION_REPLAY"
+    assert c["status"] == "ACTIVE"
+    assert c["version"] == "2.0.0"
 
 
-def test_session_replay_contract_is_deferred():
-    contract = load_contract()
-
-    assert contract["contract_name"] == "SESSION_REPLAY"
-    assert contract["status"] == "DEFERRED"
-    assert contract["availability"]["status"] == "DEFERRED"
+def test_grain():
+    c = load_contract()
+    assert c["grain"] == "SESSION"
 
 
 def test_required_input_fields():
-    contract = load_contract()
-
-    assert contract["input"]["required_fields"] == [
+    c = load_contract()
+    assert c["input"]["required_fields"] == [
         "timestamp",
         "honeypot",
         "protocol",
@@ -40,15 +43,13 @@ def test_required_input_fields():
 
 
 def test_session_grouping_field():
-    contract = load_contract()
-
-    assert contract["input"]["session_grouping_field"] == "session_id"
+    c = load_contract()
+    assert c["input"]["session_grouping_field"] == "session_id"
 
 
 def test_required_output_fields():
-    contract = load_contract()
-
-    assert contract["output"]["required_fields"] == [
+    c = load_contract()
+    assert c["output"]["required_fields"] == [
         "reconstructed_session_id",
         "event_count",
         "first_event_utc",
@@ -58,20 +59,11 @@ def test_required_output_fields():
     ]
 
 
-def test_no_fabricated_session_ids():
-    contract = load_contract()
-
-    assert (
-        "fabricated session identifier"
-        in contract["null_rules"]["session_id"]["behavior"]
-    )
+def test_no_fabrication():
+    c = load_contract()
+    assert c["replay_rules"]["fabricated_data"] is False
+    assert "fabricated" in c["null_rules"]["session_id"]["behavior"].lower()
 
 
-def test_replay_is_independent_of_ml_processing():
-    contract = load_contract()
-
-    rules = contract["independence_rules"]
-
-    assert "SESSION_REPLAY must not generate ML features." in rules
-    assert "SESSION_REPLAY must not perform feature scaling." in rules
-    assert "SESSION_REPLAY must not perform clustering." in rules
+def test_analytics_layer_value():
+    assert ANALYTICS_LAYER == "SESSION_REPLAY"

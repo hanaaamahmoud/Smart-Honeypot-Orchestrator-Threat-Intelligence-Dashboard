@@ -3,6 +3,20 @@ D3.2 — Base / Count Feature Generation
 
 Generates the first seven production behavioral features.
 
+COLAB PARITY NOTE
+-----------------
+This module now mirrors the original Colab Step 5B-1 aggregation:
+
+    auth_attempt_total    = sum(auth_attempt)
+    user_attempt_total    = sum(user_attempt)
+    pass_attempt_total    = sum(pass_attempt)
+    command_count_total   = sum(command_count)
+    anonymous_event_count = sum(anonymous)
+
+Each of these fields exists in the canonical 24-field schema and
+is aggregated as a plain integer sum. Missing / None values are
+treated as 0, matching pandas ``sum`` semantics on NaN columns.
+
 This module does NOT:
 - scale features
 - cluster
@@ -11,49 +25,31 @@ This module does NOT:
 """
 
 from copy import deepcopy
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 
-def _normalize_text(value: Any) -> str:
+def _safe_int(value: Any) -> int:
     if value is None:
-        return ""
-    return str(value).strip().lower()
+        return 0
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return 0
 
 
-def _event_type(event: Dict[str, Any]) -> str:
-    return _normalize_text(
-        event.get("event_type")
-        or event.get("type")
-        or event.get("event")
-    )
+def _sum_field(
+    events: List[Dict[str, Any]],
+    field_name: str,
+) -> int:
+    """
+    Sum a direct integer counter across all events in a session.
 
-
-def _username(event: Dict[str, Any]) -> str:
-    return _normalize_text(
-        event.get("username")
-        or event.get("user")
-        or event.get("user_name")
-    )
-
-
-def _is_auth_event(event: Dict[str, Any]) -> bool:
-    event_type = _event_type(event)
-
-    return (
-        event_type == "auth"
-        or event_type == "authentication"
-        or "auth" in event_type
-        or "login" in event_type
-    )
-
-
-def _is_command_event(event: Dict[str, Any]) -> bool:
-    event_type = _event_type(event)
-
-    return (
-        event_type == "command"
-        or event_type == "cmd"
-        or "command" in event_type
+    Matches pandas ``df.groupby(...)[field_name].sum()`` where
+    NaN / missing values contribute 0.
+    """
+    return sum(
+        _safe_int(event.get(field_name))
+        for event in events
     )
 
 
@@ -72,7 +68,6 @@ def generate_base_features(
     if not isinstance(events, list):
         raise TypeError("session['events'] must be a list")
 
-    # Work on copies only.
     copied_events = [
         deepcopy(event)
         for event in events
@@ -80,50 +75,29 @@ def generate_base_features(
 
     event_count = len(copied_events)
 
-    auth_attempt_total = sum(
-        1
-        for event in copied_events
-        if _is_auth_event(event)
+    auth_attempt_total = _sum_field(
+        copied_events,
+        "auth_attempt",
     )
 
-    user_attempt_total = sum(
-        1
-        for event in copied_events
-        if (
-            _is_auth_event(event)
-            and _username(event) != ""
-        )
+    user_attempt_total = _sum_field(
+        copied_events,
+        "user_attempt",
     )
 
-    pass_attempt_total = sum(
-        1
-        for event in copied_events
-        if (
-            _is_auth_event(event)
-            and (
-                "password" in event
-                or "pass" in event
-                or "credential" in event
-            )
-        )
+    pass_attempt_total = _sum_field(
+        copied_events,
+        "pass_attempt",
     )
 
-    command_count_total = sum(
-        1
-        for event in copied_events
-        if _is_command_event(event)
+    command_count_total = _sum_field(
+        copied_events,
+        "command_count",
     )
 
-    anonymous_event_count = sum(
-        1
-        for event in copied_events
-        if _username(event) in {
-            "",
-            "anonymous",
-            "anon",
-            "null",
-            "none",
-        }
+    anonymous_event_count = _sum_field(
+        copied_events,
+        "anonymous",
     )
 
     duration = session.get("duration_seconds", 0.0)

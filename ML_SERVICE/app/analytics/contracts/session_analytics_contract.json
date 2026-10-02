@@ -1,11 +1,11 @@
 {
   "name": "SESSION_ANALYTICS_CONTRACT",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "status": "ACTIVE",
-  "purpose": "Expose validated production session-assignment results to the analytics/dashboard boundary without changing ML assignments.",
+  "purpose": "Expose validated production session-level ML results to the analytics/dashboard boundary without changing ML assignments.",
 
   "source": {
-    "stage": "STEP_9F_SESSION_ASSIGNMENT_OUTPUT",
+    "stage": "PRODUCTION_ML_OUTPUT",
     "input_grain": "SESSION",
     "session_identity": "reconstructed_session_id"
   },
@@ -18,60 +18,86 @@
   ],
 
   "optional_input_fields": [
+    "distance",
     "event_count",
     "session_start",
     "session_end",
+    "session_duration_seconds",
+    "honeypot",
+    "protocol",
+    "source_ip",
+    "country",
+    "country_code",
+    "attack_type",
+    "mitre_technique",
+    "attack_stage",
+    "severity",
     "source"
   ],
 
-  "allowed_cluster_values": [
+  "allowed_assignment_status_values": [
     "EXISTING_PRODUCTION_CLUSTER",
     "NOISE"
   ],
 
+  "production_cluster_semantics": {
+    "algorithm": "DBSCAN",
+    "cluster_id_type": "integer",
+    "cluster_id_range": "0..37 or -1 for noise",
+    "noise_cluster_id": -1,
+    "noise_is_valid_assignment": true
+  },
+
   "transformation": {
     "type": "VALIDATED_SESSION_HANDOFF",
     "rules": [
-      "Accept one validated assignment record per session.",
-      "Preserve all required assignment fields unchanged.",
+      "Accept one validated ML result per session.",
+      "Preserve all required fields unchanged.",
       "Preserve optional session metadata when present.",
-      "Do not create clusters, reassign clusters, retrain, infer from IP only, or fabricate values."
+      "Do not create clusters, reassign clusters, retrain, infer from IP only, or fabricate values.",
+      "Do not mutate input records."
     ]
   },
 
   "output": {
     "grain": "SESSION",
-    "fields": [
+    "required_fields": [
       "reconstructed_session_id",
       "production_cluster_assignment",
       "assignment_status",
-      "feature_validation_status",
+      "feature_validation_status"
+    ],
+    "optional_fields": [
+      "distance",
       "event_count",
       "session_start",
       "session_end",
+      "session_duration_seconds",
+      "honeypot",
+      "protocol",
+      "source_ip",
+      "country",
+      "country_code",
+      "attack_type",
+      "mitre_technique",
+      "attack_stage",
+      "severity",
       "source"
     ],
     "one_output_row_per_input_session": true
   },
 
   "null_rules": {
-    "required_fields": "must_not_be_null",
+    "required_fields": "must_not_be_null_or_empty",
     "optional_fields": "may_be_null_or_absent",
     "optional_fields_are_not_fabricated": true
-  },
-
-  "assignment_boundary": {
-    "adapter_may_assign_clusters": false,
-    "adapter_may_modify_assignments": false,
-    "adapter_may_create_clusters": false,
-    "adapter_may_retrain_model": false,
-    "adapter_may_infer_from_ip_only": false
   },
 
   "validation_tests": [
     "required fields are present",
     "required fields are non-null",
-    "cluster assignment uses an allowed value",
+    "assignment_status uses an allowed value",
+    "production_cluster_assignment is an integer",
     "input grain is session-level",
     "one output row is produced per input session",
     "optional fields are preserved without fabrication",

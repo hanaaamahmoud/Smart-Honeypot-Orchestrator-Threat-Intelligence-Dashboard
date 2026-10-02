@@ -43,3 +43,47 @@ elk/logs/tanner/
 # Optional generic patterns
 *.sqlite
 node.lock
+
+# ============================================================
+# ML_SERVICE Backups (outside ML_SERVICE, inside repo)
+# ============================================================
+ML_SERVICE_BEFORE_DOCKER_FIX_*/
+ML_SERVICE_STABLE_*/
+ML_SERVICE_*_BACKUP_*/
+*.tar.gz
+
+# ============================================================
+# Large data folders
+# ============================================================
+ML_SERVICE/analytics_output/
+ML_SERVICE/**/session_replay_details/
+
+# ============================================================
+# Backend Handoff — data ignored, docs tracked
+# ============================================================
+ML_SERVICE/backend_handoff/**/*.json
+ML_SERVICE/backend_handoff/**/*.csv
+ML_SERVICE/backend_handoff/**/*.tar.gz
+ML_SERVICE/backend_handoff/**/*.zip
+ML_SERVICE/backend_handoff/**/details/
+ML_SERVICE/backend_handoff/**/*_details/
+ML_SERVICE/backend_handoff/ml_analytics_files/
+
+# Allow documentation
+!ML_SERVICE/backend_handoff/README.md
+!ML_SERVICE/backend_handoff/*/README.md
+!ML_SERVICE/backend_handoff/*/schema*.json
+!ML_SERVICE/backend_handoff/frontend_guide/
+!ML_SERVICE/backend_handoff/frontend_guide/**
+
+# ============================================================
+# .gitignore backups
+# ============================================================
+.gitignore.backup_*
+**/.gitignore.backup_*
+
+# ============================================================
+# Docker Compose backups
+# ============================================================
+docker-compose.yml.backup_*
+**/docker-compose.yml.backup_*

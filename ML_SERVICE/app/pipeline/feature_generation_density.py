@@ -3,15 +3,22 @@ D3.5 — Log / Density Feature Generation
 
 Generates log-transformed and density behavioral features.
 
-Features:
-    session_duration_log1p
-    event_count_log1p
-    inter_event_gap_mean_log1p
-    inter_event_gap_max_log1p
-    event_density
-    command_density
-    auth_attempt_density
-    credential_attempt_density
+COLAB PARITY NOTE
+-----------------
+Mirrors the original Colab Step 5B-2 exactly:
+
+    session_duration_log1p          = log1p(session_duration_recomputed_seconds)
+    event_count_log1p               = log1p(event_count)
+    inter_event_gap_mean_log1p      = log1p(inter_event_gap_mean)
+    inter_event_gap_max_log1p       = log1p(inter_event_gap_max)
+
+    event_density                   = event_count / duration      (0 if duration <= 0)
+    command_density                 = command_count_total / event_count   (0 if event_count <= 0)
+    auth_attempt_density            = auth_attempt_total / event_count   (0 if event_count <= 0)
+    credential_attempt_density      = (user_attempt_total + pass_attempt_total) / event_count  (0 if event_count <= 0)
+
+Note: Only ``event_density`` divides by duration. The other
+densities divide by ``event_count``.
 
 This module does NOT:
 - scale features
@@ -65,11 +72,15 @@ def _log1p_non_negative(
     return float(result)
 
 
-def _density(
+def _density_over_duration(
     numerator: Any,
     duration: Any,
     numerator_name: str,
 ) -> float:
+    """
+    Numerator / duration, with 0.0 when duration <= 0.
+    Used for ``event_density`` only.
+    """
     numerator_value = _safe_float(
         numerator,
         numerator_name,
@@ -90,12 +101,53 @@ def _density(
             "session_duration_seconds cannot be negative"
         )
 
-    # A zero-duration session cannot have a meaningful
-    # rate/density. Contract policy: return 0.0.
     if duration_value == 0.0:
         return 0.0
 
     result = numerator_value / duration_value
+
+    if not isfinite(result):
+        raise ValueError(
+            f"{numerator_name} density is non-finite"
+        )
+
+    return float(result)
+
+
+def _density_over_event_count(
+    numerator: Any,
+    event_count: Any,
+    numerator_name: str,
+) -> float:
+    """
+    Numerator / event_count, with 0.0 when event_count <= 0.
+    Used for command / auth / credential densities
+    (Colab parity).
+    """
+    numerator_value = _safe_float(
+        numerator,
+        numerator_name,
+    )
+
+    event_count_value = _safe_float(
+        event_count,
+        "event_count",
+    )
+
+    if numerator_value < 0:
+        raise ValueError(
+            f"{numerator_name} cannot be negative"
+        )
+
+    if event_count_value < 0:
+        raise ValueError(
+            "event_count cannot be negative"
+        )
+
+    if event_count_value == 0.0:
+        return 0.0
+
+    result = numerator_value / event_count_value
 
     if not isfinite(result):
         raise ValueError(
@@ -174,12 +226,18 @@ def generate_density_features(
         0,
     )
 
-    credential_attempt_total = copied_session.get(
-        "credential_attempt_total",
-        copied_session.get(
-            "user_attempt_total",
-            0,
-        ),
+    user_attempt_total = copied_session.get(
+        "user_attempt_total",
+        0,
+    )
+
+    pass_attempt_total = copied_session.get(
+        "pass_attempt_total",
+        0,
+    )
+
+    credential_attempt_total = (
+        user_attempt_total + pass_attempt_total
     )
 
     return {
@@ -203,27 +261,30 @@ def generate_density_features(
             "inter_event_gap_max",
         ),
 
-        "event_density": _density(
+        # Colab parity: event_density divides by duration.
+        "event_density": _density_over_duration(
             event_count,
             duration,
             "event_count",
         ),
 
-        "command_density": _density(
+        # Colab parity: the three densities below divide by
+        # event_count, not duration.
+        "command_density": _density_over_event_count(
             command_count,
-            duration,
+            event_count,
             "command_count_total",
         ),
 
-        "auth_attempt_density": _density(
+        "auth_attempt_density": _density_over_event_count(
             auth_attempt_total,
-            duration,
+            event_count,
             "auth_attempt_total",
         ),
 
-        "credential_attempt_density": _density(
+        "credential_attempt_density": _density_over_event_count(
             credential_attempt_total,
-            duration,
+            event_count,
             "credential_attempt_total",
         ),
     }

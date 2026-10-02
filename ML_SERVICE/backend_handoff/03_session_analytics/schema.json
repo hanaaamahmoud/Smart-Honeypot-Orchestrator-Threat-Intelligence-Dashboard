@@ -1,0 +1,58 @@
+{
+"$schema": "http://json-schema.org/draft-07/schema#",
+"title": "Session Analytics Handoff",
+"type": "object",
+"required": ["contract_name", "contract_version", "generated_at", "summary", "distributions"],
+"properties": {
+"contract_name": { "type": "string" },
+"contract_version": { "type": "string" },
+"generated_at": { "type": "string" },
+"analytics_layer": { "type": "string" },
+"session_count": { "type": "integer", "minimum": 0 },
+"summary": {
+"type": "object",
+"required": ["total_sessions", "total_events", "total_clusters_used", "assigned_sessions", "noise_sessions", "avg_events_per_session", "unique_source_ips", "unique_countries"],
+"properties": {
+"total_sessions": { "type": "integer" },
+"total_events": { "type": "integer" },
+"total_clusters_used": { "type": "integer" },
+"assigned_sessions": { "type": "integer" },
+"noise_sessions": { "type": "integer" },
+"avg_events_per_session": { "type": "number" },
+"avg_session_duration_seconds": { "type": "number" },
+"median_session_duration_seconds": { "type": "number" },
+"min_session_duration_seconds": { "type": "number" },
+"max_session_duration_seconds": { "type": "number" },
+"unique_source_ips": { "type": "integer" },
+"unique_countries": { "type": "integer" },
+"percentiles": {
+"type": "object",
+"properties": {
+"p50_session_duration_seconds": { "type": "number" },
+"p90_session_duration_seconds": { "type": "number" },
+"p95_session_duration_seconds": { "type": "number" },
+"p99_session_duration_seconds": { "type": "number" }
+}
+}
+}
+},
+"distributions": {
+"type": "object",
+"properties": {
+"by_honeypot": { "type": "array" },
+"by_protocol": { "type": "array" },
+"by_country": { "type": "array" },
+"by_attack_type": { "type": "array" },
+"by_mitre_technique": { "type": "array" },
+"by_attack_stage": { "type": "array" },
+"by_severity": { "type": "array" },
+"by_cluster": { "type": "array" },
+"by_event_count_bucket": { "type": "array" },
+"by_duration_bucket": { "type": "array" }
+}
+},
+"critical_alerts": { "type": "array" },
+"critical_alerts_count": { "type": "integer" },
+"top_source_ips": { "type": "array" }
+}
+}

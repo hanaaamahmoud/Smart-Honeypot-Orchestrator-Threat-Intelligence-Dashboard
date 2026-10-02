@@ -147,6 +147,35 @@ _FIELD_ALIASES = {
         "process.command_line",
         "process.command",
     ),
+
+    "auth_attempt": (
+        "auth_attempt",
+    ),
+
+    "user_attempt": (
+        "user_attempt",
+    ),
+
+    "pass_attempt": (
+        "pass_attempt",
+    ),
+
+    "anonymous": (
+        "anonymous",
+    ),
+
+    "command_count": (
+        "command_count",
+    ),
+
+    "source_port": (
+        "source_port",
+    ),
+
+    "password": (
+        "password",
+    ),
+
 }
 
 
@@ -413,6 +442,27 @@ def normalize_event(
         ),
         "command": _clean_string(
             _first_present(event, _FIELD_ALIASES["command"])
+        ),
+        "auth_attempt": _clean_number(
+            _first_present(event, _FIELD_ALIASES["auth_attempt"])
+        ),
+        "user_attempt": _clean_number(
+            _first_present(event, _FIELD_ALIASES["user_attempt"])
+        ),
+        "pass_attempt": _clean_number(
+            _first_present(event, _FIELD_ALIASES["pass_attempt"])
+        ),
+        "anonymous": _clean_number(
+            _first_present(event, _FIELD_ALIASES["anonymous"])
+        ),
+        "command_count": _clean_number(
+            _first_present(event, _FIELD_ALIASES["command_count"])
+        ),
+        "source_port": _clean_number(
+            _first_present(event, _FIELD_ALIASES["source_port"])
+        ),
+        "password": _clean_string(
+            _first_present(event, _FIELD_ALIASES["password"])
         ),
         "raw": raw,
     }

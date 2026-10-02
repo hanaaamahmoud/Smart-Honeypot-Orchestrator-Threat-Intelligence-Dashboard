@@ -1,0 +1,32 @@
+{
+"$schema": "http://json-schema.org/draft-07/schema#",
+"title": "MITRE Analytics Handoff",
+"type": "object",
+"required": ["contract_name", "contract_version", "generated_at", "analytics_layer"],
+"properties": {
+"contract_name": { "type": "string" },
+"contract_version": { "type": "string" },
+"generated_at": { "type": "string" },
+"analytics_layer": { "type": "string" },
+"mitre_technique_distribution": { "type": "array" },
+"mitre_tactics_distribution": { "type": "array" },
+"attack_type_distribution": { "type": "array" },
+"attack_stage_distribution": { "type": "array" },
+"session_mitre_relationships": { "type": "array" },
+"mitre_activity_over_time": { "type": "array" },
+"summary": {
+"type": "object",
+"required": ["total_records", "records_with_mitre", "unique_techniques", "unique_tactics"],
+"properties": {
+"total_records": { "type": "integer" },
+"records_with_mitre": { "type": "integer" },
+"records_with_attack_type": { "type": "integer" },
+"records_with_attack_stage": { "type": "integer" },
+"unique_techniques": { "type": "integer" },
+"unique_tactics": { "type": "integer" },
+"unique_attack_types": { "type": "integer" },
+"unique_attack_stages": { "type": "integer" }
+}
+}
+}
+}

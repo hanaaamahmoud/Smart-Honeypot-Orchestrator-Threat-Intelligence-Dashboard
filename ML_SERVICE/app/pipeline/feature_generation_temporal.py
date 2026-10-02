@@ -1,31 +1,27 @@
 """
 D3.4 — Temporal / Rate Feature Generation
 
-Generates temporal and rate-based behavioral features.
+COLAB PARITY NOTE
+-----------------
+``auth_attempt_rate`` and ``command_rate`` are now computed as:
 
-Features:
-- inter_event_gap_mean
-- inter_event_gap_min
-- inter_event_gap_max
-- session_duration_recomputed_seconds
-- events_per_second
-- auth_attempt_rate
-- command_rate
-- session_start_hour
-- session_start_dayofweek
-- session_start_dayofmonth
+    auth_attempt_rate = auth_attempt_total / duration
+    command_rate      = command_count_total / duration
 
-Assumptions:
-- D2 already reconstructed the session.
-- session["events"] are chronologically ordered.
-- D2 already provides session duration.
-- This module does not scale features.
-- This module does not mutate input.
+using the per-event ``auth_attempt`` and ``command_count`` counters
+directly (matching pandas aggregation in the original notebook),
+rather than counting events that match a heuristic predicate.
+
+This module does NOT:
+- scale features
+- cluster
+- modify input sessions
+- mutate input
 """
 
 from copy import deepcopy
 from datetime import datetime
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 
 def _parse_timestamp(value: Any) -> datetime:
@@ -48,38 +44,6 @@ def _parse_timestamp(value: Any) -> datetime:
         ) from exc
 
 
-def _event_type(event: Dict[str, Any]) -> str:
-    value = (
-        event.get("event_type")
-        or event.get("type")
-        or event.get("event")
-        or ""
-    )
-
-    return str(value).strip().lower()
-
-
-def _is_auth_event(event: Dict[str, Any]) -> bool:
-    event_type = _event_type(event)
-
-    return (
-        event_type == "auth"
-        or event_type == "authentication"
-        or "auth" in event_type
-        or "login" in event_type
-    )
-
-
-def _is_command_event(event: Dict[str, Any]) -> bool:
-    event_type = _event_type(event)
-
-    return (
-        event_type == "command"
-        or event_type == "cmd"
-        or "command" in event_type
-    )
-
-
 def _safe_rate(
     numerator: float,
     duration_seconds: float,
@@ -88,6 +52,28 @@ def _safe_rate(
         return 0.0
 
     return float(numerator / duration_seconds)
+
+
+def _sum_int_field(
+    events: List[Dict[str, Any]],
+    field_name: str,
+) -> int:
+    """
+    Sum an integer counter across all events.
+
+    Matches pandas ``groupby(...)[field].sum()`` semantics:
+    missing / None values contribute 0.
+    """
+    total = 0
+    for event in events:
+        value = event.get(field_name)
+        if value is None:
+            continue
+        try:
+            total += int(value)
+        except (TypeError, ValueError):
+            continue
+    return total
 
 
 def generate_temporal_features(
@@ -143,17 +129,9 @@ def generate_temporal_features(
     # Session start time features.
     session_start = timestamps[0]
 
-    session_start_hour = float(
-        session_start.hour
-    )
-
-    session_start_dayofweek = float(
-        session_start.weekday()
-    )
-
-    session_start_dayofmonth = float(
-        session_start.day
-    )
+    session_start_hour = float(session_start.hour)
+    session_start_dayofweek = float(session_start.weekday())
+    session_start_dayofmonth = float(session_start.day)
 
     # Inter-event gaps.
     gaps = [
@@ -168,19 +146,18 @@ def generate_temporal_features(
         inter_event_gap_mean = float(
             sum(gaps) / len(gaps)
         )
-        inter_event_gap_min = float(min(gaps))
+        # Frozen training compatibility:
+        # inter_event_gap_min was constant 0.0 in training.
+        inter_event_gap_min = 0.0
         inter_event_gap_max = float(max(gaps))
     else:
-        # A single-event session has no inter-event gap.
         inter_event_gap_mean = 0.0
         inter_event_gap_min = 0.0
         inter_event_gap_max = 0.0
 
     # Recomputed duration from event timestamps.
     session_duration_recomputed_seconds = float(
-        (
-            timestamps[-1] - timestamps[0]
-        ).total_seconds()
+        (timestamps[-1] - timestamps[0]).total_seconds()
     )
 
     if session_duration_recomputed_seconds < 0:
@@ -188,16 +165,20 @@ def generate_temporal_features(
             "Recomputed session duration cannot be negative"
         )
 
-    auth_count = sum(
-        1
-        for event in copied_events
-        if _is_auth_event(event)
+    # ----------------------------------------------------------
+    # Colab parity:
+    # auth_attempt_rate uses auth_attempt_total (per-event counter)
+    # command_rate uses command_count_total (per-event counter)
+    # rather than counting predicate-matching events.
+    # ----------------------------------------------------------
+    auth_attempt_total = _sum_int_field(
+        copied_events,
+        "auth_attempt",
     )
 
-    command_count = sum(
-        1
-        for event in copied_events
-        if _is_command_event(event)
+    command_count_total = _sum_int_field(
+        copied_events,
+        "command_count",
     )
 
     events_per_second = _safe_rate(
@@ -206,12 +187,12 @@ def generate_temporal_features(
     )
 
     auth_attempt_rate = _safe_rate(
-        auth_count,
+        auth_attempt_total,
         session_duration_recomputed_seconds,
     )
 
     command_rate = _safe_rate(
-        command_count,
+        command_count_total,
         session_duration_recomputed_seconds,
     )
 

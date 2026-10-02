@@ -5,6 +5,17 @@ Generates:
 - unique cardinality features
 - diversity ratio features
 
+COLAB PARITY NOTE
+-----------------
+This module now mirrors the original Colab Step 5B-2:
+
+    unique_X       = nunique(X)
+    X_diversity    = unique_X / event_count     (0.0 if event_count <= 0)
+
+No forced values (e.g. unique_destinations = 1) and no caps are
+applied. This is the exact behaviour of the verified Step 5 output
+(session_behavioral_features_v4.csv).
+
 This module does NOT:
 - scale features
 - cluster
@@ -51,6 +62,13 @@ def _diversity(
     unique_count: int,
     event_count: int,
 ) -> float:
+    """
+    Colab parity:
+        diversity = unique_count / event_count
+
+    If event_count <= 0, return 0.0 (matching numpy.where in the
+    original notebook).
+    """
     if event_count <= 0:
         return 0.0
 
@@ -162,7 +180,7 @@ def generate_diversity_features(
     )
 
     return {
-        # Cardinality features
+        # Cardinality features (Colab parity: no forced values)
         "unique_destinations": float(
             unique_destinations
         ),
@@ -199,7 +217,7 @@ def generate_diversity_features(
             unique_cities
         ),
 
-        # Diversity features
+        # Diversity features (Colab parity: direct /event_count)
         "destination_diversity": _diversity(
             unique_destinations,
             event_count,

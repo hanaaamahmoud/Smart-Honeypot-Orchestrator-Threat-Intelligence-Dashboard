@@ -1,0 +1,97 @@
+{
+  "contract_name": "MITRE_ANALYTICS",
+  "version": "2.0.0",
+  "status": "ACTIVE",
+  "grain": "ANALYTICS",
+  "purpose": "MITRE ATT&CK oriented analytics derived from ML event/session output without fabricating MITRE values.",
+  "input": {
+    "source": "ML_SERVICE_OUTPUT",
+    "grain": "SESSION",
+    "required_fields": [
+      "timestamp",
+      "session_id"
+    ],
+    "optional_fields": [
+      "attack_type",
+      "mitre_technique",
+      "attack_stage",
+      "severity",
+      "source_ip"
+    ]
+  },
+  "primary_analytics_dimension": "mitre_technique",
+  "secondary_dimensions": [
+    "attack_type",
+    "attack_stage",
+    "session_id",
+    "timestamp",
+    "severity"
+  ],
+  "output": {
+    "grain": "MITRE_ANALYTICS",
+    "required_fields": [
+      "analytics_layer",
+      "mitre_technique_distribution",
+      "mitre_tactics_distribution",
+      "attack_type_distribution",
+      "attack_stage_distribution",
+      "session_mitre_relationships",
+      "mitre_activity_over_time",
+      "summary"
+    ]
+  },
+  "null_empty_rules": {
+    "timestamp": {
+      "allowed": false,
+      "behavior": "MITRE activity records require a valid timestamp."
+    },
+    "session_id": {
+      "allowed": true,
+      "behavior": "Missing or empty session_id must remain missing and must not be fabricated."
+    },
+    "mitre_technique": {
+      "allowed": true,
+      "behavior": "MITRE technique may be NULL or empty. Empty values must not be fabricated into a technique category."
+    },
+    "attack_type": {
+      "allowed": true,
+      "behavior": "Attack type may be NULL or empty."
+    },
+    "attack_stage": {
+      "allowed": true,
+      "behavior": "Attack stage may be NULL or empty."
+    },
+    "severity": {
+      "allowed": true,
+      "behavior": "Missing severity must remain missing."
+    },
+    "output": {
+      "behavior": "Output analytics must only contain dimensions and relationships supported by valid source values. Empty source MITRE fields must not be converted into fabricated MITRE values."
+    }
+  },
+  "transformation_rules": [
+    "MITRE_ANALYTICS must be read-only with respect to source data.",
+    "MITRE_ANALYTICS must not modify source records.",
+    "MITRE_ANALYTICS must not generate ML features.",
+    "MITRE_ANALYTICS must not perform clustering.",
+    "MITRE_ANALYTICS must not alter production cluster assignments.",
+    "MITRE_ANALYTICS must not fabricate MITRE enrichment.",
+    "Only events/sessions with a valid, non-empty MITRE field contribute to the technique distribution."
+  ],
+  "independence": {
+    "depends_on_session_analytics": false,
+    "depends_on_cluster_analytics": false,
+    "depends_on_temporal_analytics": false,
+    "consumes_ml_output_directly": true
+  },
+  "mitre_tactics_mapping": {
+    "source": "MITRE ATT&CK Enterprise framework (public standard)",
+    "rule": "Tactic is derived from technique using the official MITRE mapping. Unknown techniques have tactic=null.",
+    "no_fabrication": true
+  },
+  "top_source_ips_per_technique": {
+    "max_per_technique": 5,
+    "sorted_by": "session_count_desc",
+    "source_field": "source_ip"
+  }
+}

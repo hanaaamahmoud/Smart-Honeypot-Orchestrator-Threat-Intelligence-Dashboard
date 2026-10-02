@@ -17,9 +17,17 @@ def load_cluster_behavior_mapping() -> dict[int, dict[str, Any]]:
     with MAPPING_PATH.open("r", encoding="utf-8") as handle:
         payload = json.load(handle)
 
+    # The frozen JSON stores entries under the "entries" key.
+    entries = payload.get("entries")
+    if entries is None:
+        raise ValueError(
+            "cluster_behavior_mapping.json is missing the "
+            "'entries' key."
+        )
+
     mapping: dict[int, dict[str, Any]] = {}
 
-    for entry in payload["clusters"]:
+    for entry in entries:
         cluster_id = int(entry["cluster_id"])
         mapping[cluster_id] = entry
 

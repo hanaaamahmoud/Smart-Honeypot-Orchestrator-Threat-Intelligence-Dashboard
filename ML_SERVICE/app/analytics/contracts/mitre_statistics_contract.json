@@ -1,0 +1,86 @@
+{
+  "contract_name": "MITRE_STATISTICS",
+  "version": "2.0.0",
+  "status": "ACTIVE",
+  "grain": "STATISTIC_RECORD",
+  "purpose": "Flat statistic records across OVERALL / CLUSTER / MITRE_TECHNIQUE / ATTACK_TYPE / ATTACK_STAGE dimensions, derived from validated ML session output without fabrication.",
+
+  "input": {
+    "source": "ML_SERVICE_OUTPUT",
+    "grain": "SESSION",
+    "required_fields": ["timestamp"],
+    "optional_fields": [
+      "session_id",
+      "event_count",
+      "production_cluster_assignment",
+      "mitre_technique",
+      "attack_type",
+      "attack_stage"
+    ]
+  },
+
+  "output": {
+    "grain": "STATISTIC_RECORD",
+    "required_fields": [
+      "statistic_type",
+      "statistic_key",
+      "session_count",
+      "event_count",
+      "session_share_pct"
+    ],
+    "optional_fields": [
+      "mapped_mitre_sessions",
+      "unmapped_mitre_sessions",
+      "mitre_technique",
+      "mitre_attack_name",
+      "attack_type",
+      "attack_stage"
+    ]
+  },
+
+  "statistic_types": [
+    "OVERALL",
+    "CLUSTER",
+    "MITRE_TECHNIQUE",
+    "ATTACK_TYPE",
+    "ATTACK_STAGE"
+  ],
+
+  "statistic_key_rules": {
+    "OVERALL": "ALL_SESSIONS",
+    "CLUSTER": "Cluster identifier (string)",
+    "MITRE_TECHNIQUE": "MITRE technique identifier",
+    "ATTACK_TYPE": "Attack type value",
+    "ATTACK_STAGE": "Attack stage value"
+  },
+
+  "session_share_pct_rule": {
+    "denominator": "total_sessions",
+    "formula": "session_count / total_sessions * 100",
+    "rounded_to": 2,
+    "empty_input_value": 0.0
+  },
+
+  "null_empty_rules": {
+    "required_output_fields": "must_not_be_empty",
+    "non_applicable_dimension_fields": "may_be_empty_string",
+    "no_fabrication": true
+  },
+
+  "transformation_rules": [
+    "Read-only with respect to source data.",
+    "No ML feature generation.",
+    "No clustering.",
+    "No modification of production cluster assignments.",
+    "No fabrication of MITRE, attack type, or attack stage values.",
+    "Empty source MITRE fields are excluded from technique/type/stage statistics.",
+    "Unknown values must not be invented."
+  ],
+
+  "independence": {
+    "depends_on_mitre_analytics": false,
+    "depends_on_cluster_analytics": false,
+    "depends_on_session_analytics": false,
+    "consumes_ml_output_directly": true
+  }
+}
