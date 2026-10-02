@@ -1,137 +1,343 @@
 # ML Service — Honeypot Threat Intelligence
 
 Production ML microservice for the Smart Honeypot Orchestrator.
-Reads events from Elasticsearch, runs the frozen production ML pipeline,
-and produces dashboard-ready analytics.
+It reads honeypot events from Elasticsearch, runs a frozen ML pipeline,
+and produces dashboard-ready analytics for the Backend team.
+
+The service is read-only with respect to Elasticsearch and never
+retrains the ML model. Every run produces the same output for the
+same input.
+
+---
+
+## What This Folder Contains
+
+`ML_SERVICE/` is the Python microservice that turns raw honeypot events
+into behavioral analytics for the dashboard.
+
+Input: Elasticsearch events (honeypot-events index)
+Output: 8 analytics layers (JSON) + Backend handoff package
+
+If you are a:
+
+- Backend developer     → start with docs/INTEGRATION_GUIDE.md
+- Frontend developer    → start with backend_handoff/frontend_guide/FRONTEND_HANDOFF.md
+- ML engineer           → start with docs/PIPELINE_FLOW.md
+- DevOps / deployer     → start with docs/RUNTIME_GUIDE.md
+- Reviewer             → start with docs/ARCHITECTURE.md
 
 ---
 
 ## Quick Start
 
-```bash
-# 1. Ensure ELK network exists
-docker network ls | grep elk_elk-net
+    # 1. Ensure the ELK network exists (created by the ELK stack)
+    docker network ls | grep elk_elk-net
 
-# 2. Start the service
-docker compose up -d
+    # 2. Build and start the service
+    docker compose up -d
 
-# 3. Verify
-curl http://localhost:8000/health
-curl http://localhost:8000/ready
-Expected: {"status":"ok"} and {"ready":true}.
+    # 3. Verify
+    curl http://localhost:8000/health
+    curl http://localhost:8000/ready
 
-What It Does
-text
-Elasticsearch  →  ML Pipeline  →  8 Analytics  →  Backend Handoff
-   (events)       (48 features)    (JSON files)      (dashboard)
-Reads events from Elasticsearch (honeypot-events index)
+Expected responses:
 
-Reconstructs sessions from raw events
+    {"status":"ok","service":"honeypot-ml-service"}
+    {"status":"ready","ready":true,...}
 
-Generates 48 behavioral features per session
+Interactive API documentation: http://localhost:8000/docs
 
-Assigns each session to a production cluster (frozen model)
+---
 
-Produces 8 analytics layers for the dashboard
+## Folder Map
 
-Packages everything for the Backend team
+Every folder and top-level file is described below. Anyone new to the
+repository should be able to identify a file's purpose within seconds.
 
-Folder Map
-Folder	Purpose
-app/	Source code (pipeline + analytics + API)
-app/pipeline/	ML pipeline stages (features, sessions)
-app/analytics/	8 analytics layers + contracts
-app/analytics/contracts/	JSON contract schemas
-models/	Frozen production model artifacts (read-only)
-tests/	Unit + contract tests
-docs/	Detailed documentation (see below)
-analytics_output/	Generated JSON files (gitignored)
-backend_handoff/	Package for Backend team (gitignored)
-run_ml_pipeline.sh	Run the full pipeline end-to-end
-package_handoff.sh	Package results into a ZIP for Backend
-Documentation
-Document	Description
-docs/PIPELINE_FLOW.md	Every pipeline step from ES to Backend
-docs/RUNTIME_GUIDE.md	How to run the pipeline + package results
-docs/INTEGRATION_GUIDE.md	ELK ↔ ML ↔ Backend wiring
-docs/ARCHITECTURE.md	Design decisions + golden rules
-API Endpoints
-Method	Endpoint	Description
-GET	/health	Health check
-GET	/ready	Readiness (model loaded?)
-GET	/model	Model metadata
-GET	/analytics	All 6 analytics layers
-GET	/session-replay	Session list (paginated)
-GET	/session-replay/{id}	Single session detail
-POST	/process	Run pipeline on custom payload
-Full API docs: http://localhost:8000/docs (Swagger UI).
+    ML_SERVICE/
+    |
+    |-- app/                    Source code — the entire service
+    |   |-- ingestion/          Elasticsearch reader (read-only)
+    |   |-- pipeline/           ML pipeline stages (features, sessions)
+    |   |-- analytics/          8 analytics layers
+    |   |-- analytics/contracts/ JSON contract schemas
+    |   |-- model_loader.py     Frozen model and scaler loader
+    |   |-- output_adapter.py   Canonical ML result formatter
+    |   |-- config.py           Configuration (env-driven)
+    |   |-- schemas.py          Pydantic models
+    |   `-- main.py             FastAPI entry point (all routes)
+    |
+    |-- tests/                  Automated tests
+    |   |-- unit/               Pure-function tests
+    |   |-- contract/           Schema and contract tests
+    |   `-- integration/        End-to-end tests
+    |
+    |-- models/                 Frozen production artifacts (read-only)
+    |   `-- frozen_production_reference/
+    |       |-- standard_scaler_params.json
+    |       |-- step7g_dbscan_behavioral_reference_centroids.csv
+    |       `-- (21 files protected by SHA-256)
+    |
+    |-- docs/                   Detailed documentation
+    |   |-- PIPELINE_FLOW.md    Pipeline step-by-step reference
+    |   |-- RUNTIME_GUIDE.md    How to run the pipeline
+    |   |-- INTEGRATION_GUIDE.md How to wire ML <-> Backend
+    |   |-- ARCHITECTURE.md     Design rules and integration models
+    |   `-- canonical_output_contract.md  Canonical ML output spec
+    |
+    |-- backend_handoff/        Per-analytics docs and data (for Backend)
+    |   |-- 01_cluster_analytics/
+    |   |-- 02_temporal_analytics/
+    |   |-- 03_session_analytics/
+    |   |-- 04_mitre_analytics/
+    |   |-- 05_mitre_statistics/
+    |   |-- 06_mitre_trends/
+    |   |-- 07_session_replay/
+    |   |-- frontend_guide/     Frontend integration guide
+    |   `-- ml_analytics_files/ Data files (gitignored)
+    |
+    |-- analytics_output/       Generated data (gitignored)
+    |   |-- 00_ml_output_full.json
+    |   |-- 02_cluster_analytics_enriched.json
+    |   |-- 03_temporal_analytics.json
+    |   |-- 04_session_analytics.json
+    |   |-- 05_mitre_analytics_lite.json
+    |   |-- 06_mitre_statistics.json
+    |   |-- 07_mitre_trends.json
+    |   |-- 08_session_replay_list.json
+    |   `-- session_replay_details/   367 session files
+    |
+    |-- scripts/                Runtime and diagnostic tools
+    |   |-- run_ml_pipeline.sh  Run pipeline end-to-end
+    |   |-- package_handoff.sh  Package results into a ZIP
+    |   |-- docker_preflight.sh Pre-deployment checks
+    |   `-- diagnostics/        Data inspection tools
+    |       |-- diagnose_pipeline.py
+    |       |-- diagnose_random.py
+    |       |-- diagnose_bad_sessions.py
+    |       `-- diagnose_distance_breakdown.py
+    |
+    |-- Dockerfile              Container image definition
+    |-- docker-compose.yml      Service, mounts, and network
+    |-- requirements.txt        Python dependencies
+    |-- pytest.ini              Test configuration
+    |-- .env.example            Environment variables template
+    |-- .dockerignore           Excluded from image build
+    |-- .gitignore              Excluded from Git
+    `-- README.md               This file
 
-Frozen Model Rules
-This service never modifies the ML model:
+---
 
-❌ No retraining
+## Top-Level File Reference
 
-❌ No DBSCAN fitting
+| File | Purpose |
+|---|---|
+| Dockerfile | Container image definition (python:3.11-slim) |
+| docker-compose.yml | Service definition, volume mounts, network |
+| requirements.txt | Python dependencies |
+| pytest.ini | Test framework configuration |
+| .env.example | Environment variable template |
+| .dockerignore | Files excluded from the Docker build |
+| .gitignore | Files excluded from Git (data, backups) |
+| README.md | Project overview (this file) |
 
-❌ No new cluster creation
+---
 
-❌ No cluster reassignment
+## Where to Find What
 
-✅ Read-only Elasticsearch access
+Use this table to locate any topic in a few seconds.
 
-✅ Frozen scaler + frozen centroids only
+| Goal | File or folder |
+|---|---|
+| Understand the whole pipeline | docs/PIPELINE_FLOW.md |
+| Run the pipeline | scripts/run_ml_pipeline.sh |
+| Send results to Backend | scripts/package_handoff.sh |
+| Integrate ML with Backend | docs/INTEGRATION_GUIDE.md |
+| Know the design rules | docs/ARCHITECTURE.md |
+| Field-level docs per analytics | backend_handoff/0X_*/README.md |
+| JSON schemas | backend_handoff/0X_*/schema*.json |
+| Frontend integration guide | backend_handoff/frontend_guide/FRONTEND_HANDOFF.md |
+| API routes | app/main.py |
+| Frozen model artifacts | models/frozen_production_reference/ |
+| Run tests | python -m pytest tests/ |
+| Inspect pipeline output | scripts/diagnostics/diagnose_pipeline.py |
+| Check cluster distances | scripts/diagnostics/diagnose_distance_breakdown.py |
+| Fix unusual sessions | scripts/diagnostics/diagnose_bad_sessions.py |
+| Random sample inspection | scripts/diagnostics/diagnose_random.py |
 
-✅ Nearest-centroid assignment only
+---
 
-The model artifacts live in models/frozen_production_reference/
-and are protected by SHA-256 verification.
+## Pipeline Overview
 
-Analytics Layers
-#	Layer	Output
-1	Cluster Analytics	29 clusters + behaviors
-2	Temporal Analytics	Timeline + periods
-3	Session Analytics	KPIs + alerts + distributions
-4	MITRE Analytics	Techniques + tactics + top IPs
-5	MITRE Statistics	Flat stats table (49 rows)
-6	MITRE Trends	Time-series per technique
-7	Session Replay	Session narratives + events
-8	Attacker IP Analytics	(deferred — needs public IPs)
+    Elasticsearch (honeypot-events)
+            |
+            v
+    ElasticsearchReader.read_events()              [app/ingestion/]
+            |
+            v
+    Input Adapter  ->  Canonical Adapter           [app/pipeline/]
+            |
+            v
+    Normalization  ->  Session Reconstruction
+            |
+            v
+    48-Feature Generation + Validation
+            |
+            v
+    Frozen Scaler  ->  Nearest Centroid
+            |
+            v
+    Canonical ML Output                            [app/output_adapter.py]
+            |
+            v
+    8 Analytics Layers                             [app/analytics/]
+            |
+            v
+    Backend Handoff Package                        [scripts/package_handoff.sh]
+
+Full reference: docs/PIPELINE_FLOW.md
+
+---
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | /health | Liveness check |
+| GET | /ready | Readiness (model loaded) |
+| GET | /model | Model metadata |
+| GET | /analytics | All analytics layers |
+| GET | /session-replay | Session list (lightweight) |
+| GET | /session-replay/{id} | Single session detail |
+| POST | /process | Run pipeline on a custom payload |
+
+Interactive docs: http://localhost:8000/docs
+
+---
+
+## Analytics Layers
+
+| # | Layer | File | Purpose |
+|---|---|---|---|
+| 1 | Cluster Analytics | cluster_analytics.py | 29 clusters and behaviors |
+| 2 | Temporal Analytics | temporal_analytics.py | Timeline and periods |
+| 3 | Session Analytics | session_analytics.py | KPIs, alerts, distributions |
+| 4 | MITRE Analytics | mitre_analytics.py | Techniques, tactics, top IPs |
+| 5 | MITRE Statistics | mitre_statistics.py | Flat stats table (49 rows) |
+| 6 | MITRE Trends | mitre_trends.py | Time-series per technique |
+| 7 | Session Replay | session_replay.py | Narratives and event timeline |
+| 8 | Attacker IP Analytics | attacker_ip_analytics.py | Deferred — needs public IPs |
+
 Each layer is independent and consumes the ML output directly.
+Field-level details: backend_handoff/0X_*/README.md
 
-Requirements
-Docker 20+
+---
 
-Docker network elk_elk-net (created by the ELK stack)
+## Service Guarantees
 
-Elasticsearch index honeypot-events (populated)
+This service is designed around strict invariants. Every change must
+preserve them.
 
-Python 3.11+ (only for local dev outside Docker)
+Read-only:
+- Elasticsearch access is read-only
+- Analytics layers never modify the ML output
+- The Backend never writes back to the ML service
 
-Local Development
-bash
-# Activate virtual environment
-source .venv/bin/activate
+Frozen model:
+- The scaler, centroids, and 48-feature contract are frozen
+- No retraining, no DBSCAN fitting, no new clusters
+- No cluster reassignment
+- Assignment is nearest-centroid only
 
-# Run tests
-python -m pytest tests/ -q
+No fabrication:
+- Missing values remain null
+- No defaults, no inference, no guessing
+- Every field either comes from the source data or is explicitly absent
 
-# Run the pipeline manually
-bash run_ml_pipeline.sh
+These rules apply to every stage of the pipeline. Any change that would
+violate them must be rejected or handled as a separate, explicit
+extension of the contract.
 
-# Package results for Backend
-bash package_handoff.sh
-Related Repositories
-Orchestrator — deployment & honeypot management
+The model artifacts live in models/frozen_production_reference/ and
+are protected by SHA-256 verification (frozen_reference_sha256.json).
 
-Backend — consumes ML analytics + serves the dashboard
+---
 
-ELK — Elasticsearch, Logstash, Kibana stack
+## Docker and Runtime
 
-honeypots — Cowrie, Tanner, Dionaea configurations
+Start the service:
 
-Contact
-ML Service Owner: Hanaa
+    docker compose up -d
 
-Backend Integration Lead: (fill)
+Mounted folders (Host <-> Container):
 
-Frontend Lead: (fill)
+    app/               <->  /app/app
+    analytics/         <->  /app/analytics
+    tests/             <->  /app/tests
+    models/            <->  /app/models
+    backend_handoff/   <->  /app/backend_handoff
+    analytics_output/  <->  /app/analytics_output
+    docs/              <->  /app/docs
+    scripts/           <->  /app/scripts
+
+After code changes:
+
+    docker restart honeypot-ml-service
+
+After docker-compose.yml or Dockerfile changes:
+
+    docker compose down && docker compose up -d
+
+Network: elk_elk-net (external, created by the ELK stack).
+
+Full details: docs/RUNTIME_GUIDE.md
+
+---
+
+## Local Development
+
+    # Activate virtual environment
+    source .venv/bin/activate
+
+    # Run all tests
+    python -m pytest tests/ -q
+
+    # Run pipeline manually
+    bash scripts/run_ml_pipeline.sh
+
+    # Package results for Backend
+    bash scripts/package_handoff.sh
+
+---
+
+## Documentation Index
+
+| Document | Description |
+|---|---|
+| docs/PIPELINE_FLOW.md | Every pipeline step from ES to Backend |
+| docs/RUNTIME_GUIDE.md | How to run the pipeline and package results |
+| docs/INTEGRATION_GUIDE.md | ELK <-> ML <-> Backend wiring (two modes) |
+| docs/ARCHITECTURE.md | Design decisions and golden rules |
+| docs/canonical_output_contract.md | Canonical ML output specification |
+| backend_handoff/README.md | Backend handoff overview |
+| backend_handoff/frontend_guide/FRONTEND_HANDOFF.md | Frontend integration guide |
+
+---
+
+## Requirements
+
+- Docker 20+
+- Docker network elk_elk-net (created by the ELK stack)
+- Elasticsearch index honeypot-events (populated)
+- Python 3.11+ (only for local development outside Docker)
+
+---
+
+## Related Repositories
+
+| Repository | Purpose |
+|---|---|
+| Orchestrator | Deployment and honeypot management |
+| Backend | Consumes ML analytics and serves the dashboard |
+| ELK | Elasticsearch, Logstash, Kibana stack |
+| honeypots | Cowrie, Tanner, Dionaea configurations |
