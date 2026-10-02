@@ -8,19 +8,39 @@ Operational and diagnostic scripts.
 
 | Script | Purpose | When to Run |
 |---|---|---|
-| run_ml_pipeline.sh | Run the full ML pipeline end-to-end | When new data in ES |
-| package_handoff.sh | Package results into a ZIP | After pipeline run |
-| docker_preflight.sh | Pre-deployment checks | Before docker compose up |
+| refresh_all.sh | Full refresh in one command | When new data arrives |
+| run_ml_pipeline.sh | Run the ML pipeline only | Pipeline stage |
+| package_handoff.sh | Package results into a ZIP | After pipeline |
+| docker_preflight.sh | Pre-deployment checks | Before compose up |
 
-### Typical Workflow
+---
 
-    # 1. Run pipeline
+## Quick Start — New Data Arrives
+
+    bash scripts/refresh_all.sh
+
+This one command does everything:
+
+1. Verifies Docker + Container
+2. Verifies Elasticsearch connectivity
+3. Runs the full pipeline
+4. Packages the ZIP
+5. Copies the ZIP to the Desktop
+
+When it finishes, the ZIP is ready to send to the Backend team.
+
+---
+
+## Manual Steps (if refresh_all is not used)
+
+    # 1. Run the pipeline
     bash scripts/run_ml_pipeline.sh
 
-    # 2. Package for Backend
+    # 2. Package the results
     bash scripts/package_handoff.sh
 
-    # 3. Send the ZIP to the Backend team
+    # 3. Copy the ZIP
+    docker cp honeypot-ml-service:/app/backend_handoff/ml_analytics_files.zip ~/Desktop/
 
 ---
 
