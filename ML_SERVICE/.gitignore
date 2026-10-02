@@ -186,3 +186,16 @@ analytics_output/**/*.json
 analytics_output/**/*.csv
 analytics_output/session_replay_details/
 !analytics_output/README.md
+
+# ============================================================
+# Backend Handoff — keep only README.md on GitHub
+# ============================================================
+backend_handoff/01_cluster_analytics/
+backend_handoff/02_temporal_analytics/
+backend_handoff/03_session_analytics/
+backend_handoff/04_mitre_analytics/
+backend_handoff/05_mitre_statistics/
+backend_handoff/06_mitre_trends/
+backend_handoff/07_session_replay/
+backend_handoff/frontend_guide/
+backend_handoff/ml_analytics_files/
