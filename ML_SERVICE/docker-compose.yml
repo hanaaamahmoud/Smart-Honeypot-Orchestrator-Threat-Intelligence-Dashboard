@@ -15,7 +15,7 @@ services:
       PYTHONUNBUFFERED: "1"
 
     volumes:
-      # ─── Core code (existing) ───
+      # ─── Core code ───
       - ./app:/app/app
       - ./analytics:/app/analytics
       - ./tests:/app/tests
@@ -27,15 +27,8 @@ services:
       - ./analytics_output:/app/analytics_output
       - ./docs:/app/docs
 
-      # ─── Runtime scripts ───
-      - ./run_ml_pipeline.sh:/app/run_ml_pipeline.sh
-      - ./package_handoff.sh:/app/package_handoff.sh
-
-      # ─── Diagnostic tools ───
-      - ./diagnose_bad_sessions.py:/app/diagnose_bad_sessions.py
-      - ./diagnose_distance_breakdown.py:/app/diagnose_distance_breakdown.py
-      - ./diagnose_pipeline.py:/app/diagnose_pipeline.py
-      - ./diagnose_random.py:/app/diagnose_random.py
+      # ─── Scripts (whole folder) ───
+      - ./scripts:/app/scripts
 
     healthcheck:
       test:
