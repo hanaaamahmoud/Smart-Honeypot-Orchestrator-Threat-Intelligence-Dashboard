@@ -29,7 +29,8 @@ services:
     volumes:
       - ./data/downloads:/home/cowrie/cowrie/dl
       - ./data/keys:/home/cowrie/cowrie/etc
-      - ./data/log:/home/cowrie/cowrie/log
+      - ../../../elk/logs/cowrie:/home/cowrie/cowrie/log
+      - ./data/cowrie.cfg:/home/cowrie/cowrie/cowrie.cfg
 
     read_only: true
 

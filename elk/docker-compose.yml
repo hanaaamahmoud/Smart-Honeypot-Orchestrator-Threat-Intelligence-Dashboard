@@ -21,6 +21,8 @@ services:
     container_name: logstash
     depends_on:
       - elasticsearch
+    environment:
+      - ABUSEIPDB_API_KEY= ${ABUSEIPDB_API_KEY}
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
       - logstashdata:/usr/share/logstash/data

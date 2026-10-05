@@ -56,7 +56,11 @@ from app.services.statistics_service import (
     get_top_attackers,
 )
 
-
+from app.services.live_service import (
+    get_live_kpis, get_by_honeypot, get_by_protocol,
+    get_by_severity, get_by_country, get_top_attackers,
+    get_by_mitre, get_timeline, get_recent_events, get_by_reputation
+)
 # ──────────────────────────────────────────
 # Rate Limiting
 # ──────────────────────────────────────────
@@ -592,3 +596,86 @@ def admin_only_route(current_user: User = Depends(require_roles(["admin"]))):
 @app.get("/api/analysis")
 def analysis_route(current_user: User = Depends(require_roles(["admin", "sub-admin", "analyst"]))):
     return {"success": True, "message": f"Analysis access granted for role: {current_user.role}"}
+
+
+# ___________________________________
+
+@app.get("/api/live/kpis")
+def live_kpis():
+    try:
+        return get_live_kpis()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/by-honeypot")
+def live_by_honeypot():
+    try:
+        return get_by_honeypot()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/by-protocol")
+def live_by_protocol():
+    try:
+        return get_by_protocol()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/by-severity")
+def live_by_severity():
+    try:
+        return get_by_severity()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/by-country")
+def live_by_country():
+    try:
+        return get_by_country()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/top-attackers")
+def live_top_attackers():
+    try:
+        return get_top_attackers()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/by-mitre")
+def live_by_mitre():
+    try:
+        return get_by_mitre()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+
+@app.get("/api/live/timeline")
+def live_timeline():
+    try:
+        return get_timeline()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/recent")
+def live_recent():
+    try:
+        return get_recent_events()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/live/by-reputation")
+def live_by_reputation():
+    try:
+        return get_by_reputation()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
