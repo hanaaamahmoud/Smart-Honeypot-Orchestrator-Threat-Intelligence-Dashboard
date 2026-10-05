@@ -61,6 +61,20 @@ from app.services.live_service import (
     get_by_severity, get_by_country, get_top_attackers,
     get_by_mitre, get_timeline, get_recent_events, get_by_reputation
 )
+
+from app.services.ml_service import (
+    get_clusters,
+    get_temporal,
+    get_session_summary,
+    get_alerts,
+    get_top_attackers,
+    get_mitre,
+    get_mitre_statistics,
+    get_mitre_trends,
+    get_replay_list,
+)
+from app.services.ml_service import load_replay_detail
+
 # ──────────────────────────────────────────
 # Rate Limiting
 # ──────────────────────────────────────────
@@ -679,3 +693,77 @@ def live_by_reputation():
         return get_by_reputation()
     except Exception as e:
         raise HTTPException(status_code=503, detail=str(e))
+
+
+#____________________________
+
+@app.get("/api/ml/temporal")
+def ml_temporal():
+    try:
+        return get_temporal()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/sessions/summary")
+def ml_session_summary():
+    try:
+        return get_session_summary()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/sessions/alerts")
+def ml_alerts():
+    try:
+        return get_alerts()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/sessions/top-attackers")
+def ml_top_attackers():
+    try:
+        return get_top_attackers()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/mitre")
+def ml_mitre():
+    try:
+        return get_mitre()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/mitre/statistics")
+def ml_mitre_statistics():
+    try:
+        return get_mitre_statistics()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/mitre/trends")
+def ml_mitre_trends():
+    try:
+        return get_mitre_trends()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/session-replay")
+def ml_session_replay_list():
+    try:
+        return get_replay_list()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
+
+@app.get("/api/ml/session-replay/{session_id}")
+def ml_session_replay_detail(session_id: str):
+    try:
+        return load_replay_detail(session_id)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="Session replay not found")

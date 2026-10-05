@@ -18,6 +18,9 @@ elk/logstash/data/
 # Logs
 *.log
 
+# Data 
+Backend/app/data/ml_analytics/
+
 # Python
 __pycache__/
 *.py[cod]
