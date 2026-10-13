@@ -697,6 +697,14 @@ def live_by_reputation():
 
 #____________________________
 
+
+@app.get("/api/ml/clusters")
+def ml_clusters():
+    try:
+        return get_clusters()
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=str(e))
+
 @app.get("/api/ml/temporal")
 def ml_temporal():
     try:
