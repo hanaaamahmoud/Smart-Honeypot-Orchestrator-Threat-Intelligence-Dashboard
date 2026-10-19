@@ -1,0 +1,202 @@
+.honeypot-distribution {
+  width: 100%;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  padding: 20px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-xl);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--color-surface),
+      var(--color-bg-main)
+    );
+
+  box-shadow: var(--shadow-md);
+
+  backdrop-filter: blur(12px);
+
+  overflow: hidden;
+}
+
+.honeypot-distribution__header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 100%;
+
+  min-width: 0;
+
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.honeypot-distribution__label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-info-light);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+}
+
+.honeypot-distribution__header h3 {
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.honeypot-distribution__total {
+  flex-shrink: 0;
+
+  padding: 6px 10px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-pill);
+
+  background: var(--color-surface-soft);
+
+  color: var(--color-text-secondary);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.honeypot-distribution__list {
+  display: grid;
+
+  width: 100%;
+
+  min-width: 0;
+
+  gap: 20px;
+}
+
+.honeypot-distribution__item {
+  width: 100%;
+
+  min-width: 0;
+}
+
+.honeypot-distribution__top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  min-width: 0;
+
+  gap: 16px;
+
+  margin-bottom: 8px;
+}
+
+.honeypot-distribution__name {
+  min-width: 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.honeypot-distribution__value {
+  flex-shrink: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.honeypot-distribution__bar {
+  width: 100%;
+
+  height: 8px;
+
+  overflow: hidden;
+
+  border-radius: var(--radius-pill);
+
+  background: var(--color-primary-soft);
+}
+
+.honeypot-distribution__bar-fill {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: var(--color-primary);
+
+  box-shadow: var(--shadow-primary);
+
+  transition: width 0.4s ease;
+}
+
+.honeypot-distribution__bottom {
+  margin-top: 6px;
+}
+
+.honeypot-distribution__bottom span {
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+}
+
+.honeypot-distribution__empty {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  min-height: 100px;
+
+  box-sizing: border-box;
+
+  border: 1px dashed var(--color-border-strong);
+
+  border-radius: var(--radius-lg);
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .honeypot-distribution {
+    padding: 16px;
+  }
+
+  .honeypot-distribution__header {
+    flex-direction: column;
+  }
+
+  .honeypot-distribution__total {
+    align-self: flex-start;
+  }
+}

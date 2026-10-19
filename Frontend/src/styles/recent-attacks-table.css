@@ -1,0 +1,276 @@
+.dashboard-table-card {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--color-surface),
+      var(--color-bg-main)
+    );
+
+  backdrop-filter: blur(14px);
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.dashboard-table-card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+/*    =
+   Table Header
+   = */
+
+.table-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 22px 24px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-info-light);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.table-title {
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 18px;
+  font-weight: 650;
+
+  letter-spacing: -0.3px;
+}
+
+.table-count {
+  flex-shrink: 0;
+
+  padding: 6px 10px;
+
+  border-radius: var(--radius-pill);
+
+  background: var(--color-info-soft);
+
+  border: 1px solid var(--color-border-strong);
+
+  color: var(--color-info-light);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/*    =
+   Table Wrapper
+   = */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    var(--color-info)
+    transparent;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--color-info);
+  border-radius: var(--radius-pill);
+}
+
+/*    =
+   Table
+   = */
+
+.attacks-table {
+  width: 100%;
+  min-width: 800px;
+
+  border-collapse: collapse;
+}
+
+.attacks-table th,
+.attacks-table td {
+  padding: 14px 20px;
+
+  text-align: left;
+
+  border-top: 1px solid var(--color-border);
+
+  white-space: nowrap;
+}
+
+.attacks-table th {
+  background: var(--color-surface-soft);
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.attacks-table td {
+  color: var(--color-text-secondary);
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.attacks-table tbody tr {
+  transition:
+    background var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.attacks-table tbody tr:hover {
+  background: var(--color-info-soft);
+}
+
+/*    =
+   Source IP
+   = */
+
+.source-ip {
+  color: var(--color-info-light);
+
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    Consolas,
+    monospace;
+
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/*    =
+   Attack Status
+   = */
+
+.attack-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px 9px;
+
+  border-radius: var(--radius-pill);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: capitalize;
+}
+
+/* Failed */
+
+.attack-status-failed {
+  background: var(--color-danger-soft);
+
+  color: var(--color-danger-light);
+
+  border: 1px solid var(--color-danger);
+}
+
+/* Detected */
+
+.attack-status-detected {
+  background: var(--color-info-soft);
+
+  color: var(--color-info-light);
+
+  border: 1px solid var(--color-info);
+}
+
+/*    =
+   Empty State
+   = */
+
+.attacks-table-empty {
+  padding: 42px 24px;
+
+  text-align: center;
+
+  color: var(--color-text-muted);
+
+  font-size: 12px;
+}
+
+/*    =
+   Responsive
+   = */
+
+@media (max-width: 768px) {
+  .table-header {
+    padding: 18px;
+  }
+
+  .attacks-table th,
+  .attacks-table td {
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-header {
+    align-items: flex-start;
+
+    gap: 10px;
+
+    padding: 16px;
+  }
+
+  .table-title {
+    font-size: 16px;
+  }
+
+  .table-label {
+    font-size: 9px;
+  }
+
+  .table-count {
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+}

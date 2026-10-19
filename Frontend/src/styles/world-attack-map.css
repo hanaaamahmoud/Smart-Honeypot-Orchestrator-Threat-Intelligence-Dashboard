@@ -1,0 +1,192 @@
+.world-attack-map {
+  width: 100%;
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(14, 165, 233, 0.07),
+      transparent 55%
+    ),
+    rgba(15, 23, 42, 0.72);
+
+  backdrop-filter: blur(12px);
+}
+
+.world-attack-map__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+  padding: 22px 24px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.world-attack-map__eyebrow {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-info);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.world-attack-map__title {
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.world-attack-map__legend {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 11px;
+}
+
+.world-attack-map__legend-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--color-danger);
+
+  box-shadow:
+    0 0 8px rgba(239, 68, 68, 0.8);
+}
+
+.world-attack-map__body {
+  width: 100%;
+  padding: 12px 18px 4px;
+
+  overflow: hidden;
+}
+
+.world-attack-map__svg {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  min-height: 300px;
+}
+
+.world-map-country {
+  fill: rgba(51, 65, 85, 0.55);
+
+  stroke: rgba(148, 163, 184, 0.16);
+
+  stroke-width: 0.6;
+
+  transition:
+    fill 0.25s ease,
+    stroke 0.25s ease;
+}
+
+.world-map-country:hover {
+  fill: rgba(71, 85, 105, 0.8);
+  stroke: rgba(56, 189, 248, 0.25);
+}
+
+.world-map-origin {
+  cursor: pointer;
+}
+
+.world-map-marker-pulse {
+  fill: rgba(239, 68, 68, 0.12);
+
+  stroke: rgba(239, 68, 68, 0.35);
+
+  animation: attack-marker-pulse 2s ease-out infinite;
+}
+
+.world-map-marker {
+  fill: var(--color-danger);
+
+  stroke: #fecaca;
+
+  stroke-width: 1.5;
+
+  filter:
+    drop-shadow(
+      0 0 5px rgba(239, 68, 68, 0.9)
+    );
+}
+
+.world-attack-map__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 14px 24px 18px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+@keyframes attack-marker-pulse {
+  0% {
+    opacity: 0.8;
+    transform: scale(0.8);
+    transform-origin: center;
+  }
+
+  70% {
+    opacity: 0;
+    transform: scale(1.8);
+    transform-origin: center;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .world-attack-map__header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 18px;
+  }
+
+  .world-attack-map__body {
+    padding: 8px;
+  }
+
+  .world-attack-map__svg {
+    min-height: 220px;
+  }
+
+  .world-attack-map__footer {
+    align-items: flex-start;
+    flex-direction: column;
+
+    padding: 12px 18px 16px;
+  }
+}
