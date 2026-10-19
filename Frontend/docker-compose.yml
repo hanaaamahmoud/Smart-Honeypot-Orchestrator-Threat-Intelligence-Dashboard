@@ -1,0 +1,18 @@
+services:
+  smart-honeypot-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        VITE_API_BASE_URL: /backend
+        VITE_WS_URL: /backend/ws
+    container_name: smart-honeypot-frontend
+    ports:
+      - "3000:80"
+    environment:
+      # Default: FastAPI runs on the host at localhost:8000.
+      # Override to backend:8000 if the backend container is on the same Docker network.
+      BACKEND_UPSTREAM: ${BACKEND_UPSTREAM:-host.docker.internal:8000}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped

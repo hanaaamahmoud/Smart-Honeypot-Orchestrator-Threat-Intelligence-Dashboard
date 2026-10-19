@@ -1,0 +1,146 @@
+.live-attack-card {
+  width: 100%;
+  padding: 20px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--color-surface),
+      var(--color-bg-main)
+    );
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    background var(--transition-normal);
+}
+
+.live-attack-card:hover {
+  transform: translateY(-2px);
+
+  border-color: var(--color-border-strong);
+
+  background: var(--color-surface-hover);
+}
+
+.live-attack-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.live-attack-card__header h3 {
+  margin: 8px 0 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.live-attack-card__status {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 8px;
+
+  border-radius: var(--radius-pill);
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+
+  background: var(--color-danger-soft);
+  color: var(--color-danger-light);
+}
+
+.live-attack-card__time {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+
+  white-space: nowrap;
+}
+
+.live-attack-card__details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.live-attack-card__details div {
+  padding: 12px;
+
+  border-radius: var(--radius-md);
+
+  background: var(--color-bg-main);
+
+  border: 1px solid var(--color-border);
+}
+
+.live-attack-card__details span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 11px;
+
+  color: var(--color-text-muted);
+}
+
+.live-attack-card__details strong {
+  display: block;
+
+  font-size: 13px;
+
+  color: var(--color-text-primary);
+
+  word-break: break-word;
+}
+
+.live-attack-card__footer {
+  margin-top: 18px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.live-attack-card__footer span {
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: capitalize;
+
+  color: var(--color-warning);
+}
+
+@media (max-width: 480px) {
+  .live-attack-card {
+    padding: 16px;
+  }
+
+  .live-attack-card__header {
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  .live-attack-card__time {
+    white-space: normal;
+  }
+
+  .live-attack-card__details {
+    grid-template-columns: 1fr;
+  }
+}

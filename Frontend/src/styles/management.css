@@ -1,0 +1,947 @@
+.management-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.management-page .management-error{
+  display: block;
+  color: var(--color-danger);
+  text-align: left;
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+.management-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+.management-eyebrow {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--color-primary-light);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.management-title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 26px;
+  font-weight: 750;
+}
+
+.management-description {
+  margin: 8px 0 0;
+  color: var(--color-text-muted);
+  font-size: 12px;
+}
+
+.management-create-button,
+.management-submit-button {
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-info)
+  );
+  color: #061014;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.management-create-button:hover,
+.management-submit-button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-primary);
+}
+
+.management-message {
+  margin-bottom: 18px;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-light);
+  font-size: 11px;
+}
+
+.management-create-card,
+.management-card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(23, 28, 34, 0.97),
+      rgba(11, 14, 17, 0.98)
+    );
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+}
+
+.management-create-card {
+  margin-bottom: 20px;
+  padding: 24px;
+}
+
+.management-create-heading {
+  margin-bottom: 20px;
+}
+
+.management-create-heading span {
+  color: var(--color-primary-light);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.management-create-heading h2 {
+  margin: 5px 0 0;
+  color: var(--color-text-primary);
+  font-size: 18px;
+}
+
+.management-form-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    180px;
+  gap: 16px;
+}
+
+.management-field label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.management-field input,
+.management-field select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  font-size: 12px;
+}
+
+.management-field input:focus,
+.management-field select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-soft);
+}
+
+.management-invite-note {
+  margin: 18px 0;
+  padding: 11px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.management-submit-button {
+  width: 100%;
+}
+
+.management-card-header {
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.management-card-header h2 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 16px;
+}
+
+.management-card-header p {
+  margin: 5px 0 0;
+  color: var(--color-text-muted);
+  font-size: 10px;
+}
+
+.management-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.management-table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+}
+
+.management-table th {
+  padding: 13px 18px;
+  text-align: left;
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.management-table td {
+  padding: 15px 18px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 11px;
+}
+
+.management-user {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.management-avatar {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: var(--color-primary-soft);
+  color: var(--color-primary-light);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.management-user > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.management-user strong {
+  color: var(--color-text-primary);
+  font-size: 12px;
+}
+
+.management-user span {
+  color: var(--color-text-muted);
+  font-size: 9px;
+}
+
+.role-badge,
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.role-admin {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-light);
+}
+
+.role-sub-admin {
+  background: var(--color-info-soft);
+  color: var(--color-info-light);
+}
+
+.role-analyst {
+  background: var(--color-warning-soft);
+  color: var(--color-warning-light);
+}
+
+.role-reader {
+  background: var(--color-surface-hover);
+  color: var(--color-text-secondary);
+}
+
+.status-active {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-light);
+}
+
+.status-pending {
+  background: var(--color-warning-soft);
+  color: var(--color-warning-light);
+}
+
+.status-disabled {
+  background: var(--color-danger-soft);
+  color: var(--color-danger-light);
+}
+
+.management-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.management-actions button {
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.management-actions button:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-primary);
+}
+
+.management-actions .danger-action:hover {
+  border-color: var(--color-danger);
+  color: var(--color-danger-light);
+}
+
+.no-actions {
+  color: var(--color-text-dim);
+  font-size: 9px;
+}
+
+@media (max-width: 900px) {
+  .management-form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .management-field:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .management-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .management-create-button {
+    width: 100%;
+  }
+
+  .management-create-card {
+    padding: 18px;
+  }
+
+  .management-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .management-field:last-child {
+    grid-column: auto;
+  }
+
+  .management-card-header {
+    padding: 17px;
+  }
+}
+
+/* =========================================================
+   EDIT USER MODAL
+   ========================================================= */
+
+.management-modal-backdrop {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 260px;
+
+  z-index: 1100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  background:
+    rgba(3, 7, 10, 0.72);
+
+  backdrop-filter: blur(7px);
+
+  animation:
+    managementModalBackdropIn
+    180ms ease;
+}
+
+
+/* ---------------------------------------------------------
+   Modal
+   --------------------------------------------------------- */
+
+.management-modal {
+  width: min(100%, 520px);
+
+  max-height: calc(100vh - 48px);
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+
+  padding: 0;
+
+  border: 1px solid var(--color-border-strong);
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(25, 31, 37, 0.99),
+      rgba(10, 14, 18, 0.99)
+    );
+
+  box-shadow:
+    var(--shadow-lg),
+    0 0 40px rgba(0, 0, 0, 0.45),
+    0 0 28px var(--color-primary-glow);
+
+  color: var(--color-text-primary);
+
+  animation:
+    managementModalIn
+    220ms cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+/* ---------------------------------------------------------
+   Modal Header
+   --------------------------------------------------------- */
+
+.management-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 21px 22px 18px;
+
+  border-bottom: 1px solid var(--color-border);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.025),
+      transparent
+    );
+}
+
+.management-modal-header > div {
+  min-width: 0;
+}
+
+.management-modal-header span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--color-primary-light);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.13em;
+}
+
+.management-modal-header h2 {
+  margin: 0;
+
+  color: var(--color-text-primary);
+
+  font-size: 19px;
+  font-weight: 750;
+
+  letter-spacing: -0.3px;
+}
+
+
+/* ---------------------------------------------------------
+   Close Button
+   --------------------------------------------------------- */
+
+.management-modal-close {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 9px;
+
+  background:
+    var(--color-surface);
+
+  color: var(--color-text-muted);
+
+  font-size: 20px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.management-modal-close:hover:not(:disabled) {
+  background:
+    var(--color-surface-hover);
+
+  border-color:
+    var(--color-danger);
+
+  color:
+    var(--color-danger-light);
+
+  transform: rotate(4deg);
+}
+
+.management-modal-close:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.management-modal-close:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+/* ---------------------------------------------------------
+   User Identity Section
+   --------------------------------------------------------- */
+
+.management-modal-user {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  margin: 18px 22px 20px;
+
+  padding: 13px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-primary-soft),
+      rgba(255, 255, 255, 0.015)
+    );
+}
+
+.management-modal-avatar {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-info)
+    );
+
+  color: #061014;
+
+  font-size: 14px;
+  font-weight: 850;
+
+  box-shadow:
+    0 0 16px var(--color-primary-glow);
+}
+
+.management-modal-user > div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.management-modal-user strong {
+  color: var(--color-text-primary);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.management-modal-user span {
+  color: var(--color-text-muted);
+
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+
+/* ---------------------------------------------------------
+   Edit Form
+   --------------------------------------------------------- */
+
+.management-edit-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  padding: 0 22px 22px;
+}
+
+
+/* ---------------------------------------------------------
+   Form Fields
+   --------------------------------------------------------- */
+
+.management-edit-form .management-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.management-edit-form .management-field label {
+  margin-bottom: 7px;
+
+  color: var(--color-text-secondary);
+
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.management-edit-form .management-field input,
+.management-edit-form .management-field select {
+  width: 100%;
+  height: 42px;
+
+  box-sizing: border-box;
+
+  padding: 0 12px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background:
+    rgba(8, 12, 15, 0.8);
+
+  color: var(--color-text-primary);
+
+  font-size: 11px;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.management-edit-form .management-field input:hover,
+.management-edit-form .management-field select:hover {
+  border-color:
+    var(--color-border-strong);
+}
+
+.management-edit-form .management-field input:focus,
+.management-edit-form .management-field select:focus {
+  border-color:
+    var(--color-primary);
+
+  background:
+    var(--color-surface);
+
+  box-shadow:
+    0 0 0 3px var(--color-primary-soft),
+    0 0 14px rgba(0, 0, 0, 0.2);
+}
+
+.management-edit-form .management-field input:disabled,
+.management-edit-form .management-field select:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* ---------------------------------------------------------
+   Action Buttons
+   --------------------------------------------------------- */
+
+.management-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 5px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid var(--color-border);
+}
+
+.management-edit-actions button {
+  min-height: 38px;
+
+  padding: 0 15px;
+
+  border-radius: 9px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+/* Cancel */
+
+.management-modal-cancel {
+  border: 1px solid var(--color-border);
+
+  background:
+    var(--color-surface);
+
+  color:
+    var(--color-text-secondary);
+}
+
+.management-modal-cancel:hover:not(:disabled) {
+  background:
+    var(--color-surface-hover);
+
+  border-color:
+    var(--color-border-strong);
+
+  color:
+    var(--color-text-primary);
+
+  transform: translateY(-1px);
+}
+
+
+/* Save */
+
+.management-modal-save {
+  border: 1px solid var(--color-primary);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-info)
+    );
+
+  color: #061014;
+
+  box-shadow:
+    0 0 16px rgba(0, 0, 0, 0.18);
+}
+
+.management-modal-save:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow:
+    var(--shadow-primary),
+    0 0 20px var(--color-primary-glow);
+}
+
+.management-modal-save:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+.management-edit-actions button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* ---------------------------------------------------------
+   Modal Scrollbar
+   --------------------------------------------------------- */
+
+.management-modal::-webkit-scrollbar {
+  width: 6px;
+}
+
+.management-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.management-modal::-webkit-scrollbar-thumb {
+  background:
+    var(--color-border-strong);
+
+  border-radius: 999px;
+}
+
+
+/* ---------------------------------------------------------
+   Animations
+   --------------------------------------------------------- */
+
+@keyframes managementModalBackdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes managementModalIn {
+  from {
+    opacity: 0;
+    transform:
+      translateY(10px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/*
+   Sidebar = 220px
+   */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .management-modal-backdrop {
+    left: 220px;
+
+    padding: 22px;
+  }
+
+  .management-modal {
+    width: min(100%, 500px);
+  }
+}
+
+
+/*
+   Sidebar disappears below 768px
+   Modal becomes centered in the full viewport.
+   */
+
+@media (max-width: 768px) {
+  .management-modal-backdrop {
+    left: 0;
+
+    padding: 16px;
+  }
+
+  .management-modal {
+    width: 100%;
+    max-width: 500px;
+
+    max-height: calc(100vh - 32px);
+
+    border-radius: 15px;
+  }
+
+  .management-modal-header {
+    padding:
+      18px 18px 16px;
+  }
+
+  .management-modal-user {
+    margin:
+      16px 18px 18px;
+  }
+
+  .management-edit-form {
+    padding:
+      0 18px 18px;
+  }
+
+  .management-edit-actions {
+    flex-direction: column-reverse;
+  }
+
+  .management-edit-actions button {
+    width: 100%;
+  }
+}
