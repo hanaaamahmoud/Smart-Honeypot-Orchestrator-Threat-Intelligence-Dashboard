@@ -36,13 +36,13 @@ During about 19 days of continuous operation the system collected more than 200,
 
 ## 2. Team and Supervision
 
-**Students:** Asmaa Abouzina, Esraa Ouda, Hind Hussien, Hanaa Elganzory.
+**Students:** Asmaa Abouzina, Esraa Ouda, Hind Hussien, Hanaa Elganzory
 
-**Supervisor:** Dr. Anwar Hussien.
+**Supervisor:** Dr. Anwar Hussien
 
-**Industry partner:** Fixed Solutions.
+**Industry partner:** Fixed Solutions
 
-**Program:** M.S. in Computer Science, Queen's University.
+**Program:** M.S. in Computer Science, Queen's University
 
 ## 3. System Architecture
 
@@ -228,7 +228,7 @@ Only the honeypots and the orchestrator run in the cloud. The analysis stack run
 - **Reduced exposure.** The analysis stack is kept off the exposed host. The orchestrator status API listens on the loopback interface only.
 - **Secrets.** Credentials, JWT secrets, API keys, and key files must never be committed. Use `.env` files (ignored by Git); `.env.example` contains placeholders only.
 - **Development-only settings.** Elasticsearch security is disabled and demo accounts exist for local use. Neither is suitable for production. The Compose file publishes service ports on `127.0.0.1` only.
-- **Docker socket.** TThe optional orchestrator Compose profile (disabled by default) mounts the Docker socket, which gives it full control of the Docker daemon. Use it only on a development or isolated machine.
+- **Docker socket.** The optional orchestrator Compose profile (disabled by default) mounts the Docker socket, which gives it full control of the Docker daemon. Use it only on a development or isolated machine.
 - **Data handling.** Honeypot logs contain attacker IP addresses and attempted credentials. Publish collected logs only after sanitizing them.
 - **Legal notice.** Deploy honeypots only on infrastructure you own or are authorized to use, isolated from production systems, and in line with the provider's acceptable-use policy and applicable law. This project is for academic and research purposes.
 
@@ -272,6 +272,7 @@ Snapshot taken on **18 October 2026**, about 19 days after the cloud VM went liv
 - **Reputation sources.** `clean` means absence from the consulted sources, not benign behavior.
 - **Polling-based streaming.** The live feed polls Elasticsearch every five seconds instead of using a push mechanism.
 - **Development security settings.** Elasticsearch runs without security in the local environment.
+- **Open data endpoints.** The dashboard data endpoints and the WebSocket do not yet require authentication; role checks apply to the administration endpoints.
 
 **Future work**
 
