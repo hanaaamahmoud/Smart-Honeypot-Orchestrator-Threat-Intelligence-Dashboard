@@ -1,0 +1,384 @@
+{
+  "contract_name": "MITRE_ANALYTICS_HANDOFF",
+  "contract_version": "2.0.0",
+  "generated_at": "2026-10-02T08:05:05.276816+00:00",
+  "source": "ML_SERVICE_FROZEN_PRODUCTION",
+  "analytics_layer": "MITRE_ANALYTICS",
+  "mitre_technique_distribution": [
+    {
+      "value": "T1595",
+      "count": 11637,
+      "percentage": 97.96,
+      "tactic": "Reconnaissance",
+      "top_source_ips": [
+        {
+          "ip": "173.231.185.164",
+          "session_count": 1389
+        },
+        {
+          "ip": "47.239.170.26",
+          "session_count": 744
+        },
+        {
+          "ip": "170.64.153.215",
+          "session_count": 705
+        },
+        {
+          "ip": "196.251.84.225",
+          "session_count": 571
+        },
+        {
+          "ip": "170.64.232.83",
+          "session_count": 521
+        }
+      ]
+    },
+    {
+      "value": "T1110",
+      "count": 178,
+      "percentage": 1.5,
+      "tactic": "Credential Access",
+      "top_source_ips": [
+        {
+          "ip": "51.15.151.235",
+          "session_count": 15
+        },
+        {
+          "ip": "83.97.20.34",
+          "session_count": 8
+        },
+        {
+          "ip": "172.105.218.213",
+          "session_count": 8
+        },
+        {
+          "ip": "35.233.105.134",
+          "session_count": 6
+        },
+        {
+          "ip": "164.52.24.165",
+          "session_count": 5
+        }
+      ]
+    },
+    {
+      "value": "T1190",
+      "count": 30,
+      "percentage": 0.25,
+      "tactic": "Initial Access",
+      "top_source_ips": [
+        {
+          "ip": "49.37.130.19",
+          "session_count": 1
+        },
+        {
+          "ip": "148.72.153.224",
+          "session_count": 1
+        },
+        {
+          "ip": "185.216.140.6",
+          "session_count": 1
+        },
+        {
+          "ip": "178.93.16.155",
+          "session_count": 1
+        },
+        {
+          "ip": "162.243.131.73",
+          "session_count": 1
+        }
+      ]
+    },
+    {
+      "value": "T1046",
+      "count": 26,
+      "percentage": 0.22,
+      "tactic": "Discovery",
+      "top_source_ips": [
+        {
+          "ip": "64.62.156.112",
+          "session_count": 1
+        },
+        {
+          "ip": "162.142.125.192",
+          "session_count": 1
+        },
+        {
+          "ip": "64.62.156.22",
+          "session_count": 1
+        },
+        {
+          "ip": "167.94.138.60",
+          "session_count": 1
+        },
+        {
+          "ip": "65.49.1.25",
+          "session_count": 1
+        }
+      ]
+    },
+    {
+      "value": "T1078",
+      "count": 5,
+      "percentage": 0.04,
+      "tactic": "Defense Evasion",
+      "top_source_ips": [
+        {
+          "ip": "142.44.212.226",
+          "session_count": 5
+        }
+      ]
+    },
+    {
+      "value": "T1090",
+      "count": 3,
+      "percentage": 0.03,
+      "tactic": "Command and Control",
+      "top_source_ips": [
+        {
+          "ip": "192.42.116.216",
+          "session_count": 1
+        },
+        {
+          "ip": "192.42.116.214",
+          "session_count": 1
+        },
+        {
+          "ip": "64.190.76.10",
+          "session_count": 1
+        }
+      ]
+    }
+  ],
+  "mitre_tactics_distribution": [
+    {
+      "value": "Reconnaissance",
+      "count": 11637,
+      "percentage": 97.96
+    },
+    {
+      "value": "Credential Access",
+      "count": 178,
+      "percentage": 1.5
+    },
+    {
+      "value": "Initial Access",
+      "count": 30,
+      "percentage": 0.25
+    },
+    {
+      "value": "Discovery",
+      "count": 26,
+      "percentage": 0.22
+    },
+    {
+      "value": "Defense Evasion",
+      "count": 5,
+      "percentage": 0.04
+    },
+    {
+      "value": "Command and Control",
+      "count": 3,
+      "percentage": 0.03
+    }
+  ],
+  "attack_type_distribution": [
+    {
+      "value": "SSH Connection Probe",
+      "count": 11629,
+      "percentage": 97.9
+    },
+    {
+      "value": "FTP Brute Force",
+      "count": 178,
+      "percentage": 1.5
+    },
+    {
+      "value": "HTTP Exploitation",
+      "count": 30,
+      "percentage": 0.25
+    },
+    {
+      "value": "Network Scanning",
+      "count": 26,
+      "percentage": 0.22
+    },
+    {
+      "value": "FTP Connection Probe",
+      "count": 8,
+      "percentage": 0.07
+    },
+    {
+      "value": "Compromised Host",
+      "count": 5,
+      "percentage": 0.04
+    },
+    {
+      "value": "C2 Activity",
+      "count": 3,
+      "percentage": 0.03
+    }
+  ],
+  "attack_stage_distribution": [
+    {
+      "value": "Reconnaissance",
+      "count": 11637,
+      "percentage": 97.96
+    },
+    {
+      "value": "Credential Access",
+      "count": 178,
+      "percentage": 1.5
+    },
+    {
+      "value": "Initial Access",
+      "count": 30,
+      "percentage": 0.25
+    },
+    {
+      "value": "Discovery",
+      "count": 26,
+      "percentage": 0.22
+    },
+    {
+      "value": "Defense Evasion",
+      "count": 5,
+      "percentage": 0.04
+    },
+    {
+      "value": "Command and Control",
+      "count": 3,
+      "percentage": 0.03
+    }
+  ],
+  "mitre_activity_over_time": [
+    {
+      "date": "2020-01-22",
+      "count": 16
+    },
+    {
+      "date": "2020-01-23",
+      "count": 12
+    },
+    {
+      "date": "2020-01-24",
+      "count": 6
+    },
+    {
+      "date": "2020-01-25",
+      "count": 10
+    },
+    {
+      "date": "2020-01-26",
+      "count": 8
+    },
+    {
+      "date": "2020-02-02",
+      "count": 3
+    },
+    {
+      "date": "2020-02-03",
+      "count": 6
+    },
+    {
+      "date": "2020-02-04",
+      "count": 9
+    },
+    {
+      "date": "2020-02-05",
+      "count": 11
+    },
+    {
+      "date": "2020-02-06",
+      "count": 5
+    },
+    {
+      "date": "2020-02-07",
+      "count": 7
+    },
+    {
+      "date": "2020-02-08",
+      "count": 8
+    },
+    {
+      "date": "2020-02-09",
+      "count": 6
+    },
+    {
+      "date": "2020-02-10",
+      "count": 11
+    },
+    {
+      "date": "2020-02-11",
+      "count": 5
+    },
+    {
+      "date": "2020-02-12",
+      "count": 10
+    },
+    {
+      "date": "2020-02-13",
+      "count": 8
+    },
+    {
+      "date": "2020-02-14",
+      "count": 11
+    },
+    {
+      "date": "2020-02-15",
+      "count": 5
+    },
+    {
+      "date": "2020-02-16",
+      "count": 14
+    },
+    {
+      "date": "2020-02-17",
+      "count": 10
+    },
+    {
+      "date": "2020-02-18",
+      "count": 4
+    },
+    {
+      "date": "2020-02-19",
+      "count": 8
+    },
+    {
+      "date": "2020-02-20",
+      "count": 10
+    },
+    {
+      "date": "2020-02-21",
+      "count": 9
+    },
+    {
+      "date": "2020-02-22",
+      "count": 4
+    },
+    {
+      "date": "2025-06-09",
+      "count": 2324
+    },
+    {
+      "date": "2025-06-10",
+      "count": 6812
+    },
+    {
+      "date": "2025-06-11",
+      "count": 2527
+    }
+  ],
+  "summary": {
+    "total_records": 11879,
+    "records_with_mitre": 11879,
+    "records_with_attack_type": 11879,
+    "records_with_attack_stage": 11879,
+    "unique_techniques": 6,
+    "unique_tactics": 6,
+    "unique_attack_types": 7,
+    "unique_attack_stages": 6
+  },
+  "session_mitre_relationships_count": 11879,
+  "note": "Full session-level relationships are available in mitre_analytics_sessions.json (loaded on demand)."
+}

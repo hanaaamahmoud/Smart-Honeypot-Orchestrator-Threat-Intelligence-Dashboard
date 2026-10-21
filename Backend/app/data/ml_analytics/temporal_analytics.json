@@ -1,0 +1,473 @@
+{
+  "contract_name": "TEMPORAL_ANALYTICS_HANDOFF",
+  "contract_version": "1.0.0",
+  "generated_at": "2026-10-02T07:28:08.755134+00:00",
+  "source": "ML_SERVICE_FROZEN_PRODUCTION",
+  "analytics_layer": "TEMPORAL_ANALYTICS",
+  "trend_type": "DAILY",
+  "summary": {
+    "total_days": 29,
+    "total_sessions": 11879,
+    "total_events": 58820,
+    "date_range": {
+      "from": "2020-01-22",
+      "to": "2025-06-11"
+    },
+    "total_active_periods": 2,
+    "largest_gap_days": 1934,
+    "avg_sessions_per_active_day": 409.62
+  },
+  "highlights": {
+    "peak_day": {
+      "trend_date": "2025-06-10",
+      "session_count": 6812,
+      "event_count": 31905
+    }
+  },
+  "periods": [
+    {
+      "period_id": 1,
+      "from": "2020-01-22",
+      "to": "2020-02-22",
+      "days": 26,
+      "sessions": 216,
+      "events": 3886,
+      "start_index": 0,
+      "end_index": 25,
+      "sessions_pct": 1.82,
+      "events_pct": 6.61,
+      "peak_day": {
+        "trend_date": "2020-01-22",
+        "session_count": 16
+      },
+      "daily_trends": [
+        {
+          "trend_date": "2020-01-22",
+          "session_count": 16,
+          "event_count": 645
+        },
+        {
+          "trend_date": "2020-01-23",
+          "session_count": 12,
+          "event_count": 231
+        },
+        {
+          "trend_date": "2020-01-24",
+          "session_count": 6,
+          "event_count": 303
+        },
+        {
+          "trend_date": "2020-01-25",
+          "session_count": 10,
+          "event_count": 242
+        },
+        {
+          "trend_date": "2020-01-26",
+          "session_count": 8,
+          "event_count": 188
+        },
+        {
+          "trend_date": "2020-02-02",
+          "session_count": 3,
+          "event_count": 23
+        },
+        {
+          "trend_date": "2020-02-03",
+          "session_count": 6,
+          "event_count": 62
+        },
+        {
+          "trend_date": "2020-02-04",
+          "session_count": 9,
+          "event_count": 84
+        },
+        {
+          "trend_date": "2020-02-05",
+          "session_count": 11,
+          "event_count": 96
+        },
+        {
+          "trend_date": "2020-02-06",
+          "session_count": 5,
+          "event_count": 209
+        },
+        {
+          "trend_date": "2020-02-07",
+          "session_count": 7,
+          "event_count": 175
+        },
+        {
+          "trend_date": "2020-02-08",
+          "session_count": 8,
+          "event_count": 77
+        },
+        {
+          "trend_date": "2020-02-09",
+          "session_count": 6,
+          "event_count": 61
+        },
+        {
+          "trend_date": "2020-02-10",
+          "session_count": 11,
+          "event_count": 97
+        },
+        {
+          "trend_date": "2020-02-11",
+          "session_count": 5,
+          "event_count": 59
+        },
+        {
+          "trend_date": "2020-02-12",
+          "session_count": 10,
+          "event_count": 128
+        },
+        {
+          "trend_date": "2020-02-13",
+          "session_count": 8,
+          "event_count": 103
+        },
+        {
+          "trend_date": "2020-02-14",
+          "session_count": 11,
+          "event_count": 101
+        },
+        {
+          "trend_date": "2020-02-15",
+          "session_count": 5,
+          "event_count": 302
+        },
+        {
+          "trend_date": "2020-02-16",
+          "session_count": 14,
+          "event_count": 136
+        },
+        {
+          "trend_date": "2020-02-17",
+          "session_count": 10,
+          "event_count": 94
+        },
+        {
+          "trend_date": "2020-02-18",
+          "session_count": 4,
+          "event_count": 48
+        },
+        {
+          "trend_date": "2020-02-19",
+          "session_count": 8,
+          "event_count": 183
+        },
+        {
+          "trend_date": "2020-02-20",
+          "session_count": 10,
+          "event_count": 108
+        },
+        {
+          "trend_date": "2020-02-21",
+          "session_count": 9,
+          "event_count": 99
+        },
+        {
+          "trend_date": "2020-02-22",
+          "session_count": 4,
+          "event_count": 32
+        }
+      ]
+    },
+    {
+      "period_id": 2,
+      "from": "2025-06-09",
+      "to": "2025-06-11",
+      "days": 3,
+      "sessions": 11663,
+      "events": 54934,
+      "start_index": 26,
+      "end_index": 28,
+      "sessions_pct": 98.18,
+      "events_pct": 93.39,
+      "peak_day": {
+        "trend_date": "2025-06-10",
+        "session_count": 6812
+      },
+      "daily_trends": [
+        {
+          "trend_date": "2025-06-09",
+          "session_count": 2324,
+          "event_count": 10832
+        },
+        {
+          "trend_date": "2025-06-10",
+          "session_count": 6812,
+          "event_count": 31905
+        },
+        {
+          "trend_date": "2025-06-11",
+          "session_count": 2527,
+          "event_count": 12197
+        }
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "trend_date": "2020-01-22",
+      "session_count": 16,
+      "total_events": 645,
+      "avg_session_duration_seconds": 4843.416355375,
+      "event_count": 645,
+      "unique_sessions": 16,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-01-23",
+      "session_count": 12,
+      "total_events": 231,
+      "avg_session_duration_seconds": 4263.868788916667,
+      "event_count": 231,
+      "unique_sessions": 12,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-01-24",
+      "session_count": 6,
+      "total_events": 303,
+      "avg_session_duration_seconds": 14040.644044833332,
+      "event_count": 303,
+      "unique_sessions": 6,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-01-25",
+      "session_count": 10,
+      "total_events": 242,
+      "avg_session_duration_seconds": 8291.380754,
+      "event_count": 242,
+      "unique_sessions": 10,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-01-26",
+      "session_count": 8,
+      "total_events": 188,
+      "avg_session_duration_seconds": 7503.661792875,
+      "event_count": 188,
+      "unique_sessions": 8,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-02",
+      "session_count": 3,
+      "total_events": 23,
+      "avg_session_duration_seconds": 12155.804881666665,
+      "event_count": 23,
+      "unique_sessions": 3,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-03",
+      "session_count": 6,
+      "total_events": 62,
+      "avg_session_duration_seconds": 14006.348311666667,
+      "event_count": 62,
+      "unique_sessions": 6,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-04",
+      "session_count": 9,
+      "total_events": 84,
+      "avg_session_duration_seconds": 8302.333605,
+      "event_count": 84,
+      "unique_sessions": 9,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-05",
+      "session_count": 11,
+      "total_events": 96,
+      "avg_session_duration_seconds": 6836.714418090909,
+      "event_count": 96,
+      "unique_sessions": 11,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-06",
+      "session_count": 5,
+      "total_events": 209,
+      "avg_session_duration_seconds": 15598.7389948,
+      "event_count": 209,
+      "unique_sessions": 5,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-07",
+      "session_count": 7,
+      "total_events": 175,
+      "avg_session_duration_seconds": 10227.424775142857,
+      "event_count": 175,
+      "unique_sessions": 7,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-08",
+      "session_count": 8,
+      "total_events": 77,
+      "avg_session_duration_seconds": 10504.289768875,
+      "event_count": 77,
+      "unique_sessions": 8,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-09",
+      "session_count": 6,
+      "total_events": 61,
+      "avg_session_duration_seconds": 12662.280147666666,
+      "event_count": 61,
+      "unique_sessions": 6,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-10",
+      "session_count": 11,
+      "total_events": 97,
+      "avg_session_duration_seconds": 58907.86169145454,
+      "event_count": 97,
+      "unique_sessions": 11,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-11",
+      "session_count": 5,
+      "total_events": 59,
+      "avg_session_duration_seconds": 13751.771239400001,
+      "event_count": 59,
+      "unique_sessions": 5,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-12",
+      "session_count": 10,
+      "total_events": 128,
+      "avg_session_duration_seconds": 8447.8724351,
+      "event_count": 128,
+      "unique_sessions": 10,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-13",
+      "session_count": 8,
+      "total_events": 103,
+      "avg_session_duration_seconds": 8992.315452625,
+      "event_count": 103,
+      "unique_sessions": 8,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-14",
+      "session_count": 11,
+      "total_events": 101,
+      "avg_session_duration_seconds": 7178.594652090909,
+      "event_count": 101,
+      "unique_sessions": 11,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-15",
+      "session_count": 5,
+      "total_events": 302,
+      "avg_session_duration_seconds": 16658.455178199998,
+      "event_count": 302,
+      "unique_sessions": 5,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-16",
+      "session_count": 14,
+      "total_events": 136,
+      "avg_session_duration_seconds": 4893.589220714285,
+      "event_count": 136,
+      "unique_sessions": 14,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-17",
+      "session_count": 10,
+      "total_events": 94,
+      "avg_session_duration_seconds": 7995.900771799999,
+      "event_count": 94,
+      "unique_sessions": 10,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-18",
+      "session_count": 4,
+      "total_events": 48,
+      "avg_session_duration_seconds": 18830.51985325,
+      "event_count": 48,
+      "unique_sessions": 4,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-19",
+      "session_count": 8,
+      "total_events": 183,
+      "avg_session_duration_seconds": 7744.889597625,
+      "event_count": 183,
+      "unique_sessions": 8,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-20",
+      "session_count": 10,
+      "total_events": 108,
+      "avg_session_duration_seconds": 6558.0284357,
+      "event_count": 108,
+      "unique_sessions": 10,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-21",
+      "session_count": 9,
+      "total_events": 99,
+      "avg_session_duration_seconds": 8520.575230333334,
+      "event_count": 99,
+      "unique_sessions": 9,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2020-02-22",
+      "session_count": 4,
+      "total_events": 32,
+      "avg_session_duration_seconds": 3070.39747675,
+      "event_count": 32,
+      "unique_sessions": 4,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2025-06-09",
+      "session_count": 2324,
+      "total_events": 10832,
+      "avg_session_duration_seconds": 3.74934464931153,
+      "event_count": 10832,
+      "unique_sessions": 2324,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2025-06-10",
+      "session_count": 6812,
+      "total_events": 31905,
+      "avg_session_duration_seconds": 3.5254479364357114,
+      "event_count": 31905,
+      "unique_sessions": 6812,
+      "trend_type": "DAILY"
+    },
+    {
+      "trend_date": "2025-06-11",
+      "session_count": 2527,
+      "total_events": 12197,
+      "avg_session_duration_seconds": 4.12563890858725,
+      "event_count": 12197,
+      "unique_sessions": 2527,
+      "trend_type": "DAILY"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+# Smart Honeypot Orchestrator & Threat Intelligence Dashboard
+#
+# One command starts the whole analysis stack:
+#     cp .env.example .env      (then edit the values)
+#     docker compose up -d --build
+#
+# Dashboard: http://127.0.0.1:3000
+#
+# The honeypots are NOT part of this file on purpose: they bind ports 21, 22
+# and 80 of the host and run on the isolated cloud VM (see README).
+#
+# Optional profiles (off by default):
+#   --profile orchestrator  run the orchestrator next to local honeypot containers
+
+name: smart-honeypot
+
+services:
+
+  # ==========================================================
+  # ELK
+  # ==========================================================
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.19.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false # development only
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "127.0.0.1:9200:9200" # reachable from this machine only
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -fs http://localhost:9200/_cluster/health >/dev/null || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.19.2
+    container_name: logstash
+    depends_on:
+      es-init:
+        condition: service_completed_successfully
+    environment:
+      - ABUSEIPDB_API_KEY=${ABUSEIPDB_API_KEY:-}
+    volumes:
+      # the pipeline file must be named logstash.conf
+      - ./elk/logstash/pipeline:/usr/share/logstash/pipeline:ro
+      - logstashdata:/usr/share/logstash/data
+      - ./elk/logs/cowrie:/mnt/logs/cowrie:ro
+      - ./elk/logs/dionaea:/mnt/logs/dionaea:ro
+      - ./elk/logs/tanner:/mnt/logs/tanner:ro
+    restart: unless-stopped
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.19.2
+    container_name: kibana
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "127.0.0.1:5601:5601"
+    restart: unless-stopped
+
+  # Creates the index with the right mapping and loads the sample data.
+  # Runs once on `docker compose up`, then exits. Skips if the index exists.
+  es-init:
+    image: curlimages/curl:8.10.1
+    container_name: hp-es-init
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    volumes:
+      - ./elk/sample:/data:ro
+    entrypoint: [ "sh", "-c" ]
+    command:
+      - |
+        ES=http://elasticsearch:9200
+        if curl -fs -o /dev/null $$ES/honeypot-events; then
+          echo "honeypot-events already exists, skipping"; exit 0
+        fi
+        curl -fsS -X PUT $$ES/honeypot-events -H 'Content-Type: application/json' --data-binary @/data/mapping.json || exit 1
+        curl -fsS -X POST $$ES/_bulk -H 'Content-Type: application/x-ndjson' --data-binary @/data/sample-events.ndjson -o /tmp/r.json || exit 1
+        if grep -q '"errors":true' /tmp/r.json; then
+          echo "bulk had errors:"; head -c 1000 /tmp/r.json; exit 1
+        fi
+        echo "sample data loaded"
+    restart: "no"
+
+  # ==========================================================
+  # Database
+  # ==========================================================
+  postgres:
+    image: postgres:16
+    container_name: hp-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-honeypot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: honeypot_platform
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-honeypot} -d honeypot_platform" ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  # ==========================================================
+  # Backend (REST + WebSocket)
+  # ==========================================================
+  # On start it creates the tables and the initial admin, then runs the API.
+  # Both steps are safe to repeat on every restart.
+  backend:
+    build: ./Backend
+    container_name: hp-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-honeypot}:${POSTGRES_PASSWORD}@postgres:5432/honeypot_platform
+      JWT_SECRET_KEY: ${JWT_SECRET_KEY:?Set JWT_SECRET_KEY in .env}
+      ES_HOST: http://elasticsearch:9200
+      ES_INDEX: honeypot-events
+      # Default: the orchestrator on the cloud VM, reached through an SSH tunnel
+      # opened on the host (see README). If the tunnel is not open, /honeypots
+      # returns 503 and the dashboard shows "Orchestrator service is unavailable".
+      ORCHESTRATOR_URL: ${ORCHESTRATOR_URL:-http://host.docker.internal:8002}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command: >
+      sh -c "python -m app.db.init_db &&
+             python -m app.services.seed_admin &&
+             uvicorn app.main:app --host 0.0.0.0 --port 8001"
+    ports:
+      - "127.0.0.1:8001:8001"
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/')" ]
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    restart: unless-stopped
+
+  # ==========================================================
+  # ML service
+  # ==========================================================
+  # Read-only consumer of Elasticsearch. The backend serves the precomputed
+  # analytics from its own image, so the dashboard does not depend on this
+  # service; it is used to regenerate the analytics.
+  ml-service:
+    build: ./ML_SERVICE
+    container_name: honeypot-ml-service
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      PYTHONUNBUFFERED: "1"
+      ML_SERVICE_NAME: honeypot-ml-service
+      ML_SERVICE_HOST: 0.0.0.0
+      ML_SERVICE_PORT: "8000"
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_INDEX: honeypot-events
+      BACKEND_URL: http://backend:8001
+      ML_PRODUCTION_MODE: FROZEN_PRODUCTION_REFERENCE
+    volumes:
+      # frozen model files (verified with SHA-256 at startup), read-only
+      - ./ML_SERVICE/models:/app/models:ro
+      - ./ML_SERVICE/analytics_output:/app/analytics_output
+      - ./ML_SERVICE/backend_handoff:/app/backend_handoff
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  # ==========================================================
+  # Frontend (React + Vite, served by nginx)
+  # ==========================================================
+  # nginx serves the build and proxies /backend/ (REST and WebSocket) to the
+  # backend, so the browser only talks to http://127.0.0.1:3000
+  frontend:
+    build:
+      context: ./Frontend
+      args:
+        VITE_API_BASE_URL: /backend
+        VITE_WS_URL: /backend/ws
+    container_name: hp-frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      BACKEND_UPSTREAM: backend:8001
+    ports:
+      - "127.0.0.1:3000:80"
+    restart: unless-stopped
+
+  # ==========================================================
+  # Orchestrator (OPTIONAL, profile "orchestrator")
+  # ==========================================================
+  # In the real deployment the orchestrator runs on the cloud VM next to the
+  # honeypots. It is off here because the honeypot containers do not exist on
+  # this machine, and it needs the Docker socket (root-equivalent access).
+  # Enable only if you also run the honeypots locally:
+  #     docker compose --profile orchestrator up -d
+  # and set ORCHESTRATOR_URL=http://orchestrator-api:8000 in .env
+  orchestrator:
+    profiles: [ "orchestrator" ]
+    build: ./Orchestrator
+    container_name: hp-orchestrator
+    command: python app.py
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./Orchestrator/logs:/app/logs
+    restart: unless-stopped
+
+  orchestrator-api:
+    profiles: [ "orchestrator" ]
+    build: ./Orchestrator
+    container_name: hp-orchestrator-api
+    command: uvicorn api.status_api:app --host 0.0.0.0 --port 8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./Orchestrator/logs:/app/logs
+    # no published port: only the backend reaches it, on the internal network
+    restart: unless-stopped
+
+volumes:
+  esdata:
+  logstashdata:
+  pgdata:

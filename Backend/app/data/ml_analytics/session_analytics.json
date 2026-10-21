@@ -1,0 +1,588 @@
+{
+  "contract_name": "SESSION_ANALYTICS_HANDOFF",
+  "contract_version": "2.0.0",
+  "generated_at": "2026-10-02T07:42:10.135315+00:00",
+  "source": "ML_SERVICE_FROZEN_PRODUCTION",
+  "analytics_layer": "SESSION_ANALYTICS",
+  "summary": {
+    "total_sessions": 11879,
+    "total_events": 58820,
+    "total_clusters_used": 29,
+    "assigned_sessions": 11879,
+    "noise_sessions": 0,
+    "avg_events_per_session": 4.95,
+    "avg_session_duration_seconds": 206.65,
+    "median_session_duration_seconds": 2.09,
+    "min_session_duration_seconds": 0.0,
+    "max_session_duration_seconds": 565592.23,
+    "unique_source_ips": 568,
+    "unique_countries": 47,
+    "percentiles": {
+      "p50_session_duration_seconds": 2.09,
+      "p90_session_duration_seconds": 3.34,
+      "p95_session_duration_seconds": 5.9,
+      "p99_session_duration_seconds": 120.0
+    }
+  },
+  "distributions": {
+    "by_honeypot": [
+      {
+        "value": "cowrie",
+        "count": 11663,
+        "percentage": 98.18
+      },
+      {
+        "value": "dionaea",
+        "count": 186,
+        "percentage": 1.57
+      },
+      {
+        "value": "tanner",
+        "count": 30,
+        "percentage": 0.25
+      }
+    ],
+    "by_protocol": [
+      {
+        "value": "SSH",
+        "count": 11663,
+        "percentage": 98.18
+      },
+      {
+        "value": "FTP",
+        "count": 186,
+        "percentage": 1.57
+      },
+      {
+        "value": "HTTP",
+        "count": 30,
+        "percentage": 0.25
+      }
+    ],
+    "by_country": [
+      {
+        "value": "Australia",
+        "count": 3683,
+        "percentage": 31.01
+      },
+      {
+        "value": "United States",
+        "count": 2908,
+        "percentage": 24.49
+      },
+      {
+        "value": "Hong Kong",
+        "count": 1175,
+        "percentage": 9.89
+      },
+      {
+        "value": "Seychelles",
+        "count": 944,
+        "percentage": 7.95
+      },
+      {
+        "value": "China",
+        "count": 727,
+        "percentage": 6.12
+      },
+      {
+        "value": "Singapore",
+        "count": 375,
+        "percentage": 3.16
+      },
+      {
+        "value": "Latvia",
+        "count": 336,
+        "percentage": 2.83
+      },
+      {
+        "value": "The Netherlands",
+        "count": 306,
+        "percentage": 2.58
+      },
+      {
+        "value": "Russia",
+        "count": 297,
+        "percentage": 2.5
+      },
+      {
+        "value": "United Kingdom",
+        "count": 272,
+        "percentage": 2.29
+      }
+    ],
+    "by_attack_type": [
+      {
+        "value": "SSH Connection Probe",
+        "count": 11629,
+        "percentage": 97.9
+      },
+      {
+        "value": "FTP Brute Force",
+        "count": 178,
+        "percentage": 1.5
+      },
+      {
+        "value": "HTTP Exploitation",
+        "count": 30,
+        "percentage": 0.25
+      },
+      {
+        "value": "Network Scanning",
+        "count": 26,
+        "percentage": 0.22
+      },
+      {
+        "value": "FTP Connection Probe",
+        "count": 8,
+        "percentage": 0.07
+      },
+      {
+        "value": "Compromised Host",
+        "count": 5,
+        "percentage": 0.04
+      },
+      {
+        "value": "C2 Activity",
+        "count": 3,
+        "percentage": 0.03
+      }
+    ],
+    "by_mitre_technique": [
+      {
+        "value": "T1595",
+        "count": 11637,
+        "percentage": 97.96
+      },
+      {
+        "value": "T1110",
+        "count": 178,
+        "percentage": 1.5
+      },
+      {
+        "value": "T1190",
+        "count": 30,
+        "percentage": 0.25
+      },
+      {
+        "value": "T1046",
+        "count": 26,
+        "percentage": 0.22
+      },
+      {
+        "value": "T1078",
+        "count": 5,
+        "percentage": 0.04
+      },
+      {
+        "value": "T1090",
+        "count": 3,
+        "percentage": 0.03
+      }
+    ],
+    "by_attack_stage": [
+      {
+        "value": "Reconnaissance",
+        "count": 11637,
+        "percentage": 97.96
+      },
+      {
+        "value": "Credential Access",
+        "count": 178,
+        "percentage": 1.5
+      },
+      {
+        "value": "Initial Access",
+        "count": 30,
+        "percentage": 0.25
+      },
+      {
+        "value": "Discovery",
+        "count": 26,
+        "percentage": 0.22
+      },
+      {
+        "value": "Defense Evasion",
+        "count": 5,
+        "percentage": 0.04
+      },
+      {
+        "value": "Command and Control",
+        "count": 3,
+        "percentage": 0.03
+      }
+    ],
+    "by_severity": [
+      {
+        "value": "Low",
+        "count": 11637,
+        "percentage": 97.96
+      },
+      {
+        "value": "Medium",
+        "count": 234,
+        "percentage": 1.97
+      },
+      {
+        "value": "High",
+        "count": 5,
+        "percentage": 0.04
+      },
+      {
+        "value": "Critical",
+        "count": 3,
+        "percentage": 0.03
+      }
+    ],
+    "by_cluster": [
+      {
+        "value": 28,
+        "count": 1547,
+        "percentage": 13.31
+      },
+      {
+        "value": 2,
+        "count": 1503,
+        "percentage": 12.94
+      },
+      {
+        "value": 17,
+        "count": 1258,
+        "percentage": 10.83
+      },
+      {
+        "value": 25,
+        "count": 1243,
+        "percentage": 10.7
+      },
+      {
+        "value": 33,
+        "count": 908,
+        "percentage": 7.81
+      },
+      {
+        "value": 12,
+        "count": 594,
+        "percentage": 5.11
+      },
+      {
+        "value": 8,
+        "count": 535,
+        "percentage": 4.6
+      },
+      {
+        "value": 3,
+        "count": 465,
+        "percentage": 4.0
+      },
+      {
+        "value": 13,
+        "count": 420,
+        "percentage": 3.61
+      },
+      {
+        "value": 27,
+        "count": 414,
+        "percentage": 3.56
+      },
+      {
+        "value": 23,
+        "count": 284,
+        "percentage": 2.44
+      },
+      {
+        "value": 34,
+        "count": 276,
+        "percentage": 2.38
+      },
+      {
+        "value": 9,
+        "count": 246,
+        "percentage": 2.12
+      },
+      {
+        "value": 26,
+        "count": 242,
+        "percentage": 2.08
+      },
+      {
+        "value": 19,
+        "count": 218,
+        "percentage": 1.88
+      },
+      {
+        "value": 30,
+        "count": 216,
+        "percentage": 1.86
+      },
+      {
+        "value": 1,
+        "count": 208,
+        "percentage": 1.79
+      },
+      {
+        "value": 18,
+        "count": 205,
+        "percentage": 1.76
+      },
+      {
+        "value": 6,
+        "count": 201,
+        "percentage": 1.73
+      },
+      {
+        "value": 20,
+        "count": 145,
+        "percentage": 1.25
+      },
+      {
+        "value": 37,
+        "count": 138,
+        "percentage": 1.19
+      },
+      {
+        "value": 31,
+        "count": 99,
+        "percentage": 0.85
+      },
+      {
+        "value": 36,
+        "count": 87,
+        "percentage": 0.75
+      },
+      {
+        "value": 10,
+        "count": 70,
+        "percentage": 0.6
+      },
+      {
+        "value": 35,
+        "count": 48,
+        "percentage": 0.41
+      },
+      {
+        "value": 15,
+        "count": 44,
+        "percentage": 0.38
+      },
+      {
+        "value": 32,
+        "count": 3,
+        "percentage": 0.03
+      },
+      {
+        "value": 24,
+        "count": 2,
+        "percentage": 0.02
+      }
+    ],
+    "by_event_count_bucket": [
+      {
+        "bucket": "1",
+        "count": 10
+      },
+      {
+        "bucket": "100+",
+        "count": 8
+      },
+      {
+        "bucket": "11-50",
+        "count": 72
+      },
+      {
+        "bucket": "2-3",
+        "count": 1873
+      },
+      {
+        "bucket": "4-5",
+        "count": 9618
+      },
+      {
+        "bucket": "51-100",
+        "count": 2
+      },
+      {
+        "bucket": "6-10",
+        "count": 296
+      }
+    ],
+    "by_duration_bucket": [
+      {
+        "bucket": "< 1s",
+        "count": 2020
+      },
+      {
+        "bucket": "1-10s",
+        "count": 9451
+      },
+      {
+        "bucket": "10s-1m",
+        "count": 256
+      },
+      {
+        "bucket": "1m-1h",
+        "count": 122
+      },
+      {
+        "bucket": "1h-1d",
+        "count": 29
+      },
+      {
+        "bucket": "> 1d",
+        "count": 1
+      }
+    ]
+  },
+  "critical_alerts": [
+    {
+      "session_id": "2651d0ed32e8",
+      "severity": "Critical",
+      "source_ip": "192.42.116.216",
+      "country": "The Netherlands",
+      "attack_type": "C2 Activity",
+      "mitre_technique": "T1090",
+      "attack_stage": "Command and Control",
+      "honeypot": "cowrie",
+      "event_count": 6,
+      "cluster_id": 9
+    },
+    {
+      "session_id": "79b25e2b5657",
+      "severity": "Critical",
+      "source_ip": "192.42.116.214",
+      "country": "The Netherlands",
+      "attack_type": "C2 Activity",
+      "mitre_technique": "T1090",
+      "attack_stage": "Command and Control",
+      "honeypot": "cowrie",
+      "event_count": 6,
+      "cluster_id": 9
+    },
+    {
+      "session_id": "a24cc8ec4b58",
+      "severity": "Critical",
+      "source_ip": "64.190.76.10",
+      "country": "Italy",
+      "attack_type": "C2 Activity",
+      "mitre_technique": "T1090",
+      "attack_stage": "Command and Control",
+      "honeypot": "cowrie",
+      "event_count": 6,
+      "cluster_id": 9
+    },
+    {
+      "session_id": "0b1e57cf62e7",
+      "severity": "High",
+      "source_ip": "142.44.212.226",
+      "country": "Canada",
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "honeypot": "cowrie",
+      "event_count": 4,
+      "cluster_id": 34
+    },
+    {
+      "session_id": "23525ec4e2a9",
+      "severity": "High",
+      "source_ip": "142.44.212.226",
+      "country": "Canada",
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "honeypot": "cowrie",
+      "event_count": 4,
+      "cluster_id": 34
+    },
+    {
+      "session_id": "6ab215e7e6e9",
+      "severity": "High",
+      "source_ip": "142.44.212.226",
+      "country": "Canada",
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "honeypot": "cowrie",
+      "event_count": 4,
+      "cluster_id": 34
+    },
+    {
+      "session_id": "6ae733110e8b",
+      "severity": "High",
+      "source_ip": "142.44.212.226",
+      "country": "Canada",
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "honeypot": "cowrie",
+      "event_count": 4,
+      "cluster_id": 34
+    },
+    {
+      "session_id": "b9bae6aa8d09",
+      "severity": "High",
+      "source_ip": "142.44.212.226",
+      "country": "Canada",
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "honeypot": "cowrie",
+      "event_count": 4,
+      "cluster_id": 34
+    }
+  ],
+  "critical_alerts_count": 8,
+  "top_source_ips": [
+    {
+      "ip": "173.231.185.164",
+      "session_count": 1389,
+      "event_count": 4155
+    },
+    {
+      "ip": "47.239.170.26",
+      "session_count": 744,
+      "event_count": 3743
+    },
+    {
+      "ip": "170.64.153.215",
+      "session_count": 705,
+      "event_count": 3543
+    },
+    {
+      "ip": "196.251.84.225",
+      "session_count": 571,
+      "event_count": 2863
+    },
+    {
+      "ip": "170.64.232.83",
+      "session_count": 521,
+      "event_count": 2607
+    },
+    {
+      "ip": "134.199.160.187",
+      "session_count": 470,
+      "event_count": 2357
+    },
+    {
+      "ip": "209.38.85.5",
+      "session_count": 470,
+      "event_count": 2360
+    },
+    {
+      "ip": "209.38.82.85",
+      "session_count": 469,
+      "event_count": 2358
+    },
+    {
+      "ip": "95.182.115.26",
+      "session_count": 336,
+      "event_count": 1679
+    },
+    {
+      "ip": "118.31.52.241",
+      "session_count": 250,
+      "event_count": 1256
+    }
+  ],
+  "session_count": 11879
+}

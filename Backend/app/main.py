@@ -52,26 +52,17 @@ from app.services.audit_service import write_audit_log
 
 from app.services.statistics_service import (
     get_statistics,
-    get_recent_events,
-    get_top_attackers,
+    get_top_attackers as get_stats_top_attackers,
 )
-
 from app.services.live_service import (
-    get_live_kpis, get_by_honeypot, get_by_protocol,
-    get_by_severity, get_by_country, get_top_attackers,
-    get_by_mitre, get_timeline, get_recent_events, get_by_reputation
+    get_live_kpis, get_by_honeypot, get_by_protocol, get_by_severity,
+    get_by_country, get_top_attackers as get_live_top_attackers,
+    get_by_mitre, get_timeline, get_recent_events, get_by_reputation,
 )
-
 from app.services.ml_service import (
-    get_clusters,
-    get_temporal,
-    get_session_summary,
-    get_alerts,
-    get_top_attackers,
-    get_mitre,
-    get_mitre_statistics,
-    get_mitre_trends,
-    get_replay_list,
+    get_clusters, get_temporal, get_session_summary, get_alerts,
+    get_top_attackers as get_ml_top_attackers, get_mitre,
+    get_mitre_statistics, get_mitre_trends, get_replay_list,
 )
 from app.services.ml_service import load_replay_detail
 
@@ -247,7 +238,7 @@ def recent_events():
 @app.get("/attackers/top", response_model=List[TopAttacker])
 def top_attackers():
     try:
-        return get_top_attackers()
+        return get_stats_top_attackers()
     except Exception as e:
         raise HTTPException(status_code=503, detail=str(e))
 
@@ -657,7 +648,7 @@ def live_by_country():
 @app.get("/api/live/top-attackers")
 def live_top_attackers():
     try:
-        return get_top_attackers()
+        return get_live_top_attackers()
     except Exception as e:
         raise HTTPException(status_code=503, detail=str(e))
 
@@ -732,7 +723,7 @@ def ml_alerts():
 @app.get("/api/ml/sessions/top-attackers")
 def ml_top_attackers():
     try:
-        return get_top_attackers()
+        return get_ml_top_attackers()
     except Exception as e:
         raise HTTPException(status_code=503, detail=str(e))
 

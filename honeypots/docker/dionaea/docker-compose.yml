@@ -22,4 +22,4 @@ services:
       - "21:21"
 
     volumes:
-      - ../../../elk/logs/doinaea:/opt/dionaea/var/log
+      - ../../../elk/logs/dionaea:/opt/dionaea/var/log

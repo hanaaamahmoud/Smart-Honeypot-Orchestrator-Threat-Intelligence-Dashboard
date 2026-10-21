@@ -1,0 +1,1025 @@
+{
+  "id": "ec26d8df17a9",
+  "summary": {
+    "reconstructed_session_id": "ec26d8df17a9",
+    "event_count": 8,
+    "duration_seconds": 1.599,
+    "first_event_utc": "2025-06-10T05:05:41.939994+00:00",
+    "last_event_utc": "2025-06-10T05:05:43.539117+00:00",
+    "context": {
+      "honeypot": "cowrie",
+      "protocol": "SSH",
+      "country": "China",
+      "country_code": "CN"
+    },
+    "classification": {
+      "attack_type": "SSH Connection Probe",
+      "mitre_technique": "T1595",
+      "attack_stage": "Reconnaissance",
+      "severity": "Low"
+    },
+    "source_ips": [
+      "118.31.52.241"
+    ],
+    "credentials": {
+      "unique_usernames": [
+        "sonar"
+      ],
+      "unique_passwords_count": 1,
+      "auth_attempt_total": 1,
+      "user_attempt_total": 1,
+      "pass_attempt_total": 1,
+      "anonymous_total": 0
+    },
+    "commands": {
+      "command_count_total": 1,
+      "unique_commands_count": 0,
+      "sample_commands": []
+    },
+    "flags": {
+      "is_suspicious": true,
+      "is_brute_force_candidate": false,
+      "has_commands_executed": true,
+      "has_attack_classification": true,
+      "is_large_session": false,
+      "is_long_running": false,
+      "is_multi_ip": false,
+      "is_high_severity": true,
+      "is_medium_or_higher_severity": true
+    }
+  },
+  "narrative": {
+    "steps": [
+      {
+        "index": 1,
+        "offset_seconds": 0.0,
+        "phase": "connection",
+        "step_type": "connection",
+        "icon": "🚪",
+        "title": "CONNECTION ESTABLISHED",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241:51056.0"
+          },
+          {
+            "label": "To",
+            "value": "172.19.0.2:22.0"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "SSH Connection Probe"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1595"
+          },
+          {
+            "label": "Stage",
+            "value": "Reconnaissance"
+          },
+          {
+            "label": "Severity",
+            "value": "Low"
+          },
+          {
+            "label": "Event",
+            "value": "1/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:41.939994+00:00"
+      },
+      {
+        "index": 2,
+        "offset_seconds": 0.001,
+        "phase": "activity",
+        "step_type": "activity",
+        "icon": "📌",
+        "title": "ACTIVITY",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "SSH Connection Probe"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1595"
+          },
+          {
+            "label": "Stage",
+            "value": "Reconnaissance"
+          },
+          {
+            "label": "Severity",
+            "value": "Low"
+          },
+          {
+            "label": "Event",
+            "value": "2/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:41.941280+00:00"
+      },
+      {
+        "index": 3,
+        "offset_seconds": 0.219,
+        "phase": "activity",
+        "step_type": "activity",
+        "icon": "📌",
+        "title": "ACTIVITY",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "SSH Connection Probe"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1595"
+          },
+          {
+            "label": "Stage",
+            "value": "Reconnaissance"
+          },
+          {
+            "label": "Severity",
+            "value": "Low"
+          },
+          {
+            "label": "Event",
+            "value": "3/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:42.159459+00:00"
+      },
+      {
+        "index": 4,
+        "offset_seconds": 0.881,
+        "phase": "auth",
+        "step_type": "auth_attempt",
+        "icon": "🔑",
+        "title": "AUTH ATTEMPT",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Username",
+            "value": "sonar"
+          },
+          {
+            "label": "Password",
+            "value": "sonar"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "SSH Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "4/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:42.820498+00:00"
+      },
+      {
+        "index": 5,
+        "offset_seconds": 1.373,
+        "phase": "activity",
+        "step_type": "activity",
+        "icon": "📌",
+        "title": "ACTIVITY",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "SSH Connection Probe"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1595"
+          },
+          {
+            "label": "Stage",
+            "value": "Reconnaissance"
+          },
+          {
+            "label": "Severity",
+            "value": "Low"
+          },
+          {
+            "label": "Event",
+            "value": "5/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:43.312604+00:00"
+      },
+      {
+        "index": 6,
+        "offset_seconds": 1.373,
+        "phase": "command",
+        "step_type": "command",
+        "icon": "💻",
+        "title": "COMMAND ACTIVITY",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Command count",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "Post-Exploitation"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1059"
+          },
+          {
+            "label": "Stage",
+            "value": "Execution"
+          },
+          {
+            "label": "Severity",
+            "value": "High"
+          },
+          {
+            "label": "Event",
+            "value": "6/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:43.313180+00:00"
+      },
+      {
+        "index": 7,
+        "offset_seconds": 1.597,
+        "phase": "activity",
+        "step_type": "activity",
+        "icon": "📌",
+        "title": "ACTIVITY",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "SSH Connection Probe"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1595"
+          },
+          {
+            "label": "Stage",
+            "value": "Reconnaissance"
+          },
+          {
+            "label": "Severity",
+            "value": "Low"
+          },
+          {
+            "label": "Event",
+            "value": "7/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:43.536597+00:00"
+      },
+      {
+        "index": 8,
+        "offset_seconds": 1.599,
+        "phase": "disconnect",
+        "step_type": "disconnect",
+        "icon": "🔚",
+        "title": "SESSION ENDED",
+        "details": [
+          {
+            "label": "From",
+            "value": "118.31.52.241"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "SSH Connection Probe"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1595"
+          },
+          {
+            "label": "Stage",
+            "value": "Reconnaissance"
+          },
+          {
+            "label": "Severity",
+            "value": "Low"
+          },
+          {
+            "label": "Event",
+            "value": "8/8"
+          }
+        ],
+        "timestamp": "2025-06-10T05:05:43.539117+00:00"
+      }
+    ],
+    "phases": [
+      {
+        "phase": "connection",
+        "started_at_seconds": 0.0,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 1,
+            "offset_seconds": 0.0,
+            "phase": "connection",
+            "step_type": "connection",
+            "icon": "🚪",
+            "title": "CONNECTION ESTABLISHED",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241:51056.0"
+              },
+              {
+                "label": "To",
+                "value": "172.19.0.2:22.0"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "SSH Connection Probe"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1595"
+              },
+              {
+                "label": "Stage",
+                "value": "Reconnaissance"
+              },
+              {
+                "label": "Severity",
+                "value": "Low"
+              },
+              {
+                "label": "Event",
+                "value": "1/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:41.939994+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.0
+      },
+      {
+        "phase": "activity",
+        "started_at_seconds": 0.001,
+        "step_count": 2,
+        "steps": [
+          {
+            "index": 2,
+            "offset_seconds": 0.001,
+            "phase": "activity",
+            "step_type": "activity",
+            "icon": "📌",
+            "title": "ACTIVITY",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "SSH Connection Probe"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1595"
+              },
+              {
+                "label": "Stage",
+                "value": "Reconnaissance"
+              },
+              {
+                "label": "Severity",
+                "value": "Low"
+              },
+              {
+                "label": "Event",
+                "value": "2/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:41.941280+00:00"
+          },
+          {
+            "index": 3,
+            "offset_seconds": 0.219,
+            "phase": "activity",
+            "step_type": "activity",
+            "icon": "📌",
+            "title": "ACTIVITY",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "SSH Connection Probe"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1595"
+              },
+              {
+                "label": "Stage",
+                "value": "Reconnaissance"
+              },
+              {
+                "label": "Severity",
+                "value": "Low"
+              },
+              {
+                "label": "Event",
+                "value": "3/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:42.159459+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.219
+      },
+      {
+        "phase": "auth",
+        "started_at_seconds": 0.881,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 4,
+            "offset_seconds": 0.881,
+            "phase": "auth",
+            "step_type": "auth_attempt",
+            "icon": "🔑",
+            "title": "AUTH ATTEMPT",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Username",
+                "value": "sonar"
+              },
+              {
+                "label": "Password",
+                "value": "sonar"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "SSH Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "4/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:42.820498+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.881
+      },
+      {
+        "phase": "activity",
+        "started_at_seconds": 1.373,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 5,
+            "offset_seconds": 1.373,
+            "phase": "activity",
+            "step_type": "activity",
+            "icon": "📌",
+            "title": "ACTIVITY",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "SSH Connection Probe"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1595"
+              },
+              {
+                "label": "Stage",
+                "value": "Reconnaissance"
+              },
+              {
+                "label": "Severity",
+                "value": "Low"
+              },
+              {
+                "label": "Event",
+                "value": "5/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:43.312604+00:00"
+          }
+        ],
+        "ended_at_seconds": 1.373
+      },
+      {
+        "phase": "command",
+        "started_at_seconds": 1.373,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 6,
+            "offset_seconds": 1.373,
+            "phase": "command",
+            "step_type": "command",
+            "icon": "💻",
+            "title": "COMMAND ACTIVITY",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Command count",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "Post-Exploitation"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1059"
+              },
+              {
+                "label": "Stage",
+                "value": "Execution"
+              },
+              {
+                "label": "Severity",
+                "value": "High"
+              },
+              {
+                "label": "Event",
+                "value": "6/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:43.313180+00:00"
+          }
+        ],
+        "ended_at_seconds": 1.373
+      },
+      {
+        "phase": "activity",
+        "started_at_seconds": 1.597,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 7,
+            "offset_seconds": 1.597,
+            "phase": "activity",
+            "step_type": "activity",
+            "icon": "📌",
+            "title": "ACTIVITY",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "SSH Connection Probe"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1595"
+              },
+              {
+                "label": "Stage",
+                "value": "Reconnaissance"
+              },
+              {
+                "label": "Severity",
+                "value": "Low"
+              },
+              {
+                "label": "Event",
+                "value": "7/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:43.536597+00:00"
+          }
+        ],
+        "ended_at_seconds": 1.597
+      },
+      {
+        "phase": "disconnect",
+        "started_at_seconds": 1.599,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 8,
+            "offset_seconds": 1.599,
+            "phase": "disconnect",
+            "step_type": "disconnect",
+            "icon": "🔚",
+            "title": "SESSION ENDED",
+            "details": [
+              {
+                "label": "From",
+                "value": "118.31.52.241"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "SSH Connection Probe"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1595"
+              },
+              {
+                "label": "Stage",
+                "value": "Reconnaissance"
+              },
+              {
+                "label": "Severity",
+                "value": "Low"
+              },
+              {
+                "label": "Event",
+                "value": "8/8"
+              }
+            ],
+            "timestamp": "2025-06-10T05:05:43.539117+00:00"
+          }
+        ],
+        "ended_at_seconds": 1.599
+      }
+    ],
+    "total_steps": 8
+  },
+  "events": [
+    {
+      "timestamp": "2025-06-10T05:05:41.939994+00:00",
+      "source_ip": "118.31.52.241",
+      "source_port": 51056.0,
+      "destination_ip": "172.19.0.2",
+      "destination_port": 22.0,
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "SSH Connection Probe",
+      "mitre_technique": "T1595",
+      "attack_stage": "Reconnaissance",
+      "severity": "Low",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 1,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2025-06-10T05:05:41.941280+00:00",
+      "source_ip": "118.31.52.241",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "SSH Connection Probe",
+      "mitre_technique": "T1595",
+      "attack_stage": "Reconnaissance",
+      "severity": "Low",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 2,
+      "_offset_seconds": 0.001
+    },
+    {
+      "timestamp": "2025-06-10T05:05:42.159459+00:00",
+      "source_ip": "118.31.52.241",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "SSH Connection Probe",
+      "mitre_technique": "T1595",
+      "attack_stage": "Reconnaissance",
+      "severity": "Low",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 3,
+      "_offset_seconds": 0.219
+    },
+    {
+      "timestamp": "2025-06-10T05:05:42.820498+00:00",
+      "username": "sonar",
+      "password": "sonar",
+      "source_ip": "118.31.52.241",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "SSH Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 4,
+      "_offset_seconds": 0.881
+    },
+    {
+      "timestamp": "2025-06-10T05:05:43.312604+00:00",
+      "source_ip": "118.31.52.241",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "SSH Connection Probe",
+      "mitre_technique": "T1595",
+      "attack_stage": "Reconnaissance",
+      "severity": "Low",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 5,
+      "_offset_seconds": 1.373
+    },
+    {
+      "timestamp": "2025-06-10T05:05:43.313180+00:00",
+      "source_ip": "118.31.52.241",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "Post-Exploitation",
+      "mitre_technique": "T1059",
+      "attack_stage": "Execution",
+      "severity": "High",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 1.0,
+      "_event_index": 6,
+      "_offset_seconds": 1.373
+    },
+    {
+      "timestamp": "2025-06-10T05:05:43.536597+00:00",
+      "source_ip": "118.31.52.241",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "SSH Connection Probe",
+      "mitre_technique": "T1595",
+      "attack_stage": "Reconnaissance",
+      "severity": "Low",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 7,
+      "_offset_seconds": 1.597
+    },
+    {
+      "timestamp": "2025-06-10T05:05:43.539117+00:00",
+      "source_ip": "118.31.52.241",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "China",
+      "country_code": "CN",
+      "asn": 37963,
+      "attack_type": "SSH Connection Probe",
+      "mitre_technique": "T1595",
+      "attack_stage": "Reconnaissance",
+      "severity": "Low",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 8,
+      "_offset_seconds": 1.599
+    }
+  ]
+}

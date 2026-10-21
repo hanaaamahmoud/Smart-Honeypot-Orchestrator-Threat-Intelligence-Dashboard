@@ -19,7 +19,7 @@ elk/logstash/data/
 *.log
 
 # Data 
-Backend/app/data/ml_analytics/
+
 
 # Python
 __pycache__/
@@ -39,9 +39,6 @@ Thumbs.db
 *.zip
 
 # Generated logs
-elk/logs/cowrie/
-elk/logs/dionaea/
-elk/logs/tanner/
 
 # Optional generic patterns
 *.sqlite

@@ -1,193 +1,213 @@
 # Smart Honeypot Orchestrator
 
-## Overview
+Lifecycle manager for the honeypot containers of the **Smart Honeypot Orchestrator & Threat Intelligence Dashboard**. It starts the configured honeypots, checks their health every 30 seconds, restarts any that stopped, and exposes their state through a small read-only status API.
 
-The Smart Honeypot Orchestrator is responsible for managing the lifecycle of multiple honeypot containers in a Docker environment. It provides centralized control over honeypot deployment, continuously monitors their health, and automatically recovers failed services by restarting stopped containers.
-
-The orchestrator is designed to work with Docker containers and a YAML-based configuration file, allowing new honeypots to be added without modifying the application logic.
+In the deployed system the Orchestrator runs on the cloud VM, next to the honeypots it controls.
 
 ---
 
-## Features
+## 1. Features
 
-- Automatic startup of enabled honeypots
-- Continuous health monitoring
-- Automatic restart of stopped containers
-- Docker SDK integration
-- YAML-based configuration
-- Centralized logging
-- Modular and extensible architecture
+- Starts every enabled honeypot container that is not already running
+- Health check every 30 seconds, with automatic restart of stopped containers
+- Read-only status API (`GET /status`) used by the backend and the dashboard
+- YAML configuration: honeypots can be enabled, disabled, or renamed without code changes
+- Logging to the console and to files
+- Docker SDK integration, with no changes needed in the honeypots themselves
 
----
+## 2. Architecture
 
-## Architecture
-
-```
-                config.yaml
+```text
+              config/config.yaml
                      │
                      ▼
              Configuration Loader
                      │
                      ▼
-               Orchestrator
-          ┌──────────┴──────────┐
-          ▼                     ▼
-   Docker Manager         Health Monitor
-          │                     │
-          └──────────┬──────────┘
+               Orchestrator ─────────────► Status API (GET /status)
+                     │
+                     ▼
+               Docker Manager
+                     │
                      ▼
                Docker Engine
                      │
                      ▼
-     Cowrie • Tanner • Dionaea
+     Cowrie • Tanner • Dionaea (existing containers)
 ```
 
----
+The Orchestrator does not build or create containers. The honeypots are deployed with Docker Compose, and the Orchestrator looks each one up **by container name**. This keeps deployment (Compose) separate from runtime control (Orchestrator).
 
-## Project Structure
+## 3. Project structure
 
-```
-Smart-Honeypot-Orchestrator/
-│
-├── app.py
-├── config.yaml
-│
+```text
+Orchestrator/
+├── app.py                  # entry point: starts honeypots, runs the monitoring loop
+├── requirements.txt
+├── config/
+│   └── config.yaml         # honeypot list
 ├── core/
-│   ├── orchestrator.py
-│   └── docker_manager.py
-│
+│   ├── orchestrator.py     # startup, health check, restart, status
+│   └── docker_manager.py   # Docker SDK wrapper
+├── api/
+│   └── status_api.py       # FastAPI status service
 ├── utils/
-│   ├── config_loader.py
-│   └── logger.py
-│
-└── logs/
+│   ├── config_loader.py    # reads config/config.yaml
+│   └── logger.py           # console and file logging
+└── logs/                   # orchestrator.log, docker.log (created at runtime)
 ```
 
----
+## 4. Components
 
-## Components
+### Orchestrator (`core/orchestrator.py`)
 
-### Orchestrator
+- Loads the configuration and creates the Docker manager
+- `start()` starts every enabled honeypot, then enters the monitoring loop
+- `health_check()` queries each enabled container and restarts it if it is not in the `running` state
+- `get_honeypot_status()` returns the state of every enabled honeypot (used by the status API)
 
-Responsible for:
+### Docker Manager (`core/docker_manager.py`)
 
-- Loading configuration
-- Starting enabled honeypots
-- Monitoring container health
-- Restarting failed containers
-- Managing the monitoring loop
+An abstraction over the Docker SDK (`docker.from_env()`):
 
----
+| Operation | Behavior |
+|---|---|
+| Start | Starts the container if it is not running, otherwise logs that it is already running |
+| Stop | Stops the container |
+| Restart | Restarts the container |
+| Status | Returns the container state (`running`, `exited`, and so on) |
 
-### Docker Manager
+If a container does not exist, the error `<name> not found` is logged and the operation is skipped. The orchestrator keeps running.
 
-Provides an abstraction layer over the Docker SDK.
+### Status API (`api/status_api.py`)
 
-Supported operations include:
+A FastAPI service with a single endpoint:
 
-- Start container
-- Stop container
-- Restart container
-- Retrieve container status
+```http
+GET /status
+```
 
----
+```json
+[
+  {"name": "Cowrie", "status": "running"},
+  {"name": "Tanner", "status": "running"},
+  {"name": "Dionaea", "status": "running"}
+]
+```
 
-## Configuration
+Only enabled honeypots are listed. A container that cannot be found is reported with the status `unknown`.
 
-The orchestrator uses a YAML configuration file.
+## 5. Configuration
 
-Example:
+`config/config.yaml`:
 
 ```yaml
 honeypots:
-
   cowrie:
     enabled: true
-    container_name: cowrie
+    container_name: "cowrie"
+    max_restart_attempts: 3
 
   tanner:
     enabled: true
-    container_name: tanner
+    container_name: "tanner"
+    max_restart_attempts: 3
 
   dionaea:
-    enabled: false
-    container_name: dionaea
+    enabled: true
+    container_name: "dionaea"
+    max_restart_attempts: 3
 ```
 
-Each honeypot can be enabled or disabled without modifying the source code.
+| Key | Description |
+|---|---|
+| `enabled` | If `false`, the honeypot is skipped (not started, not monitored, not listed in the status) |
+| `container_name` | Name of the existing Docker container (must match `container_name` in the honeypot Compose file) |
+| `max_restart_attempts` | Reserved. It is present in the configuration but not yet enforced by the code (see section 9) |
 
----
+The configuration is read from `config/config.yaml` relative to the directory the Orchestrator is started from, so always start it from the `Orchestrator/` directory.
 
-## Monitoring
+## 6. Monitoring
 
-The orchestrator performs a health check every **30 seconds**.
+Every **30 seconds**, for each enabled honeypot:
 
-For each enabled honeypot it:
+1. Read the container status.
+2. If the container is running, log `<name> is running.`
+3. Otherwise log a warning and restart the container.
+4. If the container does not exist, skip it (the error is logged by the Docker manager).
 
-1. Retrieves the current container status.
-2. Verifies whether the container is running.
-3. Automatically restarts stopped containers.
-4. Records all operations in the application logs.
+## 7. Requirements
 
----
-
-## Requirements
-
-- Python 3.8+
-- Docker Desktop
-- Docker SDK for Python
-
-Install dependencies:
+- Python 3.8 or later
+- Docker Engine, with the honeypot containers already created (`docker compose up -d` in the honeypots directory)
+- Python packages: `docker`, `PyYAML`, `fastapi`, `uvicorn`
+- The user running the Orchestrator must be allowed to use Docker (member of the `docker` group, or root)
 
 ```bash
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
----
+## 8. Running
 
-## Running the Orchestrator
+Two processes are used: the monitoring loop and the status API. Run both from the `Orchestrator/` directory.
 
 ```bash
+# 1. Lifecycle and monitoring loop
 python app.py
+
+# 2. Status API, listening on the loopback interface only
+uvicorn api.status_api:app --host 127.0.0.1 --port 8000
 ```
 
----
+On the cloud VM, the status API is not exposed to the Internet. The backend reaches it through an SSH tunnel:
 
-## Example Log Output
-
+```bash
+ssh -i <key> -p 2222 -N -L 0.0.0.0:8002:127.0.0.1:8000 <user>@<vm-address>
 ```
-Initializing Orchestrator...
 
-Starting Docker Container: cowrie
-Starting Docker Container: tanner
+and the backend is configured with `ORCHESTRATOR_URL=http://host.docker.internal:8002` (Docker Compose setup) or `http://127.0.0.1:8002` (backend run directly on the host).
 
-cowrie is running.
-tanner is running.
+### Example log output
 
-Checking status of cowrie...
-Checking status of tanner...
+```text
+2026-09-13 16:37:20,968 - orchestrator - INFO - Starting Orchestrator...
+2026-09-13 16:37:21,889 - docker - INFO - cowrie is already running.
+2026-09-13 16:37:22,426 - orchestrator - INFO - cowrie is running.
+2026-09-13 16:37:22,667 - orchestrator - INFO - tanner is running.
 ```
 
 If a container stops unexpectedly:
 
+```text
+orchestrator - WARNING - cowrie stopped. Restarting...
+docker - INFO - Restarting Docker Container: cowrie
+docker - INFO - cowrie restarted successfully.
 ```
-cowrie stopped.
-Restarting Docker Container: cowrie
-cowrie restarted successfully.
+
+If a configured container does not exist:
+
+```text
+docker - ERROR - tanner not found
 ```
 
----
+Logs are written to `logs/orchestrator.log` and `logs/docker.log`.
 
-## Technologies
+## 9. Security notes and limitations
 
-- Python
-- Docker SDK for Python
-- Docker Engine
-- YAML
-- Logging Module
+- **Docker access.** Anything that can use the Docker socket has root-equivalent control of the host. Run the Orchestrator only on the host that runs the honeypots, and never expose the status API publicly.
+- **No authentication on the status API.** It is read-only and bound to `127.0.0.1`; access control relies on the SSH tunnel.
+- **Existing containers only.** The Orchestrator does not create or update containers. If a container was removed, it is reported as `unknown` and must be recreated with Docker Compose.
+- **No restart limit.** `max_restart_attempts` is not enforced: a container that keeps failing is restarted every 30 seconds.
+- **Any non-running state is restarted**, including `exited` and `paused`.
+- **Polling.** Failures are detected within one check interval (up to 30 seconds).
+- **No alerting.** Failures are only written to the logs.
 
----
+## 10. Technologies
 
-## License
+Python, Docker SDK for Python, Docker Engine, FastAPI, Uvicorn, YAML.
+
+## 11. License
 
 This project is part of the **Smart Honeypot Orchestrator & Threat Intelligence Dashboard** master's project and is intended for academic and research purposes.
