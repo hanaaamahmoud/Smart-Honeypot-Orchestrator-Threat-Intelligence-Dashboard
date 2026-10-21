@@ -1,0 +1,39 @@
+services:
+
+  cowrie-init:
+    image: alpine:latest
+    container_name: cowrie-init
+    volumes:
+      - ./data:/data
+    command:
+      - sh
+      - -c
+      - |
+        mkdir -p /data/downloads
+        mkdir -p /data/keys
+        mkdir -p /data/log/tty
+        chown -R 2000:2000 /data
+
+  cowrie:
+    image: ghcr.io/telekom-security/cowrie:24.04.1
+    container_name: cowrie
+    restart: unless-stopped
+
+    ports:
+      - "22:22"
+
+    tmpfs:
+      - /tmp/cowrie:uid=2000,gid=2000
+      - /tmp/cowrie/data:uid=2000,gid=2000
+
+    volumes:
+      - ./data/downloads:/home/cowrie/cowrie/dl
+      - ./data/keys:/home/cowrie/cowrie/etc
+      - ../../../elk/logs/cowrie:/home/cowrie/cowrie/log
+      - ./data/cowrie.cfg:/home/cowrie/cowrie/cowrie.cfg
+
+    read_only: true
+
+    depends_on:
+      cowrie-init:
+        condition: service_completed_successfully

@@ -1,0 +1,3009 @@
+{
+  "contract_name": "CLUSTER_ANALYTICS_HANDOFF",
+  "contract_version": "1.0.0",
+  "generated_at": "2026-10-02T07:10:56.280226+00:00",
+  "source": "ML_SERVICE_FROZEN_PRODUCTION",
+  "model_status": "FROZEN_PRODUCTION_REFERENCE",
+  "analytics_layer": "CLUSTER_ANALYTICS",
+  "summary": {
+    "total_clusters": 29,
+    "total_sessions": 11879,
+    "noise_session_count": 0
+  },
+  "clusters": [
+    {
+      "cluster_id": 28,
+      "session_count": 1547,
+      "percentage": 13.022981732469063,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Username-oriented activity with calendar and longitude characteristics",
+      "attacker_behavior": "Repeated username-oriented activity with distinctive timing and source location",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "dayofweek",
+        "dayofmonth",
+        "longitude",
+        "username_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 1536,
+          "percentage": 99.29
+        },
+        {
+          "value": "dionaea",
+          "count": 11,
+          "percentage": 0.71
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Hong Kong",
+          "count": 748,
+          "percentage": 48.35
+        },
+        {
+          "value": "Australia",
+          "count": 704,
+          "percentage": 45.51
+        },
+        {
+          "value": "Singapore",
+          "count": 60,
+          "percentage": 3.88
+        },
+        {
+          "value": "Vietnam",
+          "count": 24,
+          "percentage": 1.55
+        },
+        {
+          "value": "Japan",
+          "count": 8,
+          "percentage": 0.52
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 1536,
+          "percentage": 99.29
+        },
+        {
+          "value": "FTP",
+          "count": 11,
+          "percentage": 0.71
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 1536,
+          "percentage": 99.29
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 11,
+          "percentage": 0.71
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 1536,
+          "percentage": 99.29
+        },
+        {
+          "value": "T1110",
+          "count": 11,
+          "percentage": 0.71
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 1536,
+          "percentage": 99.29
+        },
+        {
+          "value": "Credential Access",
+          "count": 11,
+          "percentage": 0.71
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 1536,
+          "percentage": 99.29
+        },
+        {
+          "value": "Medium",
+          "count": 11,
+          "percentage": 0.71
+        }
+      ],
+      "avg_event_count": 5.0517,
+      "avg_distance": 2.2495,
+      "avg_session_duration": 2.488
+    },
+    {
+      "cluster_id": 2,
+      "session_count": 1503,
+      "percentage": 12.65258018351713,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Geographically distinctive activity with username variation",
+      "attacker_behavior": "Repeated activity from a distinctive geographic and temporal pattern",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "longitude",
+        "username_diversity",
+        "unique_usernames",
+        "latitude",
+        "hour"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 1497,
+          "percentage": 99.6
+        },
+        {
+          "value": "dionaea",
+          "count": 6,
+          "percentage": 0.4
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Australia",
+          "count": 943,
+          "percentage": 62.74
+        },
+        {
+          "value": "China",
+          "count": 291,
+          "percentage": 19.36
+        },
+        {
+          "value": "Hong Kong",
+          "count": 248,
+          "percentage": 16.5
+        },
+        {
+          "value": "United States",
+          "count": 9,
+          "percentage": 0.6
+        },
+        {
+          "value": "South Korea",
+          "count": 4,
+          "percentage": 0.27
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 1497,
+          "percentage": 99.6
+        },
+        {
+          "value": "FTP",
+          "count": 6,
+          "percentage": 0.4
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 1497,
+          "percentage": 99.6
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 6,
+          "percentage": 0.4
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 1497,
+          "percentage": 99.6
+        },
+        {
+          "value": "T1110",
+          "count": 6,
+          "percentage": 0.4
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 1497,
+          "percentage": 99.6
+        },
+        {
+          "value": "Credential Access",
+          "count": 6,
+          "percentage": 0.4
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 1497,
+          "percentage": 99.6
+        },
+        {
+          "value": "Medium",
+          "count": 6,
+          "percentage": 0.4
+        }
+      ],
+      "avg_event_count": 5.0665,
+      "avg_distance": 1.7389,
+      "avg_session_duration": 2.4958
+    },
+    {
+      "cluster_id": 17,
+      "session_count": 1258,
+      "percentage": 10.5901170132166,
+      "cluster_type": "Time-concentrated Activity",
+      "activity_profile": "Activity concentrated around specific hours with username variation",
+      "attacker_behavior": "Time-concentrated repeated activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "hour",
+        "longitude",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 1257,
+          "percentage": 99.92
+        },
+        {
+          "value": "dionaea",
+          "count": 1,
+          "percentage": 0.08
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Australia",
+          "count": 988,
+          "percentage": 78.54
+        },
+        {
+          "value": "Singapore",
+          "count": 231,
+          "percentage": 18.36
+        },
+        {
+          "value": "Vietnam",
+          "count": 28,
+          "percentage": 2.23
+        },
+        {
+          "value": "Taiwan",
+          "count": 4,
+          "percentage": 0.32
+        },
+        {
+          "value": "China",
+          "count": 4,
+          "percentage": 0.32
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 1257,
+          "percentage": 99.92
+        },
+        {
+          "value": "FTP",
+          "count": 1,
+          "percentage": 0.08
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 1257,
+          "percentage": 99.92
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 1,
+          "percentage": 0.08
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 1257,
+          "percentage": 99.92
+        },
+        {
+          "value": "T1110",
+          "count": 1,
+          "percentage": 0.08
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 1257,
+          "percentage": 99.92
+        },
+        {
+          "value": "Credential Access",
+          "count": 1,
+          "percentage": 0.08
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 1257,
+          "percentage": 99.92
+        },
+        {
+          "value": "Medium",
+          "count": 1,
+          "percentage": 0.08
+        }
+      ],
+      "avg_event_count": 5.0358,
+      "avg_distance": 1.847,
+      "avg_session_duration": 2.6395
+    },
+    {
+      "cluster_id": 25,
+      "session_count": 1243,
+      "percentage": 10.463843757892079,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Username-focused activity with distinctive longitude characteristics",
+      "attacker_behavior": "Repeated username-oriented activity with limited protocol diversity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "longitude",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 1243,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Australia",
+          "count": 936,
+          "percentage": 75.3
+        },
+        {
+          "value": "Hong Kong",
+          "count": 121,
+          "percentage": 9.73
+        },
+        {
+          "value": "Vietnam",
+          "count": 93,
+          "percentage": 7.48
+        },
+        {
+          "value": "Singapore",
+          "count": 73,
+          "percentage": 5.87
+        },
+        {
+          "value": "India",
+          "count": 20,
+          "percentage": 1.61
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 1243,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 1243,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 1243,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 1243,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 1243,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 5.0676,
+      "avg_distance": 2.2366,
+      "avg_session_duration": 2.3778
+    },
+    {
+      "cluster_id": 33,
+      "session_count": 908,
+      "percentage": 7.643741055644416,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "Authentication activity with strong latitude and username characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "latitude",
+        "geo_latitude_abs",
+        "auth_attempt_rate",
+        "username_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 880,
+          "percentage": 96.92
+        },
+        {
+          "value": "dionaea",
+          "count": 28,
+          "percentage": 3.08
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "The Netherlands",
+          "count": 254,
+          "percentage": 27.97
+        },
+        {
+          "value": "United Kingdom",
+          "count": 245,
+          "percentage": 26.98
+        },
+        {
+          "value": "Latvia",
+          "count": 170,
+          "percentage": 18.72
+        },
+        {
+          "value": "United States",
+          "count": 93,
+          "percentage": 10.24
+        },
+        {
+          "value": "Romania",
+          "count": 60,
+          "percentage": 6.61
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 880,
+          "percentage": 96.92
+        },
+        {
+          "value": "FTP",
+          "count": 28,
+          "percentage": 3.08
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 880,
+          "percentage": 96.92
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 28,
+          "percentage": 3.08
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 880,
+          "percentage": 96.92
+        },
+        {
+          "value": "T1110",
+          "count": 28,
+          "percentage": 3.08
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 880,
+          "percentage": 96.92
+        },
+        {
+          "value": "Credential Access",
+          "count": 28,
+          "percentage": 3.08
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 880,
+          "percentage": 96.92
+        },
+        {
+          "value": "Medium",
+          "count": 28,
+          "percentage": 3.08
+        }
+      ],
+      "avg_event_count": 5.1619,
+      "avg_distance": 2.2327,
+      "avg_session_duration": 2.0681,
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 12,
+      "session_count": 594,
+      "percentage": 5.000420910851082,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, protocols, honeypots and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 594,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 527,
+          "percentage": 88.72
+        },
+        {
+          "value": "Hong Kong",
+          "count": 16,
+          "percentage": 2.69
+        },
+        {
+          "value": "Romania",
+          "count": 10,
+          "percentage": 1.68
+        },
+        {
+          "value": "Russia",
+          "count": 7,
+          "percentage": 1.18
+        },
+        {
+          "value": "China",
+          "count": 5,
+          "percentage": 0.84
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 594,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 593,
+          "percentage": 99.83
+        },
+        {
+          "value": "Network Scanning",
+          "count": 1,
+          "percentage": 0.17
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 593,
+          "percentage": 99.83
+        },
+        {
+          "value": "T1046",
+          "count": 1,
+          "percentage": 0.17
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 593,
+          "percentage": 99.83
+        },
+        {
+          "value": "Discovery",
+          "count": 1,
+          "percentage": 0.17
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 593,
+          "percentage": 99.83
+        },
+        {
+          "value": "Medium",
+          "count": 1,
+          "percentage": 0.17
+        }
+      ],
+      "avg_event_count": 2.8855,
+      "avg_distance": 4.2176,
+      "avg_session_duration": 0.3096,
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 8,
+      "session_count": 535,
+      "percentage": 4.503746106574628,
+      "cluster_type": "Time-concentrated Activity",
+      "activity_profile": "Activity concentrated around specific session hours with username variation",
+      "attacker_behavior": "Time-concentrated repeated activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "session_hour",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 531,
+          "percentage": 99.25
+        },
+        {
+          "value": "dionaea",
+          "count": 4,
+          "percentage": 0.75
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Seychelles",
+          "count": 531,
+          "percentage": 99.25
+        },
+        {
+          "value": "United States",
+          "count": 3,
+          "percentage": 0.56
+        },
+        {
+          "value": "Panama",
+          "count": 1,
+          "percentage": 0.19
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 531,
+          "percentage": 99.25
+        },
+        {
+          "value": "FTP",
+          "count": 4,
+          "percentage": 0.75
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 531,
+          "percentage": 99.25
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 4,
+          "percentage": 0.75
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 531,
+          "percentage": 99.25
+        },
+        {
+          "value": "T1110",
+          "count": 4,
+          "percentage": 0.75
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 531,
+          "percentage": 99.25
+        },
+        {
+          "value": "Credential Access",
+          "count": 4,
+          "percentage": 0.75
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 531,
+          "percentage": 99.25
+        },
+        {
+          "value": "Medium",
+          "count": 4,
+          "percentage": 0.75
+        }
+      ],
+      "avg_event_count": 5.0131,
+      "avg_distance": 0.6235,
+      "avg_session_duration": 2.363
+    },
+    {
+      "cluster_id": 3,
+      "session_count": 465,
+      "percentage": 3.9144709150601904,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, protocols, honeypots and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 465,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 404,
+          "percentage": 86.88
+        },
+        {
+          "value": "Hong Kong",
+          "count": 20,
+          "percentage": 4.3
+        },
+        {
+          "value": "China",
+          "count": 13,
+          "percentage": 2.8
+        },
+        {
+          "value": "Seychelles",
+          "count": 6,
+          "percentage": 1.29
+        },
+        {
+          "value": "The Netherlands",
+          "count": 5,
+          "percentage": 1.08
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 465,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 461,
+          "percentage": 99.14
+        },
+        {
+          "value": "Network Scanning",
+          "count": 4,
+          "percentage": 0.86
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 461,
+          "percentage": 99.14
+        },
+        {
+          "value": "T1046",
+          "count": 4,
+          "percentage": 0.86
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 461,
+          "percentage": 99.14
+        },
+        {
+          "value": "Discovery",
+          "count": 4,
+          "percentage": 0.86
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 461,
+          "percentage": 99.14
+        },
+        {
+          "value": "Medium",
+          "count": 4,
+          "percentage": 0.86
+        }
+      ],
+      "avg_event_count": 2.8925,
+      "avg_distance": 4.5911,
+      "avg_session_duration": 0.3409,
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 13,
+      "session_count": 420,
+      "percentage": 3.5356511490866236,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "Multi-target and multi-protocol behavior with geographic diversity",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 420,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 381,
+          "percentage": 90.71
+        },
+        {
+          "value": "China",
+          "count": 8,
+          "percentage": 1.9
+        },
+        {
+          "value": "Seychelles",
+          "count": 5,
+          "percentage": 1.19
+        },
+        {
+          "value": "Romania",
+          "count": 4,
+          "percentage": 0.95
+        },
+        {
+          "value": "Germany",
+          "count": 4,
+          "percentage": 0.95
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 420,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 420,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 420,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 420,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 420,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 2.9167,
+      "avg_distance": 4.4403,
+      "avg_session_duration": 0.3736,
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 27,
+      "session_count": 414,
+      "percentage": 3.4851418469568145,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication rate with geographic and temporal concentration",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude",
+        "geo_latitude_abs",
+        "hour",
+        "username_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 414,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 337,
+          "percentage": 81.4
+        },
+        {
+          "value": "Romania",
+          "count": 52,
+          "percentage": 12.56
+        },
+        {
+          "value": "China",
+          "count": 9,
+          "percentage": 2.17
+        },
+        {
+          "value": "Germany",
+          "count": 6,
+          "percentage": 1.45
+        },
+        {
+          "value": "United Kingdom",
+          "count": 4,
+          "percentage": 0.97
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 414,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 414,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 414,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 414,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 414,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 5.1473,
+      "avg_distance": 2.492,
+      "avg_session_duration": 1.2265,
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 23,
+      "session_count": 284,
+      "percentage": 2.3907736341442885,
+      "cluster_type": "Time-concentrated Username Activity",
+      "activity_profile": "Username-focused activity concentrated around specific hours",
+      "attacker_behavior": "Credential Activity Candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "hour",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 281,
+          "percentage": 98.94
+        },
+        {
+          "value": "dionaea",
+          "count": 3,
+          "percentage": 1.06
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "India",
+          "count": 228,
+          "percentage": 80.57
+        },
+        {
+          "value": "Seychelles",
+          "count": 52,
+          "percentage": 18.37
+        },
+        {
+          "value": "Palestine",
+          "count": 2,
+          "percentage": 0.71
+        },
+        {
+          "value": "Vietnam",
+          "count": 1,
+          "percentage": 0.35
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 281,
+          "percentage": 98.94
+        },
+        {
+          "value": "FTP",
+          "count": 3,
+          "percentage": 1.06
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 281,
+          "percentage": 98.94
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 3,
+          "percentage": 1.06
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 281,
+          "percentage": 98.94
+        },
+        {
+          "value": "T1110",
+          "count": 3,
+          "percentage": 1.06
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 281,
+          "percentage": 98.94
+        },
+        {
+          "value": "Credential Access",
+          "count": 3,
+          "percentage": 1.06
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 281,
+          "percentage": 98.94
+        },
+        {
+          "value": "Medium",
+          "count": 3,
+          "percentage": 1.06
+        }
+      ],
+      "avg_event_count": 5.1725,
+      "avg_distance": 2.2014,
+      "avg_session_duration": 2.2897,
+      "possible_attack_name": "Credential Activity"
+    },
+    {
+      "cluster_id": 34,
+      "session_count": 276,
+      "percentage": 2.3234278979712095,
+      "cluster_type": "Low-credential Activity",
+      "activity_profile": "Activity with low username diversity and low authentication characteristics",
+      "attacker_behavior": "Low-diversity activity without sufficient evidence for a specific attack label",
+      "confidence": "LOW",
+      "evidence_features": [
+        "dayofweek",
+        "username_diversity",
+        "unique_usernames",
+        "auth_attempt_rate",
+        "credential_attempt_density"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 276,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 183,
+          "percentage": 66.3
+        },
+        {
+          "value": "China",
+          "count": 16,
+          "percentage": 5.8
+        },
+        {
+          "value": "Russia",
+          "count": 11,
+          "percentage": 3.99
+        },
+        {
+          "value": "France",
+          "count": 11,
+          "percentage": 3.99
+        },
+        {
+          "value": "Germany",
+          "count": 10,
+          "percentage": 3.62
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 276,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 257,
+          "percentage": 93.12
+        },
+        {
+          "value": "Network Scanning",
+          "count": 14,
+          "percentage": 5.07
+        },
+        {
+          "value": "Compromised Host",
+          "count": 5,
+          "percentage": 1.81
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 257,
+          "percentage": 93.12
+        },
+        {
+          "value": "T1046",
+          "count": 14,
+          "percentage": 5.07
+        },
+        {
+          "value": "T1078",
+          "count": 5,
+          "percentage": 1.81
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 257,
+          "percentage": 93.12
+        },
+        {
+          "value": "Discovery",
+          "count": 14,
+          "percentage": 5.07
+        },
+        {
+          "value": "Defense Evasion",
+          "count": 5,
+          "percentage": 1.81
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 257,
+          "percentage": 93.12
+        },
+        {
+          "value": "Medium",
+          "count": 14,
+          "percentage": 5.07
+        },
+        {
+          "value": "High",
+          "count": 5,
+          "percentage": 1.81
+        }
+      ],
+      "avg_event_count": 4.0399,
+      "avg_distance": 4.1421,
+      "avg_session_duration": 4.4923
+    },
+    {
+      "cluster_id": 0,
+      "session_count": 260,
+      "percentage": 2.1887364256250526,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication activity with distinctive temporal and geographic characteristics",
+      "attacker_behavior": "Repeated authentication-oriented activity with distinctive time and source-location characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "dayofweek",
+        "dayofmonth",
+        "longitude",
+        "auth_attempt_rate",
+        "username_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 247,
+          "percentage": 95.0
+        },
+        {
+          "value": "dionaea",
+          "count": 13,
+          "percentage": 5.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "China",
+          "count": 249,
+          "percentage": 95.77
+        },
+        {
+          "value": "United States",
+          "count": 8,
+          "percentage": 3.08
+        },
+        {
+          "value": "Hong Kong",
+          "count": 2,
+          "percentage": 0.77
+        },
+        {
+          "value": "Japan",
+          "count": 1,
+          "percentage": 0.38
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 247,
+          "percentage": 95.0
+        },
+        {
+          "value": "FTP",
+          "count": 13,
+          "percentage": 5.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 247,
+          "percentage": 95.0
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 13,
+          "percentage": 5.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 247,
+          "percentage": 95.0
+        },
+        {
+          "value": "T1110",
+          "count": 13,
+          "percentage": 5.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 247,
+          "percentage": 95.0
+        },
+        {
+          "value": "Credential Access",
+          "count": 13,
+          "percentage": 5.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 247,
+          "percentage": 95.0
+        },
+        {
+          "value": "Medium",
+          "count": 13,
+          "percentage": 5.0
+        }
+      ],
+      "avg_event_count": 5.2154,
+      "avg_distance": 3.4883,
+      "avg_session_duration": 1.4536
+    },
+    {
+      "cluster_id": 9,
+      "session_count": 246,
+      "percentage": 2.070881387322165,
+      "cluster_type": "Long-duration Sparse Activity",
+      "activity_profile": "Longer-duration activity with large inter-event gaps",
+      "attacker_behavior": "Sparse and persistent activity over extended periods",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "latitude",
+        "duration",
+        "max_inter_event_gap",
+        "inter_event_gap_mean"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 236,
+          "percentage": 95.93
+        },
+        {
+          "value": "tanner",
+          "count": 10,
+          "percentage": 4.07
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Latvia",
+          "count": 163,
+          "percentage": 66.26
+        },
+        {
+          "value": "The Netherlands",
+          "count": 21,
+          "percentage": 8.54
+        },
+        {
+          "value": "China",
+          "count": 11,
+          "percentage": 4.47
+        },
+        {
+          "value": "Russia",
+          "count": 11,
+          "percentage": 4.47
+        },
+        {
+          "value": "Romania",
+          "count": 10,
+          "percentage": 4.07
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 236,
+          "percentage": 95.93
+        },
+        {
+          "value": "HTTP",
+          "count": 10,
+          "percentage": 4.07
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 233,
+          "percentage": 94.72
+        },
+        {
+          "value": "HTTP Exploitation",
+          "count": 10,
+          "percentage": 4.07
+        },
+        {
+          "value": "C2 Activity",
+          "count": 3,
+          "percentage": 1.22
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 233,
+          "percentage": 94.72
+        },
+        {
+          "value": "T1190",
+          "count": 10,
+          "percentage": 4.07
+        },
+        {
+          "value": "T1090",
+          "count": 3,
+          "percentage": 1.22
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 233,
+          "percentage": 94.72
+        },
+        {
+          "value": "Initial Access",
+          "count": 10,
+          "percentage": 4.07
+        },
+        {
+          "value": "Command and Control",
+          "count": 3,
+          "percentage": 1.22
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 233,
+          "percentage": 94.72
+        },
+        {
+          "value": "Medium",
+          "count": 10,
+          "percentage": 4.07
+        },
+        {
+          "value": "Critical",
+          "count": 3,
+          "percentage": 1.22
+        }
+      ],
+      "avg_event_count": 13.7236,
+      "avg_distance": 6.9357,
+      "avg_session_duration": 2674.9275
+    },
+    {
+      "cluster_id": 26,
+      "session_count": 242,
+      "percentage": 2.0372085192356257,
+      "cluster_type": "Username-focused Activity",
+      "activity_profile": "Strong username and unique-username characteristics",
+      "attacker_behavior": "Credential Activity Candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 241,
+          "percentage": 99.59
+        },
+        {
+          "value": "dionaea",
+          "count": 1,
+          "percentage": 0.41
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Seychelles",
+          "count": 241,
+          "percentage": 100.0
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 241,
+          "percentage": 99.59
+        },
+        {
+          "value": "FTP",
+          "count": 1,
+          "percentage": 0.41
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 241,
+          "percentage": 99.59
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 1,
+          "percentage": 0.41
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 241,
+          "percentage": 99.59
+        },
+        {
+          "value": "T1110",
+          "count": 1,
+          "percentage": 0.41
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 241,
+          "percentage": 99.59
+        },
+        {
+          "value": "Credential Access",
+          "count": 1,
+          "percentage": 0.41
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 241,
+          "percentage": 99.59
+        },
+        {
+          "value": "Medium",
+          "count": 1,
+          "percentage": 0.41
+        }
+      ],
+      "avg_event_count": 5.1074,
+      "avg_distance": 1.0108,
+      "avg_session_duration": 2.4321,
+      "possible_attack_name": "Credential Activity"
+    },
+    {
+      "cluster_id": 19,
+      "session_count": 218,
+      "percentage": 1.83517131071639,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Latitude and hour focused activity with username variation",
+      "attacker_behavior": "Repeated activity with distinctive geographic and temporal characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "hour",
+        "latitude",
+        "geo_latitude_abs",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 211,
+          "percentage": 96.79
+        },
+        {
+          "value": "dionaea",
+          "count": 7,
+          "percentage": 3.21
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 217,
+          "percentage": 99.54
+        },
+        {
+          "value": "Canada",
+          "count": 1,
+          "percentage": 0.46
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 211,
+          "percentage": 96.79
+        },
+        {
+          "value": "FTP",
+          "count": 7,
+          "percentage": 3.21
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 211,
+          "percentage": 96.79
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 7,
+          "percentage": 3.21
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 211,
+          "percentage": 96.79
+        },
+        {
+          "value": "T1110",
+          "count": 7,
+          "percentage": 3.21
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 211,
+          "percentage": 96.79
+        },
+        {
+          "value": "Credential Access",
+          "count": 7,
+          "percentage": 3.21
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 211,
+          "percentage": 96.79
+        },
+        {
+          "value": "Medium",
+          "count": 7,
+          "percentage": 3.21
+        }
+      ],
+      "avg_event_count": 5.1193,
+      "avg_distance": 2.9642,
+      "avg_session_duration": 3.3036
+    },
+    {
+      "cluster_id": 30,
+      "session_count": 216,
+      "percentage": 1.8183348766731204,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication-oriented activity with strong latitude and username characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "latitude",
+        "username_diversity",
+        "auth_attempt_rate",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 215,
+          "percentage": 99.54
+        },
+        {
+          "value": "dionaea",
+          "count": 1,
+          "percentage": 0.46
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Russia",
+          "count": 216,
+          "percentage": 100.0
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 215,
+          "percentage": 99.54
+        },
+        {
+          "value": "FTP",
+          "count": 1,
+          "percentage": 0.46
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 215,
+          "percentage": 99.54
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 1,
+          "percentage": 0.46
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 215,
+          "percentage": 99.54
+        },
+        {
+          "value": "T1110",
+          "count": 1,
+          "percentage": 0.46
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 215,
+          "percentage": 99.54
+        },
+        {
+          "value": "Credential Access",
+          "count": 1,
+          "percentage": 0.46
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 215,
+          "percentage": 99.54
+        },
+        {
+          "value": "Medium",
+          "count": 1,
+          "percentage": 0.46
+        }
+      ],
+      "avg_event_count": 5.0185,
+      "avg_distance": 2.955,
+      "avg_session_duration": 2.002,
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 1,
+      "session_count": 208,
+      "percentage": 1.7509891405000422,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication-attempt activity with multiple usernames",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "username_diversity",
+        "unique_usernames",
+        "latitude",
+        "geo_longitude_abs"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 208,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 208,
+          "percentage": 100.0
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 208,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 208,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 208,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 208,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 208,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 5.0,
+      "avg_distance": 2.3358,
+      "avg_session_duration": 1.2469,
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 18,
+      "session_count": 205,
+      "percentage": 1.7257344894351374,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, protocols, honeypots and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 203,
+          "percentage": 99.02
+        },
+        {
+          "value": "dionaea",
+          "count": 2,
+          "percentage": 0.98
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 157,
+          "percentage": 76.59
+        },
+        {
+          "value": "China",
+          "count": 14,
+          "percentage": 6.83
+        },
+        {
+          "value": "Romania",
+          "count": 8,
+          "percentage": 3.9
+        },
+        {
+          "value": "Seychelles",
+          "count": 5,
+          "percentage": 2.44
+        },
+        {
+          "value": "Germany",
+          "count": 3,
+          "percentage": 1.46
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 203,
+          "percentage": 99.02
+        },
+        {
+          "value": "FTP",
+          "count": 2,
+          "percentage": 0.98
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 199,
+          "percentage": 97.07
+        },
+        {
+          "value": "Network Scanning",
+          "count": 4,
+          "percentage": 1.95
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 1,
+          "percentage": 0.49
+        },
+        {
+          "value": "FTP Connection Probe",
+          "count": 1,
+          "percentage": 0.49
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 200,
+          "percentage": 97.56
+        },
+        {
+          "value": "T1046",
+          "count": 4,
+          "percentage": 1.95
+        },
+        {
+          "value": "T1110",
+          "count": 1,
+          "percentage": 0.49
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 200,
+          "percentage": 97.56
+        },
+        {
+          "value": "Discovery",
+          "count": 4,
+          "percentage": 1.95
+        },
+        {
+          "value": "Credential Access",
+          "count": 1,
+          "percentage": 0.49
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 200,
+          "percentage": 97.56
+        },
+        {
+          "value": "Medium",
+          "count": 5,
+          "percentage": 2.44
+        }
+      ],
+      "avg_event_count": 2.6829,
+      "avg_distance": 5.4036,
+      "avg_session_duration": 0.4184,
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 6,
+      "session_count": 201,
+      "percentage": 1.6920616213485986,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication rate with geographic and username concentration",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "session_hour",
+        "latitude",
+        "geo_latitude_abs",
+        "username_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 201,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 201,
+          "percentage": 100.0
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 201,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 201,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 201,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 201,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 201,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 5.1642,
+      "avg_distance": 3.554,
+      "avg_session_duration": 1.1067,
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 20,
+      "session_count": 145,
+      "percentage": 1.2206414681370488,
+      "cluster_type": "Long-duration Sparse Activity",
+      "activity_profile": "Long-duration activity with large temporal gaps",
+      "attacker_behavior": "Sparse and persistent activity over extended periods",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_longitude_abs",
+        "hour",
+        "longitude",
+        "duration",
+        "max_inter_event_gap"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 145,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Australia",
+          "count": 104,
+          "percentage": 71.72
+        },
+        {
+          "value": "Vietnam",
+          "count": 26,
+          "percentage": 17.93
+        },
+        {
+          "value": "South Korea",
+          "count": 7,
+          "percentage": 4.83
+        },
+        {
+          "value": "Singapore",
+          "count": 4,
+          "percentage": 2.76
+        },
+        {
+          "value": "Hong Kong",
+          "count": 2,
+          "percentage": 1.38
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 145,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 145,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 145,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 145,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 145,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 5.931,
+      "avg_distance": 4.2579,
+      "avg_session_duration": 18.9263
+    },
+    {
+      "cluster_id": 37,
+      "session_count": 138,
+      "percentage": 1.1617139489856048,
+      "cluster_type": "Sparse Long-duration Multi-target Activity",
+      "activity_profile": "Long-duration sparse activity combined with multi-target and multi-protocol diversity",
+      "attacker_behavior": "Reconnaissance-like / Slow Exploration Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "inter_event_gap_mean_log1p",
+        "max_inter_event_gap",
+        "duration",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "unique_destinations",
+        "geo_country_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 110,
+          "percentage": 79.71
+        },
+        {
+          "value": "tanner",
+          "count": 20,
+          "percentage": 14.49
+        },
+        {
+          "value": "dionaea",
+          "count": 8,
+          "percentage": 5.8
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "China",
+          "count": 90,
+          "percentage": 65.22
+        },
+        {
+          "value": "United States",
+          "count": 17,
+          "percentage": 12.32
+        },
+        {
+          "value": "Vietnam",
+          "count": 8,
+          "percentage": 5.8
+        },
+        {
+          "value": "France",
+          "count": 4,
+          "percentage": 2.9
+        },
+        {
+          "value": "Hong Kong",
+          "count": 3,
+          "percentage": 2.17
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 110,
+          "percentage": 79.71
+        },
+        {
+          "value": "HTTP",
+          "count": 20,
+          "percentage": 14.49
+        },
+        {
+          "value": "FTP",
+          "count": 8,
+          "percentage": 5.8
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 110,
+          "percentage": 79.71
+        },
+        {
+          "value": "HTTP Exploitation",
+          "count": 20,
+          "percentage": 14.49
+        },
+        {
+          "value": "FTP Connection Probe",
+          "count": 7,
+          "percentage": 5.07
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 1,
+          "percentage": 0.72
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 117,
+          "percentage": 84.78
+        },
+        {
+          "value": "T1190",
+          "count": 20,
+          "percentage": 14.49
+        },
+        {
+          "value": "T1110",
+          "count": 1,
+          "percentage": 0.72
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 117,
+          "percentage": 84.78
+        },
+        {
+          "value": "Initial Access",
+          "count": 20,
+          "percentage": 14.49
+        },
+        {
+          "value": "Credential Access",
+          "count": 1,
+          "percentage": 0.72
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 117,
+          "percentage": 84.78
+        },
+        {
+          "value": "Medium",
+          "count": 21,
+          "percentage": 15.22
+        }
+      ],
+      "avg_event_count": 6.1522,
+      "avg_distance": 12.8644,
+      "avg_session_duration": 12833.2863,
+      "possible_attack_name": "Reconnaissance-like / Slow Exploration"
+    },
+    {
+      "cluster_id": 31,
+      "session_count": 99,
+      "percentage": 0.8334034851418469,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Username-oriented activity with distinctive calendar characteristics",
+      "attacker_behavior": "Repeated username-oriented activity with distinctive timing",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "dayofweek",
+        "dayofmonth",
+        "username_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 69,
+          "percentage": 69.7
+        },
+        {
+          "value": "dionaea",
+          "count": 30,
+          "percentage": 30.3
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Seychelles",
+          "count": 56,
+          "percentage": 57.73
+        },
+        {
+          "value": "United States",
+          "count": 25,
+          "percentage": 25.77
+        },
+        {
+          "value": "Brazil",
+          "count": 11,
+          "percentage": 11.34
+        },
+        {
+          "value": "United Arab Emirates",
+          "count": 2,
+          "percentage": 2.06
+        },
+        {
+          "value": "India",
+          "count": 2,
+          "percentage": 2.06
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 69,
+          "percentage": 69.7
+        },
+        {
+          "value": "FTP",
+          "count": 30,
+          "percentage": 30.3
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 69,
+          "percentage": 69.7
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 30,
+          "percentage": 30.3
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 69,
+          "percentage": 69.7
+        },
+        {
+          "value": "T1110",
+          "count": 30,
+          "percentage": 30.3
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 69,
+          "percentage": 69.7
+        },
+        {
+          "value": "Credential Access",
+          "count": 30,
+          "percentage": 30.3
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 69,
+          "percentage": 69.7
+        },
+        {
+          "value": "Medium",
+          "count": 30,
+          "percentage": 30.3
+        }
+      ],
+      "avg_event_count": 5.7071,
+      "avg_distance": 7.3375,
+      "avg_session_duration": 1.6083
+    },
+    {
+      "cluster_id": 36,
+      "session_count": 87,
+      "percentage": 0.7323848808822291,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, honeypots, protocols and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "honeypot_diversity",
+        "protocol_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 87,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 67,
+          "percentage": 77.01
+        },
+        {
+          "value": "The Netherlands",
+          "count": 4,
+          "percentage": 4.6
+        },
+        {
+          "value": "Romania",
+          "count": 4,
+          "percentage": 4.6
+        },
+        {
+          "value": "Germany",
+          "count": 3,
+          "percentage": 3.45
+        },
+        {
+          "value": "China",
+          "count": 2,
+          "percentage": 2.3
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 87,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 84,
+          "percentage": 96.55
+        },
+        {
+          "value": "Network Scanning",
+          "count": 3,
+          "percentage": 3.45
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 84,
+          "percentage": 96.55
+        },
+        {
+          "value": "T1046",
+          "count": 3,
+          "percentage": 3.45
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 84,
+          "percentage": 96.55
+        },
+        {
+          "value": "Discovery",
+          "count": 3,
+          "percentage": 3.45
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 84,
+          "percentage": 96.55
+        },
+        {
+          "value": "Medium",
+          "count": 3,
+          "percentage": 3.45
+        }
+      ],
+      "avg_event_count": 2.7931,
+      "avg_distance": 7.4681,
+      "avg_session_duration": 0.2846,
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 10,
+      "session_count": 70,
+      "percentage": 0.5892751915144373,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication activity with strong latitude and calendar characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "dayofweek",
+        "latitude",
+        "auth_attempt_rate",
+        "dayofmonth"
+      ],
+      "top_honeypots": [
+        {
+          "value": "dionaea",
+          "count": 70,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "France",
+          "count": 21,
+          "percentage": 30.0
+        },
+        {
+          "value": "United States",
+          "count": 14,
+          "percentage": 20.0
+        },
+        {
+          "value": "Belgium",
+          "count": 12,
+          "percentage": 17.14
+        },
+        {
+          "value": "The Netherlands",
+          "count": 9,
+          "percentage": 12.86
+        },
+        {
+          "value": "Romania",
+          "count": 4,
+          "percentage": 5.71
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "FTP",
+          "count": 70,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "FTP Brute Force",
+          "count": 70,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1110",
+          "count": 70,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Credential Access",
+          "count": 70,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Medium",
+          "count": 70,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 8.0714,
+      "avg_distance": 21.5069,
+      "avg_session_duration": 0.0,
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 35,
+      "session_count": 48,
+      "percentage": 0.40407441703847125,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "Authentication activity with strong latitude and username characteristics",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 48,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "United States",
+          "count": 47,
+          "percentage": 97.92
+        },
+        {
+          "value": "Singapore",
+          "count": 1,
+          "percentage": 2.08
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 48,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 48,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 48,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 48,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 48,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 5.4792,
+      "avg_distance": 3.6602,
+      "avg_session_duration": 1.4622,
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 15,
+      "session_count": 44,
+      "percentage": 0.370401548951932,
+      "cluster_type": "Username-focused Activity",
+      "activity_profile": "Strong username and unique-username characteristics",
+      "attacker_behavior": "Credential Activity Candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 44,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Seychelles",
+          "count": 44,
+          "percentage": 100.0
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 44,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 44,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 44,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 44,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 44,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 5.0,
+      "avg_distance": 0.3319,
+      "avg_session_duration": 2.4075,
+      "possible_attack_name": "Credential Activity"
+    },
+    {
+      "cluster_id": 32,
+      "session_count": 3,
+      "percentage": 0.025254651064904453,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Time and longitude-focused activity with username variation",
+      "attacker_behavior": "Repeated activity with distinctive temporal and geographic characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "hour",
+        "longitude",
+        "username_diversity",
+        "unique_usernames",
+        "latitude"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 2,
+          "percentage": 66.67
+        },
+        {
+          "value": "dionaea",
+          "count": 1,
+          "percentage": 33.33
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "China",
+          "count": 2,
+          "percentage": 66.67
+        },
+        {
+          "value": "Japan",
+          "count": 1,
+          "percentage": 33.33
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 2,
+          "percentage": 66.67
+        },
+        {
+          "value": "FTP",
+          "count": 1,
+          "percentage": 33.33
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 2,
+          "percentage": 66.67
+        },
+        {
+          "value": "FTP Brute Force",
+          "count": 1,
+          "percentage": 33.33
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 2,
+          "percentage": 66.67
+        },
+        {
+          "value": "T1110",
+          "count": 1,
+          "percentage": 33.33
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 2,
+          "percentage": 66.67
+        },
+        {
+          "value": "Credential Access",
+          "count": 1,
+          "percentage": 33.33
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 2,
+          "percentage": 66.67
+        },
+        {
+          "value": "Medium",
+          "count": 1,
+          "percentage": 33.33
+        }
+      ],
+      "avg_event_count": 4.6667,
+      "avg_distance": 6.8153,
+      "avg_session_duration": 3.3856
+    },
+    {
+      "cluster_id": 24,
+      "session_count": 2,
+      "percentage": 0.016836434043269635,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication rate with geographic and temporal concentration",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude",
+        "hour",
+        "geo_latitude_abs",
+        "username_diversity"
+      ],
+      "top_honeypots": [
+        {
+          "value": "cowrie",
+          "count": 2,
+          "percentage": 100.0
+        }
+      ],
+      "top_countries": [
+        {
+          "value": "Canada",
+          "count": 1,
+          "percentage": 50.0
+        },
+        {
+          "value": "United States",
+          "count": 1,
+          "percentage": 50.0
+        }
+      ],
+      "top_protocols": [
+        {
+          "value": "SSH",
+          "count": 2,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_types": [
+        {
+          "value": "SSH Connection Probe",
+          "count": 2,
+          "percentage": 100.0
+        }
+      ],
+      "top_mitre_techniques": [
+        {
+          "value": "T1595",
+          "count": 2,
+          "percentage": 100.0
+        }
+      ],
+      "top_attack_stages": [
+        {
+          "value": "Reconnaissance",
+          "count": 2,
+          "percentage": 100.0
+        }
+      ],
+      "top_severities": [
+        {
+          "value": "Low",
+          "count": 2,
+          "percentage": 100.0
+        }
+      ],
+      "avg_event_count": 6.5,
+      "avg_distance": 13.4688,
+      "avg_session_duration": 0.4576,
+      "possible_attack_name": "Credential / Authentication Attack"
+    }
+  ]
+}

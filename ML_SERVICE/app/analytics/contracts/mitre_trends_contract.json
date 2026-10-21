@@ -1,0 +1,73 @@
+{
+  "contract_name": "MITRE_TRENDS",
+  "version": "2.0.0",
+  "status": "ACTIVE",
+  "grain": "TREND_RECORD",
+  "purpose": "Time-series trends of MITRE dimensions (technique / attack type / attack stage) over calendar days, derived from validated ML session output without fabrication.",
+
+  "input": {
+    "source": "ML_SERVICE_OUTPUT",
+    "grain": "SESSION",
+    "required_fields": ["timestamp"],
+    "optional_fields": [
+      "session_id",
+      "event_count",
+      "mitre_technique",
+      "attack_type",
+      "attack_stage"
+    ]
+  },
+
+  "output": {
+    "grain": "TREND_RECORD",
+    "required_fields": [
+      "trend_date",
+      "trend_dimension",
+      "trend_value",
+      "session_count",
+      "event_count"
+    ]
+  },
+
+  "trend_dimensions": [
+    "MITRE_TECHNIQUE",
+    "ATTACK_TYPE",
+    "ATTACK_STAGE"
+  ],
+
+  "null_empty_rules": {
+    "timestamp": {
+      "allowed": false,
+      "behavior": "Trend source records require a valid timestamp."
+    },
+    "mitre_technique": {
+      "allowed": true,
+      "behavior": "Empty source values must not be assigned a fabricated trend value."
+    },
+    "attack_type": {
+      "allowed": true,
+      "behavior": "Empty source values must not be assigned a fabricated trend value."
+    },
+    "attack_stage": {
+      "allowed": true,
+      "behavior": "Empty source values must not be assigned a fabricated trend value."
+    }
+  },
+
+  "transformation_rules": [
+    "Read-only with respect to source data.",
+    "No ML feature generation.",
+    "No clustering.",
+    "No modification of production cluster assignments.",
+    "No fabrication of MITRE, attack type, or attack stage values.",
+    "Only sessions with a valid, non-empty source value contribute to that dimension's trends.",
+    "trend_date derives from the session timestamp (UTC date)."
+  ],
+
+  "independence": {
+    "depends_on_mitre_analytics": false,
+    "depends_on_mitre_statistics": false,
+    "depends_on_cluster_analytics": false,
+    "consumes_ml_output_directly": true
+  }
+}

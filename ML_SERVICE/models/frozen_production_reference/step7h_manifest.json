@@ -1,0 +1,132 @@
+{
+  "package": "STEP_7_ML_PRODUCTION_COMPLETE",
+  "created_utc": "2026-08-10T13:37:30.897383+00:00",
+  "source": "/content/session_behavioral_features_v4/session_behavioral_features_v4.csv",
+  "source_sha256": "b9a5cdfd2dcc3369e5831ed4c3306f548fe48d951f216f15e71967de1e418534",
+  "source_verified": true,
+  "primary_model": "DBSCAN",
+  "dbscan_eps": 0.5,
+  "dbscan_min_samples": 20,
+  "reference_non_noise_clusters": 38,
+  "reference_noise_sessions": 1676,
+  "reference_noise_fraction": 0.14107744107744108,
+  "behavioral_feature_count": 48,
+  "future_simulation_rows": 2376,
+  "assignment_method": "nearest_behavioral_centroid",
+  "artifacts": [
+    {
+      "source": "/content/step7_cluster_profiling/step7d_detailed_behavioral_profiling/step7d_behavioral_reference.json",
+      "packaged_name": "step7d_behavioral_reference.json",
+      "bytes": 1969,
+      "sha256": "b8da864ffb8eff492e4fd12ad41ee2a3874e788a6b4297622fd1bb53849d08d3"
+    },
+    {
+      "source": "/content/step6_unsupervised_ml/step6b_preprocessing/standard_scaler_params.json",
+      "packaged_name": "standard_scaler_params.json",
+      "bytes": 8230,
+      "sha256": "b9b2cf4bbf65a5a8634a81055cb508391ec292c71944c24a2c1ada6890a5ebcd"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7g_production_cluster_pipeline/step7g_dbscan_behavioral_reference_centroids.csv",
+      "packaged_name": "step7g_dbscan_behavioral_reference_centroids.csv",
+      "bytes": 35284,
+      "sha256": "4b2c10e2e2b96225e9992718b85f6fd0be2bc656e03369cbb322bd9fb9d5b407"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7g_production_cluster_pipeline/step7g_reference_behavioral_assignments.csv",
+      "packaged_name": "step7g_reference_behavioral_assignments.csv",
+      "bytes": 612285,
+      "sha256": "62e7e217576d29adc905ae18fd7cb8d9a2777ccd52e44d7fc776e197e86c0f84"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7g_production_cluster_pipeline/step7g_reference_distance_summary.csv",
+      "packaged_name": "step7g_reference_distance_summary.csv",
+      "bytes": 229,
+      "sha256": "cc3c7d07e58433eb09cb3e317dbc3e06ea7dbc9d3806b48f05be8aeb0c03affd"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7g_production_cluster_pipeline/step7g_production_config.json",
+      "packaged_name": "step7g_production_config.json",
+      "bytes": 2043,
+      "sha256": "da92a43c30533bd6d508744d1a9cfa1bdf3300bf247f4179d7891b613a2db733"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7g_production_cluster_pipeline/step7g_production_cluster_pipeline_audit.json",
+      "packaged_name": "step7g_production_cluster_pipeline_audit.json",
+      "bytes": 2824,
+      "sha256": "2f7440a1164a9a614ec0540398644da7407480e77d64a33b1f48372da320dd80"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7d_detailed_behavioral_profiling/step7d_dbscan_cluster_sizes.csv",
+      "packaged_name": "step7d_dbscan_cluster_sizes.csv",
+      "bytes": 1022,
+      "sha256": "72ea765ee634c807fed1d2edf5b61975d5e7a6ddb2a46dbdb392beefd4a2301a"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7d_detailed_behavioral_profiling/step7d_dbscan_detailed_cluster_profiles.csv",
+      "packaged_name": "step7d_dbscan_detailed_cluster_profiles.csv",
+      "bytes": 210466,
+      "sha256": "a665448fa89fc6d1b44e31f1bfde597a426d9a82146c2906f180ee62db9be636"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7d_detailed_behavioral_profiling/step7d_dbscan_behavioral_signatures.csv",
+      "packaged_name": "step7d_dbscan_behavioral_signatures.csv",
+      "bytes": 210618,
+      "sha256": "4abc917d8f764e1a81b91fbd74c60439b65e8e75ee0cfea609ebe95de9871962"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7d_detailed_behavioral_profiling/step7d_dbscan_top_behavioral_features.csv",
+      "packaged_name": "step7d_dbscan_top_behavioral_features.csv",
+      "bytes": 27129,
+      "sha256": "80bd03fc3be118b9d4a0ff919df78b3716613d4dc64da6d8e5fd2d4a552d4db0"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7d_detailed_behavioral_profiling/step7d_dbscan_cluster_interpretation_summary.csv",
+      "packaged_name": "step7d_dbscan_cluster_interpretation_summary.csv",
+      "bytes": 9935,
+      "sha256": "082888588de587fd30f1db04e2f1b624eeec294e15beee9ce872bd58f144c932"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7d_detailed_behavioral_profiling/step7d_dbscan_noise_behavioral_profile.csv",
+      "packaged_name": "step7d_dbscan_noise_behavioral_profile.csv",
+      "bytes": 5800,
+      "sha256": "7878968a1b2b7b78e2d125545fac42c456a05c98e0f46f54428d14d9c04f0836"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7e_corrected_cluster_validation/step7e_corrected_stability_results.csv",
+      "packaged_name": "step7e_corrected_stability_results.csv",
+      "bytes": 909,
+      "sha256": "c07dca1ad2dbde364805588f28dda24beafd58af108a067bf394e307e036e84f"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7e_corrected_cluster_validation/step7e_pairwise_stability_results.csv",
+      "packaged_name": "step7e_pairwise_stability_results.csv",
+      "bytes": 1523,
+      "sha256": "d9e10e8cb57322800ca24c7890703aae9ee55c13570292da94fa0d5f1b31e54f"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7e_corrected_cluster_validation/step7e_corrected_cluster_validation_audit.json",
+      "packaged_name": "step7e_corrected_cluster_validation_audit.json",
+      "bytes": 1395,
+      "sha256": "de0dcc3094ba5d58039abe4fd498344fae99aa40181cf1fa24344633abadb950"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7h_production_validation/step7h_future_log_simulated_assignments.csv",
+      "packaged_name": "step7h_future_log_simulated_assignments.csv",
+      "bytes": 116292,
+      "sha256": "073e949adfa85741cefc7691c76beac0c4710ec56f2192feffd27bc0c0a2c22c"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7h_production_validation/step7h_future_log_distance_summary.csv",
+      "packaged_name": "step7h_future_log_distance_summary.csv",
+      "bytes": 157,
+      "sha256": "fa7d902cb0658b940d3cd97727c7ee65b85e9ef2eed52bc38581e5660e52abd8"
+    },
+    {
+      "source": "/content/step7_cluster_profiling/step7h_production_validation/step7h_production_feature_schema.json",
+      "packaged_name": "step7h_production_feature_schema.json",
+      "bytes": 1873,
+      "sha256": "f67b250a765b28c9e4a3125ec71b6d0fd150a6b595bd4da2529d3a8886b09dcb"
+    }
+  ]
+}

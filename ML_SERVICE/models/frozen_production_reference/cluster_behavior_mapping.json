@@ -1,0 +1,677 @@
+{
+  "mapping_version": "1.0",
+  "mapping_type": "FROZEN_CLUSTER_BEHAVIOR_INTERPRETATION",
+  "model_status": "FROZEN_PRODUCTION_REFERENCE",
+  "source": "Step 7D DBSCAN behavioral reference",
+  "cluster_count": 38,
+  "noise_included": true,
+  "total_entries": 39,
+  "attack_name_policy": "possible_attack_name is emitted only when the available behavioral evidence supports a useful candidate label",
+  "entries": [
+    {
+      "cluster_id": -1,
+      "session_count": 1676,
+      "cluster_type": "Anomalous / Outlier Activity",
+      "activity_profile": "Behavior outside the learned DBSCAN behavioral clusters",
+      "attacker_behavior": "Behavior requiring investigation because it falls outside the learned reference clusters",
+      "confidence": "HIGH",
+      "evidence_features": [
+        "inter_event_gap_mean_log1p",
+        "latitude_mean",
+        "event_density",
+        "events_per_second",
+        "command_density"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 0,
+      "session_count": 981,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication activity with distinctive temporal and geographic characteristics",
+      "attacker_behavior": "Repeated authentication-oriented activity with distinctive time and source-location characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "dayofweek",
+        "dayofmonth",
+        "longitude",
+        "auth_attempt_rate",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 1,
+      "session_count": 246,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication-attempt activity with multiple usernames",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "username_diversity",
+        "unique_usernames",
+        "latitude",
+        "geo_longitude_abs"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 2,
+      "session_count": 241,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Geographically distinctive activity with username variation",
+      "attacker_behavior": "Repeated activity from a distinctive geographic and temporal pattern",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "longitude",
+        "username_diversity",
+        "unique_usernames",
+        "latitude",
+        "hour"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 3,
+      "session_count": 372,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, protocols, honeypots and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 4,
+      "session_count": 984,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Geographically and temporally distinctive activity",
+      "attacker_behavior": "Repeated activity associated with a distinctive source-location and time pattern",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_longitude_abs",
+        "longitude",
+        "hour",
+        "unique_usernames",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 5,
+      "session_count": 697,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Activity concentrated around specific calendar and geographic characteristics",
+      "attacker_behavior": "Repeated activity with distinctive temporal and source-location characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "dayofweek",
+        "geo_longitude_abs",
+        "longitude",
+        "dayofmonth",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 6,
+      "session_count": 243,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication rate with geographic and username concentration",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "session_hour",
+        "latitude",
+        "geo_latitude_abs",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 7,
+      "session_count": 464,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication-oriented activity with distinctive longitude and username characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_longitude_abs",
+        "longitude",
+        "username_diversity",
+        "auth_attempt_rate",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 8,
+      "session_count": 521,
+      "cluster_type": "Time-concentrated Activity",
+      "activity_profile": "Activity concentrated around specific session hours with username variation",
+      "attacker_behavior": "Time-concentrated repeated activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "session_hour",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 9,
+      "session_count": 301,
+      "cluster_type": "Long-duration Sparse Activity",
+      "activity_profile": "Longer-duration activity with large inter-event gaps",
+      "attacker_behavior": "Sparse and persistent activity over extended periods",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "latitude",
+        "duration",
+        "max_inter_event_gap",
+        "inter_event_gap_mean"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 10,
+      "session_count": 243,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication activity with strong latitude and calendar characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "dayofweek",
+        "latitude",
+        "auth_attempt_rate",
+        "dayofmonth"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 11,
+      "session_count": 927,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Longitude and username-focused activity with reduced protocol diversity",
+      "attacker_behavior": "Repeated activity with distinctive geographic and username characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_longitude_abs",
+        "longitude",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 12,
+      "session_count": 496,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, protocols, honeypots and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 13,
+      "session_count": 341,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "Multi-target and multi-protocol behavior with geographic diversity",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 14,
+      "session_count": 245,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication-oriented activity with strong latitude and username characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "latitude",
+        "auth_attempt_rate",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 15,
+      "session_count": 43,
+      "cluster_type": "Username-focused Activity",
+      "activity_profile": "Strong username and unique-username characteristics",
+      "attacker_behavior": "Credential Activity Candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential Activity"
+    },
+    {
+      "cluster_id": 16,
+      "session_count": 243,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Geographically distinctive activity with username variation",
+      "attacker_behavior": "Repeated source-location activity with limited protocol diversity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "longitude",
+        "latitude",
+        "username_diversity",
+        "geo_longitude_abs",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 17,
+      "session_count": 230,
+      "cluster_type": "Time-concentrated Activity",
+      "activity_profile": "Activity concentrated around specific hours with username variation",
+      "attacker_behavior": "Time-concentrated repeated activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "hour",
+        "longitude",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 18,
+      "session_count": 124,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, protocols, honeypots and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 19,
+      "session_count": 184,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Latitude and hour focused activity with username variation",
+      "attacker_behavior": "Repeated activity with distinctive geographic and temporal characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "hour",
+        "latitude",
+        "geo_latitude_abs",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 20,
+      "session_count": 95,
+      "cluster_type": "Long-duration Sparse Activity",
+      "activity_profile": "Long-duration activity with large temporal gaps",
+      "attacker_behavior": "Sparse and persistent activity over extended periods",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_longitude_abs",
+        "hour",
+        "longitude",
+        "duration",
+        "max_inter_event_gap"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 21,
+      "session_count": 460,
+      "cluster_type": "Geo-temporal Activity",
+      "activity_profile": "Longitude and username-focused activity with limited protocol diversity",
+      "attacker_behavior": "Repeated activity with distinctive geographic characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_longitude_abs",
+        "longitude",
+        "hour",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 22,
+      "session_count": 244,
+      "cluster_type": "Low-diversity Authentication Activity",
+      "activity_profile": "Authentication activity with username concentration and limited diversity",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames",
+        "auth_attempt_rate"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 23,
+      "session_count": 55,
+      "cluster_type": "Time-concentrated Username Activity",
+      "activity_profile": "Username-focused activity concentrated around specific hours",
+      "attacker_behavior": "Credential Activity Candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "hour",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential Activity"
+    },
+    {
+      "cluster_id": 24,
+      "session_count": 242,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication rate with geographic and temporal concentration",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude",
+        "hour",
+        "geo_latitude_abs",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 25,
+      "session_count": 65,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Username-focused activity with distinctive longitude characteristics",
+      "attacker_behavior": "Repeated username-oriented activity with limited protocol diversity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "longitude",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 26,
+      "session_count": 230,
+      "cluster_type": "Username-focused Activity",
+      "activity_profile": "Strong username and unique-username characteristics",
+      "attacker_behavior": "Credential Activity Candidate",
+      "confidence": "LOW",
+      "evidence_features": [
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential Activity"
+    },
+    {
+      "cluster_id": 27,
+      "session_count": 39,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "High authentication rate with geographic and temporal concentration",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude",
+        "geo_latitude_abs",
+        "hour",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 28,
+      "session_count": 58,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Username-oriented activity with calendar and longitude characteristics",
+      "attacker_behavior": "Repeated username-oriented activity with distinctive timing and source location",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "dayofweek",
+        "dayofmonth",
+        "longitude",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 29,
+      "session_count": 33,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "Authentication activity concentrated around specific hours and usernames",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "hour",
+        "latitude",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 30,
+      "session_count": 243,
+      "cluster_type": "Geo-temporal Authentication Activity",
+      "activity_profile": "Authentication-oriented activity with strong latitude and username characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "geo_latitude_abs",
+        "latitude",
+        "username_diversity",
+        "auth_attempt_rate",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 31,
+      "session_count": 52,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Username-oriented activity with distinctive calendar characteristics",
+      "attacker_behavior": "Repeated username-oriented activity with distinctive timing",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "dayofweek",
+        "dayofmonth",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 32,
+      "session_count": 107,
+      "cluster_type": "Geo-temporal Username Activity",
+      "activity_profile": "Time and longitude-focused activity with username variation",
+      "attacker_behavior": "Repeated activity with distinctive temporal and geographic characteristics",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "hour",
+        "longitude",
+        "username_diversity",
+        "unique_usernames",
+        "latitude"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 33,
+      "session_count": 36,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "Authentication activity with strong latitude and username characteristics",
+      "attacker_behavior": "Authentication Activity Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "latitude",
+        "geo_latitude_abs",
+        "auth_attempt_rate",
+        "username_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Authentication Activity"
+    },
+    {
+      "cluster_id": 34,
+      "session_count": 23,
+      "cluster_type": "Low-credential Activity",
+      "activity_profile": "Activity with low username diversity and low authentication characteristics",
+      "attacker_behavior": "Low-diversity activity without sufficient evidence for a specific attack label",
+      "confidence": "LOW",
+      "evidence_features": [
+        "dayofweek",
+        "username_diversity",
+        "unique_usernames",
+        "auth_attempt_rate",
+        "credential_attempt_density"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY"
+    },
+    {
+      "cluster_id": 35,
+      "session_count": 31,
+      "cluster_type": "Authentication-focused Activity",
+      "activity_profile": "Authentication activity with strong latitude and username characteristics",
+      "attacker_behavior": "Credential / Authentication Attack Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "auth_attempt_rate",
+        "latitude",
+        "username_diversity",
+        "unique_usernames"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Credential / Authentication Attack"
+    },
+    {
+      "cluster_id": 36,
+      "session_count": 44,
+      "cluster_type": "Multi-target / Multi-protocol Activity",
+      "activity_profile": "High diversity across destinations, honeypots, protocols and ports",
+      "attacker_behavior": "Reconnaissance-like Activity",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "unique_destinations",
+        "honeypot_diversity",
+        "protocol_diversity",
+        "destination_port_diversity",
+        "geo_country_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Reconnaissance-like Activity"
+    },
+    {
+      "cluster_id": 37,
+      "session_count": 21,
+      "cluster_type": "Sparse Long-duration Multi-target Activity",
+      "activity_profile": "Long-duration sparse activity combined with multi-target and multi-protocol diversity",
+      "attacker_behavior": "Reconnaissance-like / Slow Exploration Candidate",
+      "confidence": "MEDIUM",
+      "evidence_features": [
+        "inter_event_gap_mean_log1p",
+        "max_inter_event_gap",
+        "duration",
+        "protocol_diversity",
+        "honeypot_diversity",
+        "destination_port_diversity",
+        "unique_destinations",
+        "geo_country_diversity"
+      ],
+      "evidence_source": "Step 7D DBSCAN behavioral reference",
+      "mapping_status": "INTERPRETATION_LAYER_ONLY",
+      "possible_attack_name": "Reconnaissance-like / Slow Exploration"
+    }
+  ]
+}

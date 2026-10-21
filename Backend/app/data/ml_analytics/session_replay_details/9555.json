@@ -1,0 +1,1348 @@
+{
+  "id": "9555",
+  "summary": {
+    "reconstructed_session_id": "9555",
+    "event_count": 8,
+    "duration_seconds": 0.0,
+    "first_event_utc": "2020-02-12T02:15:07.152391+00:00",
+    "last_event_utc": "2020-02-12T02:15:07.152391+00:00",
+    "context": {
+      "honeypot": "dionaea",
+      "protocol": "FTP",
+      "country": "Germany",
+      "country_code": "DE"
+    },
+    "classification": {
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium"
+    },
+    "source_ips": [
+      "45.83.67.25"
+    ],
+    "credentials": {
+      "unique_usernames": [
+        "sa"
+      ],
+      "unique_passwords_count": 8,
+      "auth_attempt_total": 8,
+      "user_attempt_total": 8,
+      "pass_attempt_total": 8,
+      "anonymous_total": 0
+    },
+    "commands": {
+      "command_count_total": 0,
+      "unique_commands_count": 0,
+      "sample_commands": []
+    },
+    "flags": {
+      "is_suspicious": true,
+      "is_brute_force_candidate": true,
+      "has_commands_executed": false,
+      "has_attack_classification": true,
+      "is_large_session": false,
+      "is_long_running": false,
+      "is_multi_ip": false,
+      "is_high_severity": false,
+      "is_medium_or_higher_severity": true
+    }
+  },
+  "narrative": {
+    "steps": [
+      {
+        "index": 1,
+        "offset_seconds": 0.0,
+        "phase": "connection",
+        "step_type": "connection",
+        "icon": "🚪",
+        "title": "CONNECTION ESTABLISHED",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "abcdabcd"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "1/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      },
+      {
+        "index": 2,
+        "offset_seconds": 0.0,
+        "phase": "auth",
+        "step_type": "auth_attempt",
+        "icon": "🔑",
+        "title": "AUTH ATTEMPT",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "19891119"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "2/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      },
+      {
+        "index": 3,
+        "offset_seconds": 0.0,
+        "phase": "auth",
+        "step_type": "auth_attempt",
+        "icon": "🔑",
+        "title": "AUTH ATTEMPT",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "19830515"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "3/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      },
+      {
+        "index": 4,
+        "offset_seconds": 0.0,
+        "phase": "auth",
+        "step_type": "auth_attempt",
+        "icon": "🔑",
+        "title": "AUTH ATTEMPT",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "7410852963"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "4/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      },
+      {
+        "index": 5,
+        "offset_seconds": 0.0,
+        "phase": "auth",
+        "step_type": "auth_attempt",
+        "icon": "🔑",
+        "title": "AUTH ATTEMPT",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "19901022"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "5/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      },
+      {
+        "index": 6,
+        "offset_seconds": 0.0,
+        "phase": "auth",
+        "step_type": "auth_attempt",
+        "icon": "🔑",
+        "title": "AUTH ATTEMPT",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "19820413"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "6/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      },
+      {
+        "index": 7,
+        "offset_seconds": 0.0,
+        "phase": "auth",
+        "step_type": "auth_attempt",
+        "icon": "🔑",
+        "title": "AUTH ATTEMPT",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "19881225"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "7/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      },
+      {
+        "index": 8,
+        "offset_seconds": 0.0,
+        "phase": "disconnect",
+        "step_type": "disconnect",
+        "icon": "🔚",
+        "title": "SESSION ENDED",
+        "details": [
+          {
+            "label": "From",
+            "value": "45.83.67.25:25366.0"
+          },
+          {
+            "label": "Port",
+            "value": 21.0
+          },
+          {
+            "label": "Protocol",
+            "value": "FTP"
+          },
+          {
+            "label": "Honeypot",
+            "value": "dionaea"
+          },
+          {
+            "label": "Username",
+            "value": "sa"
+          },
+          {
+            "label": "Password",
+            "value": "19880627"
+          },
+          {
+            "label": "Auth attempts",
+            "value": 1
+          },
+          {
+            "label": "User attempts",
+            "value": 1
+          },
+          {
+            "label": "Pass attempts",
+            "value": 1
+          },
+          {
+            "label": "Attack type",
+            "value": "FTP Brute Force"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1110"
+          },
+          {
+            "label": "Stage",
+            "value": "Credential Access"
+          },
+          {
+            "label": "Severity",
+            "value": "Medium"
+          },
+          {
+            "label": "Event",
+            "value": "8/8"
+          }
+        ],
+        "timestamp": "2020-02-12T02:15:07.152391+00:00"
+      }
+    ],
+    "phases": [
+      {
+        "phase": "connection",
+        "started_at_seconds": 0.0,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 1,
+            "offset_seconds": 0.0,
+            "phase": "connection",
+            "step_type": "connection",
+            "icon": "🚪",
+            "title": "CONNECTION ESTABLISHED",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "abcdabcd"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "1/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.0
+      },
+      {
+        "phase": "auth",
+        "started_at_seconds": 0.0,
+        "step_count": 6,
+        "steps": [
+          {
+            "index": 2,
+            "offset_seconds": 0.0,
+            "phase": "auth",
+            "step_type": "auth_attempt",
+            "icon": "🔑",
+            "title": "AUTH ATTEMPT",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "19891119"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "2/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          },
+          {
+            "index": 3,
+            "offset_seconds": 0.0,
+            "phase": "auth",
+            "step_type": "auth_attempt",
+            "icon": "🔑",
+            "title": "AUTH ATTEMPT",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "19830515"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "3/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          },
+          {
+            "index": 4,
+            "offset_seconds": 0.0,
+            "phase": "auth",
+            "step_type": "auth_attempt",
+            "icon": "🔑",
+            "title": "AUTH ATTEMPT",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "7410852963"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "4/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          },
+          {
+            "index": 5,
+            "offset_seconds": 0.0,
+            "phase": "auth",
+            "step_type": "auth_attempt",
+            "icon": "🔑",
+            "title": "AUTH ATTEMPT",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "19901022"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "5/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          },
+          {
+            "index": 6,
+            "offset_seconds": 0.0,
+            "phase": "auth",
+            "step_type": "auth_attempt",
+            "icon": "🔑",
+            "title": "AUTH ATTEMPT",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "19820413"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "6/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          },
+          {
+            "index": 7,
+            "offset_seconds": 0.0,
+            "phase": "auth",
+            "step_type": "auth_attempt",
+            "icon": "🔑",
+            "title": "AUTH ATTEMPT",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "19881225"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "7/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.0
+      },
+      {
+        "phase": "disconnect",
+        "started_at_seconds": 0.0,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 8,
+            "offset_seconds": 0.0,
+            "phase": "disconnect",
+            "step_type": "disconnect",
+            "icon": "🔚",
+            "title": "SESSION ENDED",
+            "details": [
+              {
+                "label": "From",
+                "value": "45.83.67.25:25366.0"
+              },
+              {
+                "label": "Port",
+                "value": 21.0
+              },
+              {
+                "label": "Protocol",
+                "value": "FTP"
+              },
+              {
+                "label": "Honeypot",
+                "value": "dionaea"
+              },
+              {
+                "label": "Username",
+                "value": "sa"
+              },
+              {
+                "label": "Password",
+                "value": "19880627"
+              },
+              {
+                "label": "Auth attempts",
+                "value": 1
+              },
+              {
+                "label": "User attempts",
+                "value": 1
+              },
+              {
+                "label": "Pass attempts",
+                "value": 1
+              },
+              {
+                "label": "Attack type",
+                "value": "FTP Brute Force"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1110"
+              },
+              {
+                "label": "Stage",
+                "value": "Credential Access"
+              },
+              {
+                "label": "Severity",
+                "value": "Medium"
+              },
+              {
+                "label": "Event",
+                "value": "8/8"
+              }
+            ],
+            "timestamp": "2020-02-12T02:15:07.152391+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.0
+      }
+    ],
+    "total_steps": 8
+  },
+  "events": [
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "abcdabcd",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 1,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "19891119",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 2,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "19830515",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 3,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "7410852963",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 4,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "19901022",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 5,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "19820413",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 6,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "19881225",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 7,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2020-02-12T02:15:07.152391+00:00",
+      "username": "sa",
+      "password": "19880627",
+      "source_ip": "45.83.67.25",
+      "source_port": 25366.0,
+      "destination_port": 21.0,
+      "protocol": "FTP",
+      "honeypot": "dionaea",
+      "country": "Germany",
+      "country_code": "DE",
+      "asn": 208843,
+      "attack_type": "FTP Brute Force",
+      "mitre_technique": "T1110",
+      "attack_stage": "Credential Access",
+      "severity": "Medium",
+      "auth_attempt": 1.0,
+      "user_attempt": 1.0,
+      "pass_attempt": 1.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 8,
+      "_offset_seconds": 0.0
+    }
+  ]
+}

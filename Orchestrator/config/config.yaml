@@ -1,0 +1,15 @@
+honeypots:
+  cowrie:
+    enabled: true
+    container_name: "cowrie"
+    max_restart_attempts: 3
+
+  tanner:
+    enabled: true
+    container_name: "tanner"
+    max_restart_attempts: 3
+
+  dionaea:
+    enabled: true
+    container_name: "dionaea"
+    max_restart_attempts: 3

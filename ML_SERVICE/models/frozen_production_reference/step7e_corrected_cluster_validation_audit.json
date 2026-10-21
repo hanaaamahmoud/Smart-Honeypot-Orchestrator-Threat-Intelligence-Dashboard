@@ -1,0 +1,50 @@
+{
+  "step": "7E-R",
+  "description": "Corrected DBSCAN cluster validation and stability check",
+  "source": "/content/session_behavioral_features_v4/session_behavioral_features_v4.csv",
+  "source_sha256": "b9a5cdfd2dcc3369e5831ed4c3306f548fe48d951f216f15e71967de1e418534",
+  "baseline": {
+    "eps": 0.5,
+    "min_samples": 20,
+    "clusters": 38,
+    "noise_count": 1676,
+    "noise_fraction": 0.14107744107744108,
+    "silhouette": 0.5718279688025583
+  },
+  "stability": {
+    "seeds": [
+      42,
+      123,
+      2024,
+      777,
+      999,
+      31415,
+      27182,
+      16180
+    ],
+    "sample_fraction": 0.8,
+    "mean_clusters_found": 69.75,
+    "std_clusters_found": 0.6614378277661477,
+    "cluster_count_cv": 0.009482979609550505,
+    "mean_noise_fraction": 0.2469486531986532,
+    "std_noise_fraction": 0.0024993631145243562,
+    "mean_silhouette": 0.7539955401687226,
+    "std_silhouette": 0.004330462305077044,
+    "mean_ARI_vs_reference": 0.4988740208909297,
+    "mean_AMI_vs_reference": 0.8013926818010787,
+    "mean_pairwise_ARI": 0.9770091803675127,
+    "mean_pairwise_AMI": 0.9917980778350556
+  },
+  "validation": {
+    "hard_fail_count": 0,
+    "review_count": 0,
+    "final_status": "PASS"
+  },
+  "safety": {
+    "source_modified": false,
+    "labels_used": false,
+    "label_leakage": false,
+    "session_integrity": true,
+    "baseline_assignments_modified": false
+  }
+}

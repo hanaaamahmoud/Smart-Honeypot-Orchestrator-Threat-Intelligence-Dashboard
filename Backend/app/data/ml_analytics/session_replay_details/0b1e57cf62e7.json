@@ -1,0 +1,517 @@
+{
+  "id": "0b1e57cf62e7",
+  "summary": {
+    "reconstructed_session_id": "0b1e57cf62e7",
+    "event_count": 4,
+    "duration_seconds": 1.19,
+    "first_event_utc": "2025-06-10T07:54:52.140435+00:00",
+    "last_event_utc": "2025-06-10T07:54:53.330286+00:00",
+    "context": {
+      "honeypot": "cowrie",
+      "protocol": "SSH",
+      "country": "Canada",
+      "country_code": "CA"
+    },
+    "classification": {
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "severity": "High"
+    },
+    "source_ips": [
+      "142.44.212.226"
+    ],
+    "credentials": {
+      "unique_usernames": [],
+      "unique_passwords_count": 0,
+      "auth_attempt_total": 0,
+      "user_attempt_total": 0,
+      "pass_attempt_total": 0,
+      "anonymous_total": 0
+    },
+    "commands": {
+      "command_count_total": 0,
+      "unique_commands_count": 0,
+      "sample_commands": []
+    },
+    "flags": {
+      "is_suspicious": true,
+      "is_brute_force_candidate": false,
+      "has_commands_executed": false,
+      "has_attack_classification": true,
+      "is_large_session": false,
+      "is_long_running": false,
+      "is_multi_ip": false,
+      "is_high_severity": true,
+      "is_medium_or_higher_severity": true
+    }
+  },
+  "narrative": {
+    "steps": [
+      {
+        "index": 1,
+        "offset_seconds": 0.0,
+        "phase": "connection",
+        "step_type": "connection",
+        "icon": "🚪",
+        "title": "CONNECTION ESTABLISHED",
+        "details": [
+          {
+            "label": "From",
+            "value": "142.44.212.226:54252.0"
+          },
+          {
+            "label": "To",
+            "value": "172.19.0.2:22.0"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "Compromised Host"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1078"
+          },
+          {
+            "label": "Stage",
+            "value": "Defense Evasion"
+          },
+          {
+            "label": "Severity",
+            "value": "High"
+          },
+          {
+            "label": "Event",
+            "value": "1/4"
+          }
+        ],
+        "timestamp": "2025-06-10T07:54:52.140435+00:00"
+      },
+      {
+        "index": 2,
+        "offset_seconds": 0.825,
+        "phase": "activity",
+        "step_type": "activity",
+        "icon": "📌",
+        "title": "ACTIVITY",
+        "details": [
+          {
+            "label": "From",
+            "value": "142.44.212.226"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "Compromised Host"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1078"
+          },
+          {
+            "label": "Stage",
+            "value": "Defense Evasion"
+          },
+          {
+            "label": "Severity",
+            "value": "High"
+          },
+          {
+            "label": "Event",
+            "value": "2/4"
+          }
+        ],
+        "timestamp": "2025-06-10T07:54:52.965062+00:00"
+      },
+      {
+        "index": 3,
+        "offset_seconds": 0.926,
+        "phase": "activity",
+        "step_type": "activity",
+        "icon": "📌",
+        "title": "ACTIVITY",
+        "details": [
+          {
+            "label": "From",
+            "value": "142.44.212.226"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "Compromised Host"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1078"
+          },
+          {
+            "label": "Stage",
+            "value": "Defense Evasion"
+          },
+          {
+            "label": "Severity",
+            "value": "High"
+          },
+          {
+            "label": "Event",
+            "value": "3/4"
+          }
+        ],
+        "timestamp": "2025-06-10T07:54:53.065986+00:00"
+      },
+      {
+        "index": 4,
+        "offset_seconds": 1.19,
+        "phase": "disconnect",
+        "step_type": "disconnect",
+        "icon": "🔚",
+        "title": "SESSION ENDED",
+        "details": [
+          {
+            "label": "From",
+            "value": "142.44.212.226"
+          },
+          {
+            "label": "Protocol",
+            "value": "SSH"
+          },
+          {
+            "label": "Honeypot",
+            "value": "cowrie"
+          },
+          {
+            "label": "Attack type",
+            "value": "Compromised Host"
+          },
+          {
+            "label": "MITRE",
+            "value": "T1078"
+          },
+          {
+            "label": "Stage",
+            "value": "Defense Evasion"
+          },
+          {
+            "label": "Severity",
+            "value": "High"
+          },
+          {
+            "label": "Event",
+            "value": "4/4"
+          }
+        ],
+        "timestamp": "2025-06-10T07:54:53.330286+00:00"
+      }
+    ],
+    "phases": [
+      {
+        "phase": "connection",
+        "started_at_seconds": 0.0,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 1,
+            "offset_seconds": 0.0,
+            "phase": "connection",
+            "step_type": "connection",
+            "icon": "🚪",
+            "title": "CONNECTION ESTABLISHED",
+            "details": [
+              {
+                "label": "From",
+                "value": "142.44.212.226:54252.0"
+              },
+              {
+                "label": "To",
+                "value": "172.19.0.2:22.0"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "Compromised Host"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1078"
+              },
+              {
+                "label": "Stage",
+                "value": "Defense Evasion"
+              },
+              {
+                "label": "Severity",
+                "value": "High"
+              },
+              {
+                "label": "Event",
+                "value": "1/4"
+              }
+            ],
+            "timestamp": "2025-06-10T07:54:52.140435+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.0
+      },
+      {
+        "phase": "activity",
+        "started_at_seconds": 0.825,
+        "step_count": 2,
+        "steps": [
+          {
+            "index": 2,
+            "offset_seconds": 0.825,
+            "phase": "activity",
+            "step_type": "activity",
+            "icon": "📌",
+            "title": "ACTIVITY",
+            "details": [
+              {
+                "label": "From",
+                "value": "142.44.212.226"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "Compromised Host"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1078"
+              },
+              {
+                "label": "Stage",
+                "value": "Defense Evasion"
+              },
+              {
+                "label": "Severity",
+                "value": "High"
+              },
+              {
+                "label": "Event",
+                "value": "2/4"
+              }
+            ],
+            "timestamp": "2025-06-10T07:54:52.965062+00:00"
+          },
+          {
+            "index": 3,
+            "offset_seconds": 0.926,
+            "phase": "activity",
+            "step_type": "activity",
+            "icon": "📌",
+            "title": "ACTIVITY",
+            "details": [
+              {
+                "label": "From",
+                "value": "142.44.212.226"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "Compromised Host"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1078"
+              },
+              {
+                "label": "Stage",
+                "value": "Defense Evasion"
+              },
+              {
+                "label": "Severity",
+                "value": "High"
+              },
+              {
+                "label": "Event",
+                "value": "3/4"
+              }
+            ],
+            "timestamp": "2025-06-10T07:54:53.065986+00:00"
+          }
+        ],
+        "ended_at_seconds": 0.926
+      },
+      {
+        "phase": "disconnect",
+        "started_at_seconds": 1.19,
+        "step_count": 1,
+        "steps": [
+          {
+            "index": 4,
+            "offset_seconds": 1.19,
+            "phase": "disconnect",
+            "step_type": "disconnect",
+            "icon": "🔚",
+            "title": "SESSION ENDED",
+            "details": [
+              {
+                "label": "From",
+                "value": "142.44.212.226"
+              },
+              {
+                "label": "Protocol",
+                "value": "SSH"
+              },
+              {
+                "label": "Honeypot",
+                "value": "cowrie"
+              },
+              {
+                "label": "Attack type",
+                "value": "Compromised Host"
+              },
+              {
+                "label": "MITRE",
+                "value": "T1078"
+              },
+              {
+                "label": "Stage",
+                "value": "Defense Evasion"
+              },
+              {
+                "label": "Severity",
+                "value": "High"
+              },
+              {
+                "label": "Event",
+                "value": "4/4"
+              }
+            ],
+            "timestamp": "2025-06-10T07:54:53.330286+00:00"
+          }
+        ],
+        "ended_at_seconds": 1.19
+      }
+    ],
+    "total_steps": 4
+  },
+  "events": [
+    {
+      "timestamp": "2025-06-10T07:54:52.140435+00:00",
+      "source_ip": "142.44.212.226",
+      "source_port": 54252.0,
+      "destination_ip": "172.19.0.2",
+      "destination_port": 22.0,
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "Canada",
+      "country_code": "CA",
+      "asn": 16276,
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "severity": "High",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 1,
+      "_offset_seconds": 0.0
+    },
+    {
+      "timestamp": "2025-06-10T07:54:52.965062+00:00",
+      "source_ip": "142.44.212.226",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "Canada",
+      "country_code": "CA",
+      "asn": 16276,
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "severity": "High",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 2,
+      "_offset_seconds": 0.825
+    },
+    {
+      "timestamp": "2025-06-10T07:54:53.065986+00:00",
+      "source_ip": "142.44.212.226",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "Canada",
+      "country_code": "CA",
+      "asn": 16276,
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "severity": "High",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 3,
+      "_offset_seconds": 0.926
+    },
+    {
+      "timestamp": "2025-06-10T07:54:53.330286+00:00",
+      "source_ip": "142.44.212.226",
+      "protocol": "SSH",
+      "honeypot": "cowrie",
+      "country": "Canada",
+      "country_code": "CA",
+      "asn": 16276,
+      "attack_type": "Compromised Host",
+      "mitre_technique": "T1078",
+      "attack_stage": "Defense Evasion",
+      "severity": "High",
+      "auth_attempt": 0.0,
+      "user_attempt": 0.0,
+      "pass_attempt": 0.0,
+      "anonymous": 0.0,
+      "command_count": 0.0,
+      "_event_index": 4,
+      "_offset_seconds": 1.19
+    }
+  ]
+}

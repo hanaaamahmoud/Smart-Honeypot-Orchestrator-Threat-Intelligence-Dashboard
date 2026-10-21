@@ -1,0 +1,210 @@
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# ============================================================
+# Virtual environments
+# ============================================================
+.venv/
+venv/
+env/
+
+# ============================================================
+# Environment / Secrets
+# ============================================================
+.env
+*.pem
+*.key
+!.env.example
+
+# ============================================================
+# Testing / Coverage / Cache
+# ============================================================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# ============================================================
+# IDE
+# ============================================================
+.vscode/
+.idea/
+
+# ============================================================
+# OS
+# ============================================================
+.DS_Store
+Thumbs.db
+
+# ============================================================
+# Jupyter
+# ============================================================
+.ipynb_checkpoints/
+
+# ============================================================
+# Runtime output
+# ============================================================
+runtime_output/
+logs/
+tmp/
+
+# ============================================================
+# Project backups
+# ============================================================
+.pre_rebuild_backup_*/
+.step1_backup/
+*before_step*
+*.before_*
+
+# ============================================================
+# Debug / temporary state files
+# ============================================================
+STEP_*_STATE.json
+STEP_*_DEBUG_*.json
+
+# ============================================================
+# Colab / runtime backups
+# ============================================================
+colab_runtime_backups-*.zip
+colab_runtime_backups-*/
+
+# ============================================================
+# Temporary / generated files
+# ============================================================
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ============================================================
+# Archive
+# ============================================================
+_archive/
+
+# ============================================================
+# ============================================================
+# ML ANALYTICS DATA — DO NOT COMMIT
+# ============================================================
+# ============================================================
+
+# ---------- Analytics Output (large data files) ----------
+!analytics_output/.gitkeep
+
+# ---------- Backend Handoff — data files only ----------
+# Keep: README.md, schema.json, *.md
+# Ignore: *.json (data), *.csv, *.zip, *.tar.gz, subfolders
+backend_handoff/**/*.json
+!backend_handoff/**/schema*.json
+!backend_handoff/**/contract*.json
+backend_handoff/**/*.csv
+backend_handoff/**/*.zip
+backend_handoff/**/*.tar.gz
+backend_handoff/**/details/
+backend_handoff/**/*_details/
+
+# ---------- Session Replay Details (11,879 files) ----------
+session_replay_details/
+**/session_replay_details/
+
+# ---------- Elasticsearch backups ----------
+*.tar.gz
+elk_esdata_backup*.tar.gz
+
+# ---------- CSV data files ----------
+*.csv
+!docs/**/*.csv
+
+# ---------- Diagnose scripts output ----------
+diagnose_*_output.json
+diagnose_*_report.json
+
+# ============================================================
+# KEEP — Production frozen artifacts
+# ============================================================
+!models/
+!models/frozen_production_reference/
+!models/frozen_production_reference/**
+!models/frozen_reference_sha256.json
+
+# ============================================================
+# KEEP — Contract schemas (small files)
+# ============================================================
+!app/analytics/contracts/*.json
+!app/analytics/contracts/**
+
+# ============================================================
+# KEEP — Documentation
+# ============================================================
+!docs/**
+
+# ============================================================
+# Backend Handoff — data not committed
+# ============================================================
+
+# ============================================================
+# Backups / temporary docs
+# ============================================================
+docs/_backup/
+docs/**/_backup/
+
+# ============================================================
+# Backend Handoff — data not committed, docs committed
+# ============================================================
+
+# Ignore data files by extension (not by folder)
+backend_handoff/**/*.json
+backend_handoff/**/*.csv
+backend_handoff/**/*.tar.gz
+backend_handoff/**/*.zip
+
+# Ignore heavy data folders
+backend_handoff/**/details/
+backend_handoff/**/*_details/
+backend_handoff/ml_analytics_files/
+
+# Allow documentation
+!backend_handoff/README.md
+!backend_handoff/*/README.md
+!backend_handoff/*/schema*.json
+!backend_handoff/frontend_guide/
+!backend_handoff/frontend_guide/**
+
+# ============================================================
+# Keep READMEs even in gitignored folders
+# ============================================================
+
+# ============================================================
+# Analytics output — ignore data, keep README
+# ============================================================
+analytics_output/**/*.json
+analytics_output/**/*.csv
+analytics_output/session_replay_details/
+!analytics_output/README.md
+
+# ============================================================
+# Backend Handoff — keep only README.md on GitHub
+# ============================================================
+backend_handoff/01_cluster_analytics/
+backend_handoff/02_temporal_analytics/
+backend_handoff/03_session_analytics/
+backend_handoff/04_mitre_analytics/
+backend_handoff/05_mitre_statistics/
+backend_handoff/06_mitre_trends/
+backend_handoff/07_session_replay/
+backend_handoff/frontend_guide/
+backend_handoff/ml_analytics_files/
+
+# ============================================================
+# Final cleanup — data and archives
+# ============================================================
+*.zip
+*.tar.gz
+_archive/
+*.backup_*
+*.before_*

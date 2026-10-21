@@ -1,0 +1,90 @@
+{
+  "name": "ATTACKER_IP_ANALYTICS_CONTRACT",
+  "version": "1.0.0",
+  "status": "ACTIVE",
+  "purpose": "Expose attacker-IP analytics derived from existing enriched event values and production ML assignments without performing enrichment or modifying ML results.",
+
+  "source": {
+    "stage": "PRODUCTION_ML_OUTPUT",
+    "input_grain": "EVENT",
+    "identity": "source_ip"
+  },
+
+  "required_input_fields": [
+    "source_ip",
+    "ip_scope",
+    "resolution_status",
+    "location_source",
+    "dashboard_source"
+  ],
+
+  "optional_input_fields": [
+    "country",
+    "country_code",
+    "city",
+    "latitude",
+    "longitude",
+    "asn",
+    "asn_org",
+    "reconstructed_session_id",
+    "production_cluster_assignment",
+    "event_count",
+    "protocol",
+    "honeypot"
+  ],
+
+  "output": {
+    "grain": "ATTACKER_IP",
+    "required_fields": [
+      "analytics_layer",
+      "row_count",
+      "unique_source_ips",
+      "public_source_ips",
+      "resolved_source_ips",
+      "unresolved_source_ips",
+      "country_diversity",
+      "country_code_diversity",
+      "city_diversity",
+      "asn_diversity",
+      "geoip_resolved_ratio"
+    ],
+    "analytics_layer_value": "ATTACKER_IP_ANALYTICS"
+  },
+
+  "transformation": {
+    "type": "VALIDATED_ATTACKER_IP_ANALYTICS",
+    "rules": [
+      "Consume existing event values only.",
+      "Do not perform GeoIP lookup.",
+      "Do not call external providers.",
+      "Do not infer country, ASN, city, or reputation.",
+      "Do not modify production ML assignments.",
+      "Do not create clusters.",
+      "Do not retrain the model.",
+      "Missing optional GeoIP enrichment remains missing."
+    ]
+  },
+
+  "null_rules": {
+    "required_fields": "must_not_be_null_or_empty",
+    "optional_fields": "may_be_null_or_absent",
+    "optional_fields_are_not_fabricated": true
+  },
+
+  "independence": {
+    "depends_on_session_analytics": false,
+    "depends_on_cluster_analytics": false,
+    "consumes_production_ml_output_directly": true
+  },
+
+  "validation_tests": [
+    "required fields are present",
+    "required fields are non-empty",
+    "optional GeoIP fields may be absent",
+    "unresolved GeoIP is valid",
+    "analytics layer is ATTACKER_IP_ANALYTICS",
+    "source IP cardinality is calculated from existing values",
+    "input records are not mutated",
+    "no external enrichment is performed"
+  ]
+}

@@ -1,0 +1,4 @@
+include:
+  - ./cowrie/docker-compose.yml
+  - ./dionaea/docker-compose.yml
+  - ./tanner/docker-compose.yml

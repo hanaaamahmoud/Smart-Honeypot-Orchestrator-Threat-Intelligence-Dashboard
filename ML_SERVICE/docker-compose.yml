@@ -1,0 +1,52 @@
+services:
+  ml-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: honeypot-ml-service
+
+    restart: unless-stopped
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      PYTHONUNBUFFERED: "1"
+
+    volumes:
+      # ─── Core code ───
+      - ./app:/app/app
+      - ./analytics:/app/analytics
+      - ./tests:/app/tests
+      - ./models:/app/models
+      - ./pytest.ini:/app/pytest.ini:ro
+
+      # ─── Data + handoff ───
+      - ./backend_handoff:/app/backend_handoff
+      - ./analytics_output:/app/analytics_output
+      - ./docs:/app/docs
+
+      # ─── Scripts (whole folder) ───
+      - ./scripts:/app/scripts
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+    networks:
+      - elk-net
+
+networks:
+  elk-net:
+    external: true
+    name: elk_elk-net

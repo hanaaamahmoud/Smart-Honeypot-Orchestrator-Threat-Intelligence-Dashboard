@@ -1,0 +1,282 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+
+  width: 260px;
+  height: 100vh;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-surface) 0%,
+      var(--color-bg-deep) 100%
+    );
+
+  border-right: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-lg);
+
+  padding: 24px 16px;
+
+  box-sizing: border-box;
+
+  overflow-y: auto;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 4px 8px 28px;
+}
+
+.brand-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-primary),
+      var(--color-primary-light)
+    );
+
+  color: var(--color-text-primary);
+
+  font-size: 14px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  box-shadow: var(--shadow-primary);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.brand-title {
+  color: var(--color-text-primary);
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: -0.2px;
+}
+
+.brand-subtitle {
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.sidebar-link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  min-height: 46px;
+
+  padding: 0 13px;
+
+  border-radius: 10px;
+
+  color: var(--color-text-secondary);
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition:
+    background var(--transition-normal),
+    color var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.sidebar-link:hover {
+  color: var(--color-text-primary);
+
+  background: var(--color-surface-hover);
+
+  transform: translateX(2px);
+}
+
+.sidebar-link.active {
+  color: var(--color-text-primary);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--color-primary-soft),
+      var(--color-surface-hover)
+    );
+
+  border: 1px solid var(--color-border-strong);
+}
+
+.sidebar-link.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: -16px;
+  top: 9px;
+
+  width: 3px;
+  height: 28px;
+
+  border-radius: 0 4px 4px 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--color-primary-light),
+      var(--color-primary)
+    );
+
+  box-shadow:
+    0 0 14px var(--color-primary-glow);
+}
+
+.sidebar-link-icon {
+  width: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  color: var(--color-text-muted);
+
+  font-size: 16px;
+}
+
+.sidebar-link.active .sidebar-link-icon {
+  color: var(--color-primary-light);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+
+  padding-top: 20px;
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 13px;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-primary-soft),
+      var(--color-surface)
+    );
+
+  border: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-sm);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--color-status-online);
+
+  box-shadow:
+    0 0 0 4px var(--color-primary-soft),
+    0 0 14px var(--color-primary-glow);
+}
+
+.system-status > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.status-title {
+  color: var(--color-text-secondary);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-subtitle {
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1001;
+
+    width: 260px;
+    height: 100vh;
+    min-height: 100vh;
+
+    transform: translateX(-100%);
+
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .sidebar.sidebar-open {
+    transform: translateX(0);
+
+    box-shadow: var(--shadow-lg);
+  }
+}
