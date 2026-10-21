@@ -36,10 +36,13 @@ During about 19 days of continuous operation the system collected more than 200,
 
 ## 2. Team and Supervision
 
-**Students:** Asmaa Abouzina, Esraa Ouda, Hind Hussien, Hanaa Elganzory
-**Supervisor:** Dr. Anwar Hussien
-**Industry partner:** Fixed Solutions
-**Program:** M.S. in Computer Science, Queen's University
+**Students:** Asmaa Abouzina, Esraa Ouda, Hind Hussien, Hanaa Elganzory.
+
+**Supervisor:** Dr. Anwar Hussien.
+
+**Industry partner:** Fixed Solutions.
+
+**Program:** M.S. in Computer Science, Queen's University.
 
 ## 3. System Architecture
 
